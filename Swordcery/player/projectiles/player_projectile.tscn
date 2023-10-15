@@ -16,8 +16,8 @@ SPEED = 100
 TARGET = Vector3(0, 0, 0)
 
 [node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0898576, 0.774466)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.787258)
 shape = SubResource("CapsuleShape3D_25rbs")
 
 [node name="sword_2handed_color" parent="." index="1" instance=ExtResource("2_70hyp")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

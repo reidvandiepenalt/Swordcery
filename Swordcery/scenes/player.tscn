@@ -30,6 +30,13 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 fov = 90.0
 
+[node name="CameraRaycast" type="RayCast3D" parent="TwistPivot/PitchPivot/Camera3D"]
+enabled = false
+target_position = Vector3(0, 0, -100)
+collision_mask = 5
+collide_with_areas = true
+debug_shape_thickness = 3
+
 [node name="Hurtbox" parent="." instance=ExtResource("3_5r1vu")]
 collision_layer = 2
 collision_mask = 4

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c1axdi8l0ot5h"]
 
 [ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_uau1x"]
-[ext_resource type="PackedScene" uid="uid://fd4w0e1842uy" path="res://addons/kaykit_character_pack_adventures/Characters/gltf/Rogue.glb" id="2_81iqj"]
+[ext_resource type="PackedScene" uid="uid://fd4w0e1842uy" path="res://addons/kaykit_character_pack_adventures/Characters/gltf/Rogue_Hooded.glb" id="2_81iqj"]
 [ext_resource type="PackedScene" uid="uid://bkd37qnou2a6" path="res://resources/Hurtbox.tscn" id="2_h0viv"]
 [ext_resource type="PackedScene" uid="uid://cryp50hr6e5u4" path="res://resources/Hitbox.tscn" id="3_amq6y"]
 

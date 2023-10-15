@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var hp := hp_max
 
 @export var PROJECTILE : PackedScene = preload("res://player/projectiles/player_projectile.tscn")
+@export var TEST_SPHERE : PackedScene = preload("res://resources/test_sphere.tscn")
 
 var mouse_sensitivity := 0.001
 var twist_input := 0.0
@@ -11,6 +12,7 @@ var pitch_input := 0.0
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
+@onready var cam_raycast := $TwistPivot/PitchPivot/Camera3D/CameraRaycast
 
 @onready var basic_attack_timer := $BasicAttackTimer
 
@@ -52,15 +54,15 @@ func _process(delta: float) -> void:
 	twist_pivot.rotate_y(twist_input)
 	pitch_pivot.rotate_x(pitch_input)
 	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
-	deg_to_rad(-30), 
-	deg_to_rad(30))
+	deg_to_rad(-60), 
+	deg_to_rad(60))
 	twist_input = 0.0
 	pitch_input = 0.0
 	#rotate character model
 	$Knight.rotation.y = twist_pivot.rotation.y + PI
 	
 	if Input.is_action_just_pressed("attack_basic") and basic_attack_timer.is_stopped():
-		basic_attack()
+		basic_attack(get_world_3d().direct_space_state)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -73,11 +75,16 @@ func _on_hurtbox_area_entered(hitbox):
 	self.hp -= damage
 	print(hitbox.get_parent().name + " hitbox touched " + name + " hurtbox and dealt " + str(damage))
 
-func basic_attack():
+func basic_attack(space_state):
 	if PROJECTILE:
 		var proj = PROJECTILE.instantiate()
 		get_tree().current_scene.add_child(proj)
 		proj.global_position = self.global_position
 		
-		proj.TARGET = self.global_position + self.basis.z * 10
+		cam_raycast.force_raycast_update()
+		if cam_raycast.is_colliding():
+			proj.set_target(cam_raycast.get_collision_point())
+		else:
+			proj.set_target(cam_raycast.to_global(cam_raycast.target_position))
+		
 		basic_attack_timer.start()
