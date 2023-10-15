@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://fg24sf5n32oh"]
+
+[ext_resource type="PackedScene" uid="uid://cryp50hr6e5u4" path="res://resources/Hitbox.tscn" id="1_2vhor"]
+[ext_resource type="PackedScene" uid="uid://b4uuawtl3uipi" path="res://addons/kaykit_character_pack_adventures/Assets/gltf/sword_2handed_color.gltf" id="2_70hyp"]
+[ext_resource type="Script" path="res://player/projectiles/player_projectile.gd" id="2_m0s7s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25rbs"]
+radius = 0.278308
+height = 2.34404
+
+[node name="PlayerProjectile" groups=["Projectile"] instance=ExtResource("1_2vhor")]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("2_m0s7s")
+SPEED = 100
+TARGET = Vector3(0, 0, 0)
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0898576, 0.774466)
+shape = SubResource("CapsuleShape3D_25rbs")
+
+[node name="sword_2handed_color" parent="." index="1" instance=ExtResource("2_70hyp")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

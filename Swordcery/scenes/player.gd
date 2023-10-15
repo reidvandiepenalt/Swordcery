@@ -1,11 +1,18 @@
 extends CharacterBody3D
 
+@export var hp_max := 40
+@export var hp := hp_max
+
+@export var PROJECTILE : PackedScene = preload("res://player/projectiles/player_projectile.tscn")
+
 var mouse_sensitivity := 0.001
 var twist_input := 0.0
 var pitch_input := 0.0
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
+
+@onready var basic_attack_timer := $BasicAttackTimer
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -51,9 +58,26 @@ func _process(delta: float) -> void:
 	pitch_input = 0.0
 	#rotate character model
 	$Knight.rotation.y = twist_pivot.rotation.y + PI
+	
+	if Input.is_action_just_pressed("attack_basic") and basic_attack_timer.is_stopped():
+		basic_attack()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			twist_input = - event.relative.x * mouse_sensitivity
 			pitch_input = - event.relative.y * mouse_sensitivity
+
+func _on_hurtbox_area_entered(hitbox):
+	var damage = hitbox.damage
+	self.hp -= damage
+	print(hitbox.get_parent().name + " hitbox touched " + name + " hurtbox and dealt " + str(damage))
+
+func basic_attack():
+	if PROJECTILE:
+		var proj = PROJECTILE.instantiate()
+		get_tree().current_scene.add_child(proj)
+		proj.global_position = self.global_position
+		
+		proj.TARGET = self.global_position + self.basis.z * 10
+		basic_attack_timer.start()
