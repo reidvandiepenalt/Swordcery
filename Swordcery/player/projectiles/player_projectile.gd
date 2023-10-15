@@ -3,10 +3,6 @@ extends "res://resources/Hitbox.gd"
 @export var SPEED := 100
 @export var TARGET := Vector3.ZERO
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
 func set_target(target):
 	TARGET = target
 	look_at(TARGET, Vector3.UP)

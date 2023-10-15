@@ -1,9 +1,6 @@
-extends CharacterBody3D
+extends "res://resources/entity_base.gd"
 
-@export var hp_max := 40
-@export var hp := hp_max
-
-@export var PROJECTILE : PackedScene = preload("res://player/projectiles/player_projectile.tscn")
+@export var PROJECTILE : PackedScene = preload("res://player/projectiles/swordcerer_basic_attack_projectile.tscn")
 @export var TEST_SPHERE : PackedScene = preload("res://resources/test_sphere.tscn")
 
 var mouse_sensitivity := 0.001
@@ -18,9 +15,6 @@ var pitch_input := 0.0
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -70,15 +64,27 @@ func _unhandled_input(event: InputEvent) -> void:
 			twist_input = - event.relative.x * mouse_sensitivity
 			pitch_input = - event.relative.y * mouse_sensitivity
 
-func _on_hurtbox_area_entered(hitbox):
-	var damage = hitbox.damage
-	self.hp -= damage
-	print(hitbox.get_parent().name + " hitbox touched " + name + " hurtbox and dealt " + str(damage))
-
 func basic_attack(space_state):
+	swordcerer_basic_attack(space_state)
+	"""
 	if PROJECTILE:
 		var proj = PROJECTILE.instantiate()
 		get_tree().current_scene.add_child(proj)
+		proj.global_position = self.global_position
+		
+		cam_raycast.force_raycast_update()
+		if cam_raycast.is_colliding():
+			proj.set_target(cam_raycast.get_collision_point())
+		else:
+			proj.set_target(cam_raycast.to_global(cam_raycast.target_position))
+		
+		basic_attack_timer.start()
+		"""
+
+func swordcerer_basic_attack(space_state):
+	if PROJECTILE:
+		var proj = PROJECTILE.instantiate()
+		add_child(proj)
 		proj.global_position = self.global_position
 		
 		cam_raycast.force_raycast_update()

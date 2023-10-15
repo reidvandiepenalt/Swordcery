@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://iapb1qehvaha"]
+
+[ext_resource type="PackedScene" uid="uid://fg24sf5n32oh" path="res://player/projectiles/player_projectile.tscn" id="1_pjh4g"]
+[ext_resource type="Script" path="res://player/projectiles/swordcerer_basic_attack_projectile.gd" id="2_emddv"]
+
+[node name="PlayerProjectile" instance=ExtResource("1_pjh4g")]
+script = ExtResource("2_emddv")
+AIR_TIME = 0.6
+START_END_ANGLE_OFFSET = 0.174533
+MAX_WIDTH = 2.0
+MAX_DISTANCE = 10.0
