@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bxw3msanga4sl"]
 
+[ext_resource type="PackedScene" uid="uid://f50jjdtgn5ql" path="res://player/swordcerer_player.tscn" id="1_eqbtc"]
 [ext_resource type="PackedScene" uid="uid://c1axdi8l0ot5h" path="res://enemies/enemy_base.tscn" id="2_6udn8"]
-[ext_resource type="PackedScene" uid="uid://brsmkoif6adga" path="res://scenes/player.tscn" id="2_ii0bh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5qxt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -39,8 +39,7 @@ mesh = SubResource("PlaneMesh_ph2ki")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D2"]
 shape = SubResource("ConcavePolygonShape3D_tgxq3")
 
-[node name="Player" parent="." instance=ExtResource("2_ii0bh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+[node name="Swordcerer_Player" parent="." instance=ExtResource("1_eqbtc")]
 
 [node name="Enemy" parent="." instance=ExtResource("2_6udn8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.61639)

@@ -1,6 +1,5 @@
 extends "res://resources/entity_base.gd"
 
-@export var PROJECTILE : PackedScene = preload("res://player/projectiles/swordcerer_basic_attack_projectile.tscn")
 @export var TEST_SPHERE : PackedScene = preload("res://resources/test_sphere.tscn")
 
 var mouse_sensitivity := 0.001
@@ -65,7 +64,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			pitch_input = - event.relative.y * mouse_sensitivity
 
 func basic_attack(space_state):
-	swordcerer_basic_attack(space_state)
 	"""
 	if PROJECTILE:
 		var proj = PROJECTILE.instantiate()
@@ -79,18 +77,4 @@ func basic_attack(space_state):
 			proj.set_target(cam_raycast.to_global(cam_raycast.target_position))
 		
 		basic_attack_timer.start()
-		"""
-
-func swordcerer_basic_attack(space_state):
-	if PROJECTILE:
-		var proj = PROJECTILE.instantiate()
-		add_child(proj)
-		proj.global_position = self.global_position
-		
-		cam_raycast.force_raycast_update()
-		if cam_raycast.is_colliding():
-			proj.set_target(cam_raycast.get_collision_point())
-		else:
-			proj.set_target(cam_raycast.to_global(cam_raycast.target_position))
-		
-		basic_attack_timer.start()
+	"""

@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://f50jjdtgn5ql"]
+
+[ext_resource type="PackedScene" uid="uid://brsmkoif6adga" path="res://scenes/player.tscn" id="1_fl8mb"]
+[ext_resource type="PackedScene" uid="uid://21tkl3ieqfyj" path="res://player/projectiles/swordcerer_basic_attack_projectile_pathed.tscn" id="2_muu32"]
+[ext_resource type="Script" path="res://player/swordcerer_player.gd" id="2_wjrc2"]
+[ext_resource type="PackedScene" uid="uid://cisw6ifyu8cub" path="res://player/projectiles/sub_path_swordcerer_basic_projectile.tscn" id="3_uokak"]
+
+[node name="Swordcerer_Player" instance=ExtResource("1_fl8mb")]
+script = ExtResource("2_wjrc2")
+PROJECTILE = ExtResource("3_uokak")
+
+[node name="ProjectilePath" parent="." index="5" instance=ExtResource("2_muu32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29678, -1.065)
+
+[editable path="Hurtbox"]

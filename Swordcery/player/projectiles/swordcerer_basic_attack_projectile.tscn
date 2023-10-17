@@ -6,10 +6,6 @@
 [node name="PlayerProjectile" instance=ExtResource("1_pjh4g")]
 script = ExtResource("2_emddv")
 AIR_TIME = 5
-START_END_ANGLE_OFFSET = 0.174533
+START_END_PERCENT = 10
 MAX_WIDTH = 2.0
 MAX_DISTANCE = 10.0
-STARTING_ROTATION = -1.5708
-
-[node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.787258)
