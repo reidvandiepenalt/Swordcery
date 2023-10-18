@@ -8,8 +8,12 @@
 [node name="Swordcerer_Player" instance=ExtResource("1_fl8mb")]
 script = ExtResource("2_wjrc2")
 PROJECTILE = ExtResource("3_uokak")
+START_END_PERCENT = 0.05
 
-[node name="ProjectilePath" parent="." index="5" instance=ExtResource("2_muu32")]
+[node name="Knight" parent="." index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="ProjectilePath" parent="Knight" index="2" instance=ExtResource("2_muu32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29678, -1.065)
 
 [editable path="Hurtbox"]

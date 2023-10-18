@@ -40,6 +40,7 @@ mesh = SubResource("PlaneMesh_ph2ki")
 shape = SubResource("ConcavePolygonShape3D_tgxq3")
 
 [node name="Swordcerer_Player" parent="." instance=ExtResource("1_eqbtc")]
+START_END_PERCENT = 0.05
 
 [node name="Enemy" parent="." instance=ExtResource("2_6udn8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.61639)

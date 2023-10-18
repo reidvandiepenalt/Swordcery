@@ -1,7 +1,7 @@
 extends "res://player/projectiles/player_projectile.gd"
 
 @export var AIR_TIME := 0.5
-@export var START_END_PERCENT := 10
+@export var START_END_PERCENT := 0.05
 @export var MAX_WIDTH := 2.0
 @export var MAX_DISTANCE := 10.0
 
@@ -9,22 +9,29 @@ extends "res://player/projectiles/player_projectile.gd"
 
 var max_distance := 0
 var elapsed_time := 0.0
+var active = false
 
 
 func set_target(target):
-	super.set_target(target)
+	TARGET = target
 	max_distance = min(global_position.distance_to(TARGET), MAX_DISTANCE)
 	elapsed_time = 0
+	active = true
+	rotation = Vector3(0, -90, 0)
 
 #start and returns from right left shoulder respectively then rejoins arc
 func _physics_process(delta):
+	if !active:
+		look_at(global_position + Vector3.UP, Vector3.FORWARD)
+		return
+	
 	elapsed_time += delta
 	if(elapsed_time > AIR_TIME):
+		active = false
 		return
-		#replace with moving back to rack behind back
 	
 	var time_percent = elapsed_time / AIR_TIME
-	var current_progress = START_END_PERCENT / 100 + (time_percent * (1 - 2 * START_END_PERCENT / 100))
+	var current_progress = START_END_PERCENT + ((1 - (2 * START_END_PERCENT)) * time_percent)
 	path.progress_ratio = current_progress
 
 func _on_Projectile_area_entered(area):
@@ -32,3 +39,6 @@ func _on_Projectile_area_entered(area):
 
 func _on_Projectile_body_entered(body):
 	pass
+
+func set_percent(percent):
+	path.progress_ratio = percent
