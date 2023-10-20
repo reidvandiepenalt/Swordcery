@@ -1,6 +1,7 @@
 extends "res://scenes/player.gd"
 
 @export var PROJECTILE : PackedScene = preload("res://player/projectiles/sub_path_swordcerer_basic_projectile.tscn")
+@export var SECONDARY_PROJECTILE : PackedScene = preload("res://player/projectiles/swordcerer_secondary_attack.tscn")
 @export var START_END_PERCENT := 0.05 #keep same as projectile script value
 
 @onready var BASIC_PROJ_PATH := $Knight/PathsParent/BasicProjectilePath
@@ -52,6 +53,19 @@ func update_basic_projectiles():
 		var percent_step = 2 * START_END_PERCENT / inactive_projectiles.size()
 		for n in inactive_projectiles.size():
 			inactive_projectiles[n].set_percent(-START_END_PERCENT + percent_step * n)
+
+func secondary_attack():
+	if SECONDARY_PROJECTILE:
+		var proj = SECONDARY_PROJECTILE.instantiate()
+		get_tree().root.get_child(0).add_child(proj)
+		proj.set_player(self)
+		cam_raycast.force_raycast_update()
+		if cam_raycast.is_colliding():
+			proj.set_target(cam_raycast.get_collision_point())
+		else:
+			proj.set_target(cam_raycast.to_global(cam_raycast.target_position)) 
+		
+		secondary_attack_timer.start()
 
 func special_attack():
 	SPECIAL_ATTACK_ANIMATOR.play("swordcerer_special_attack")

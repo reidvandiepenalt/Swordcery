@@ -10,6 +10,3 @@ func _on_Projectile_area_entered(area):
 
 func _on_Projectile_body_entered(body):
 	pass
-
-func toggle_collision(collision_state: bool):
-	collision.disabled = collision_state
