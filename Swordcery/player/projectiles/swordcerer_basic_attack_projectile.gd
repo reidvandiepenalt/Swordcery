@@ -1,7 +1,7 @@
 extends "res://player/projectiles/player_projectile.gd"
 
 @export var AIR_TIME := 0.5
-@export var START_END_PERCENT := 0.05
+@export var START_END_PERCENT := 0.1
 @export var MAX_WIDTH := 2.0
 @export var MAX_DISTANCE := 10.0
 

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://doqs3h17saoej"]
+
+[ext_resource type="PackedScene" uid="uid://fg24sf5n32oh" path="res://player/projectiles/player_projectile.tscn" id="1_wvryw"]
+[ext_resource type="Script" path="res://player/projectiles/swordcerer_special_projectile.gd" id="2_goi7y"]
+
+[node name="SwordcererSpecialProjectile" instance=ExtResource("1_wvryw")]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0)
+script = ExtResource("2_goi7y")
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.20165)
+
+[node name="sword_2handed_color" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.414389)

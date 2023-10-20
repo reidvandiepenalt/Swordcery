@@ -49,6 +49,18 @@ shape = SubResource("CapsuleShape3D_tm3ab")
 wait_time = 0.2
 one_shot = true
 
+[node name="SecondaryAttackTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="MovementSkillTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="SpecialAttackTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
 [editable path="Hurtbox"]

@@ -11,6 +11,9 @@ var pitch_input := 0.0
 @onready var cam_raycast := $TwistPivot/PitchPivot/Camera3D/CameraRaycast
 
 @onready var basic_attack_timer := $BasicAttackTimer
+@onready var secondary_attack_timer := $SecondaryAttackTimer
+@onready var movement_skill_timer := $MovementSkillTimer
+@onready var special_attack_timer := $SpecialAttackTimer
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -56,6 +59,15 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("attack_basic") and basic_attack_timer.is_stopped():
 		basic_attack(get_world_3d().direct_space_state)
+	
+	if Input.is_action_pressed("attack_secondary") and secondary_attack_timer.is_stopped():
+		secondary_attack()
+	
+	if Input.is_action_pressed("attack_movement") and movement_skill_timer.is_stopped():
+		movement_skill()
+	
+	if Input.is_action_pressed("attack_special") and special_attack_timer.is_stopped():
+		special_attack()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -64,6 +76,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			pitch_input = - event.relative.y * mouse_sensitivity
 
 func basic_attack(space_state):
+	#save this code for other character type; fires a straight projectile
 	"""
 	if PROJECTILE:
 		var proj = PROJECTILE.instantiate()
@@ -78,3 +91,15 @@ func basic_attack(space_state):
 		
 		basic_attack_timer.start()
 	"""
+
+func secondary_attack():
+	#override in child
+	pass
+
+func movement_skill():
+	#override in child
+	pass
+
+func special_attack():
+	#override in child
+	pass

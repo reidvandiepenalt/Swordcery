@@ -8,6 +8,6 @@ transform = Transform3D(-0.502523, 0, 0.864549, 0, 1, 0, -0.864549, 0, -0.502523
 [node name="PlayerProjectile" parent="." instance=ExtResource("1_8kvhn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 AIR_TIME = 0.5
-START_END_PERCENT = 0.05
+START_END_PERCENT = 0.1
 
 [editable path="PlayerProjectile"]

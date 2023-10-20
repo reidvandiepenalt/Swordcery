@@ -1,19 +1,210 @@
-[gd_scene load_steps=5 format=3 uid="uid://f50jjdtgn5ql"]
+[gd_scene load_steps=10 format=3 uid="uid://f50jjdtgn5ql"]
 
 [ext_resource type="PackedScene" uid="uid://brsmkoif6adga" path="res://scenes/player.tscn" id="1_fl8mb"]
 [ext_resource type="PackedScene" uid="uid://21tkl3ieqfyj" path="res://player/projectiles/swordcerer_basic_attack_projectile_pathed.tscn" id="2_muu32"]
 [ext_resource type="Script" path="res://player/swordcerer_player.gd" id="2_wjrc2"]
 [ext_resource type="PackedScene" uid="uid://cisw6ifyu8cub" path="res://player/projectiles/sub_path_swordcerer_basic_projectile.tscn" id="3_uokak"]
+[ext_resource type="PackedScene" uid="uid://doqs3h17saoej" path="res://player/projectiles/swordcerer_special_projectile.tscn" id="6_215jy"]
+
+[sub_resource type="Curve3D" id="Curve3D_phned"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 3, 0, 0, -3, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, -4, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_1ac0v"]
+resource_name = "swordcerer_special_attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpecialAttackPathRight/RightSwordPathFollow:progress_ratio")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 0.2, 1),
+"update": 0,
+"values": [0.15, 0.0, 0.99]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpecialAttackPathLeft/LeftSwordPathFollow:progress_ratio")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 0.2, 1),
+"update": 0,
+"values": [0.15, 0.0, 0.99]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpecialAttackPathRight/RightSwordPathFollow/SwordcererSpecialProjectile:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpecialAttackPathLeft/LeftSwordPathFollow/SwordcererSpecialProjectile2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpecialAttackPathRight/RightSwordPathFollow/SwordcererSpecialProjectile")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"toggle_collision"
+}, {
+"args": [false],
+"method": &"toggle_collision"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpecialAttackPathLeft/LeftSwordPathFollow/SwordcererSpecialProjectile2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"toggle_collision"
+}, {
+"args": [false],
+"method": &"toggle_collision"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jkkxq"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpecialAttackPathRight/RightSwordPathFollow/SwordcererSpecialProjectile:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpecialAttackPathLeft/LeftSwordPathFollow/SwordcererSpecialProjectile2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.1, 0),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpecialAttackPathRight/RightSwordPathFollow/SwordcererSpecialProjectile")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"toggle_collision"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpecialAttackPathLeft/LeftSwordPathFollow/SwordcererSpecialProjectile2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"toggle_collision"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i5jyj"]
+_data = {
+"RESET": SubResource("Animation_jkkxq"),
+"swordcerer_special_attack": SubResource("Animation_1ac0v")
+}
 
 [node name="Swordcerer_Player" instance=ExtResource("1_fl8mb")]
 script = ExtResource("2_wjrc2")
 PROJECTILE = ExtResource("3_uokak")
-START_END_PERCENT = 0.05
+START_END_PERCENT = 0.1
 
 [node name="Knight" parent="." index="0"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="ProjectilePath" parent="Knight" index="2" instance=ExtResource("2_muu32")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29678, -1.065)
+[node name="PathsParent" type="Node3D" parent="Knight" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="BasicProjectilePath" parent="Knight/PathsParent" index="0" instance=ExtResource("2_muu32")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1)
+
+[node name="SpecialAttackParent" type="Node3D" parent="Knight/PathsParent" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="SpecialAttackPathRight" type="Path3D" parent="Knight/PathsParent/SpecialAttackParent" index="0"]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -5, 0, 0)
+curve = SubResource("Curve3D_phned")
+
+[node name="RightSwordPathFollow" type="PathFollow3D" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathRight" index="0"]
+transform = Transform3D(-1, 8.74128e-08, 0, -7.64036e-08, -0.873855, 0.485952, 4.24881e-08, 0.485952, 0.873855, 0, -3.96418, 0.0958634)
+progress = 10.5558
+loop = false
+
+[node name="SwordcererSpecialProjectile" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathRight/RightSwordPathFollow" index="0" instance=ExtResource("6_215jy")]
+transform = Transform3D(-1.31134e-07, -3, 0, -1.31134e-07, 5.73206e-15, -3, 3, -1.31134e-07, -1.31134e-07, 0, 0, 0)
+visible = false
+
+[node name="SpecialAttackPathLeft" type="Path3D" parent="Knight/PathsParent/SpecialAttackParent" index="1"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 5, 0, 0)
+curve = SubResource("Curve3D_phned")
+
+[node name="LeftSwordPathFollow" type="PathFollow3D" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathLeft" index="0"]
+transform = Transform3D(-1, 8.7414e-08, 0, -7.64036e-08, -0.873867, 0.485959, 4.24881e-08, 0.485959, 0.873867, 0, -3.96418, 0.0958634)
+progress = 10.5558
+loop = false
+
+[node name="SwordcererSpecialProjectile2" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathLeft/LeftSwordPathFollow" index="0" instance=ExtResource("6_215jy")]
+transform = Transform3D(-1.31134e-07, -2.99986, 0, -1.31134e-07, 5.7318e-15, -2.99986, 3, -1.31128e-07, -1.31128e-07, 0, 0, 0)
+visible = false
+
+[node name="SpecialAttackAnimator" type="AnimationPlayer" parent="Knight/PathsParent/SpecialAttackParent" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_i5jyj")
+}
 
 [editable path="Hurtbox"]
