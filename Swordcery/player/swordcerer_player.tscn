@@ -151,6 +151,8 @@ script = ExtResource("2_wjrc2")
 PROJECTILE = ExtResource("3_uokak")
 SECONDARY_PROJECTILE = ExtResource("4_dh252")
 START_END_PERCENT = 0.1
+DASH_DISTANCE = 15
+DASH_SPEED_MULT = 7.5
 
 [node name="Knight" parent="." index="0"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -169,7 +171,7 @@ transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -10, 0, 0)
 curve = SubResource("Curve3D_phned")
 
 [node name="RightSwordPathFollow" type="PathFollow3D" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathRight" index="0"]
-transform = Transform3D(-1, -5.63296e-08, -6.68426e-08, 0, 0.764591, -0.644335, 8.74228e-08, -0.644335, -0.764591, 0, 3.23327, -1.99636)
+transform = Transform3D(-1, -5.63296e-08, -6.68426e-08, 0, 0.76459, -0.644336, 8.74228e-08, -0.644336, -0.76459, 0, 3.23327, -1.99636)
 progress = 1.59936
 loop = false
 
@@ -185,7 +187,7 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 10, 0, 0)
 curve = SubResource("Curve3D_phned")
 
 [node name="LeftSwordPathFollow" type="PathFollow3D" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathLeft" index="0"]
-transform = Transform3D(-1, -5.63302e-08, -6.68434e-08, 0, 0.7646, -0.644343, 8.74228e-08, -0.644343, -0.7646, 0, 3.23327, -1.99636)
+transform = Transform3D(-1, -5.63303e-08, -6.68434e-08, 0, 0.764599, -0.644344, 8.74228e-08, -0.644344, -0.764599, 0, 3.23327, -1.99636)
 progress = 1.59936
 loop = false
 
@@ -201,8 +203,14 @@ libraries = {
 "": SubResource("AnimationLibrary_i5jyj")
 }
 
+[node name="CameraRaycast" parent="TwistPivot/PitchPivot/Camera3D" index="0"]
+target_position = Vector3(0, 0, -15)
+
 [node name="SecondaryAttackTimer" parent="." index="5"]
-wait_time = 0.2
+wait_time = 6.0
+
+[node name="MovementSkillTimer" parent="." index="6"]
+wait_time = 1.0
 
 [editable path="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathRight/RightSwordPathFollow/SwordcererSpecialProjectile"]
 [editable path="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathLeft/LeftSwordPathFollow/SwordcererSpecialProjectile2"]

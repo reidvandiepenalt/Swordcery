@@ -3,6 +3,8 @@ extends "res://scenes/player.gd"
 @export var PROJECTILE : PackedScene = preload("res://player/projectiles/sub_path_swordcerer_basic_projectile.tscn")
 @export var SECONDARY_PROJECTILE : PackedScene = preload("res://player/projectiles/swordcerer_secondary_attack.tscn")
 @export var START_END_PERCENT := 0.05 #keep same as projectile script value
+@export var DASH_DISTANCE := 15
+@export var DASH_SPEED_MULT := 7.5
 
 @onready var BASIC_PROJ_PATH := $Knight/PathsParent/BasicProjectilePath
 @onready var PATHS_PARENT := $Knight/PathsParent
@@ -10,29 +12,43 @@ extends "res://scenes/player.gd"
 
 var projectiles = []
 var cur_projectile := -1
+var is_dashing := false
+var dash_direction := DashDirection.forward
+var dash_target := Vector3.ZERO
+var dash_acceleration_magnitude = pow(SPEED * DASH_SPEED_MULT, 2) / DASH_DISTANCE
+var dash_hypotenuse = sqrt(pow(DASH_DISTANCE, 2) + pow(DASH_DISTANCE, 2))
 
-func basic_attack(space_state):
-	if PROJECTILE:
-		cur_projectile += 1
-		
-		if (projectiles.size() < 8):
-			var proj = PROJECTILE.instantiate()
-			BASIC_PROJ_PATH.add_child(proj)
-			projectiles.append(proj.get_child(0))
-		
-		if(cur_projectile >= 8):
-			cur_projectile = 0
-		
-		cam_raycast.force_raycast_update()
-		if cam_raycast.is_colliding():
-			projectiles[cur_projectile].set_target(cam_raycast.get_collision_point())
-		else:
-			projectiles[cur_projectile].set_target(cam_raycast.to_global(cam_raycast.target_position)) 
-		
-		basic_attack_timer.start()
+enum DashDirection{
+	left,
+	right,
+	forward
+}
 
 func _physics_process(delta):
-	super._physics_process(delta)
+	if is_dashing:
+		var position_difference = dash_target - global_position
+		if abs(position_difference.x) < 0.5 and abs(position_difference.z) < 0.5:
+			global_position.x = dash_target.x
+			global_position.z = dash_target.z
+			is_dashing = false
+		else:
+			match dash_direction:
+				DashDirection.forward:
+					var direction = (dash_target - global_position).normalized()
+					velocity.x = direction.x * SPEED * DASH_SPEED_MULT
+					velocity.z = direction.z * SPEED * DASH_SPEED_MULT
+				DashDirection.right:
+					var accel = calc_dash_acceleration(false)
+					velocity.x += accel.x * delta
+					velocity.z += accel.z * delta
+				DashDirection.left:
+					var accel = calc_dash_acceleration(true)
+					velocity.x += accel.x * delta
+					velocity.z += accel.z * delta
+			move_and_slide()
+	else:
+		super._physics_process(delta)
+	
 	update_basic_projectiles()
 
 func _process(delta):
@@ -54,6 +70,26 @@ func update_basic_projectiles():
 		for n in inactive_projectiles.size():
 			inactive_projectiles[n].set_percent(-START_END_PERCENT + percent_step * n)
 
+func basic_attack(space_state):
+	if PROJECTILE:
+		cur_projectile += 1
+		
+		if (projectiles.size() < 8):
+			var proj = PROJECTILE.instantiate()
+			BASIC_PROJ_PATH.add_child(proj)
+			projectiles.append(proj.get_child(0))
+		
+		if(cur_projectile >= 8):
+			cur_projectile = 0
+		
+		cam_raycast.force_raycast_update()
+		if cam_raycast.is_colliding():
+			projectiles[cur_projectile].set_target(cam_raycast.get_collision_point())
+		else:
+			projectiles[cur_projectile].set_target(cam_raycast.to_global(cam_raycast.target_position)) 
+		
+		basic_attack_timer.start()
+
 func secondary_attack():
 	if SECONDARY_PROJECTILE:
 		var proj = SECONDARY_PROJECTILE.instantiate()
@@ -70,3 +106,34 @@ func secondary_attack():
 func special_attack():
 	SPECIAL_ATTACK_ANIMATOR.play("swordcerer_special_attack")
 	special_attack_timer.start()
+
+func movement_skill():
+	is_dashing = true
+	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var direction = (twist_pivot.basis * Vector3(0, 0, -1)).normalized()
+	if abs(input_dir.x) > 0 and abs(input_dir.x) >= abs(input_dir.y):
+		if input_dir.x < 0:
+			dash_direction = DashDirection.left
+			#set initial veloctiy
+			velocity.x = direction.x * SPEED * DASH_SPEED_MULT
+			velocity.z = direction.z * SPEED * DASH_SPEED_MULT
+			#calc target
+			dash_target = global_position + (twist_pivot.basis * Vector3(-1, 0, -1)).normalized() * dash_hypotenuse
+		else:
+			dash_direction = DashDirection.right
+			#set initial velocity
+			velocity.x = direction.x * SPEED * DASH_SPEED_MULT
+			velocity.z = direction.z * SPEED * DASH_SPEED_MULT
+			#calc target
+			dash_target = global_position + (twist_pivot.basis * Vector3(1, 0, -1)).normalized() * dash_hypotenuse
+	else:
+		dash_direction = DashDirection.forward
+		dash_target = global_position + direction * DASH_DISTANCE * 1.5
+	
+	movement_skill_timer.start()
+
+func calc_dash_acceleration(left: bool):
+	if left:
+		return Vector3(velocity.z, 0, -velocity.x).normalized() * dash_acceleration_magnitude
+	else:
+		return Vector3(-velocity.z, 0, velocity.x).normalized() * dash_acceleration_magnitude
