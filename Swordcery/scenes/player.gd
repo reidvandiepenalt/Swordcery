@@ -5,6 +5,7 @@ extends "res://resources/entity_base.gd"
 var mouse_sensitivity := 0.001
 var twist_input := 0.0
 var pitch_input := 0.0
+var lock_cam := false
 
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
@@ -47,15 +48,16 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	twist_pivot.rotate_y(twist_input)
-	pitch_pivot.rotate_x(pitch_input)
-	pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
-	deg_to_rad(-60), 
-	deg_to_rad(60))
-	twist_input = 0.0
-	pitch_input = 0.0
-	#rotate character model
-	$Knight.rotation.y = twist_pivot.rotation.y + PI
+	if !lock_cam:
+		twist_pivot.rotate_y(twist_input)
+		pitch_pivot.rotate_x(pitch_input)
+		pitch_pivot.rotation.x = clamp(pitch_pivot.rotation.x, 
+		deg_to_rad(-60), 
+		deg_to_rad(60))
+		twist_input = 0.0
+		pitch_input = 0.0
+		#rotate character model
+		$Knight.rotation.y = twist_pivot.rotation.y + PI
 	
 	if Input.is_action_just_pressed("attack_basic") and basic_attack_timer.is_stopped():
 		basic_attack(get_world_3d().direct_space_state)

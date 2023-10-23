@@ -9,10 +9,12 @@ var current_hang_time := 0.0
 
 func set_player(player_transform:  Node3D):
 	PLAYER = player_transform
+	global_position = PLAYER.global_position
 
 func _physics_process(delta):
-	if !reached_target and global_position.distance_squared_to(TARGET) < 2:
+	if !reached_target and global_position.distance_squared_to(TARGET) < 4:
 		reached_target = true
+		global_position = TARGET
 		rotation = Vector3(0, 0, 0)
 	
 	if reached_target:

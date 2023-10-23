@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://nimmcwkm2whl"]
+
+[ext_resource type="PackedScene" uid="uid://doqs3h17saoej" path="res://player/projectiles/swordcerer_special_projectile.tscn" id="1_1fyej"]
+
+[node name="SwordcererMovementProjectile" instance=ExtResource("1_1fyej")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+visible = false
+
+[node name="CollisionShape3D" parent="." index="0"]
+disabled = true

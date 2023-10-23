@@ -1,12 +1,11 @@
 extends "res://player/projectiles/player_projectile.gd"
+class_name SwordcererMovementProj
 
 @onready var collision := $CollisionShape3D
 
 func _physics_process(delta):
 	pass
 
-func _on_Projectile_area_entered(area):
-	pass
-
-func _on_Projectile_body_entered(body):
-	pass
+func toggle_collision(set_to: bool):
+	collision.disabled = !set_to
+	visible = set_to

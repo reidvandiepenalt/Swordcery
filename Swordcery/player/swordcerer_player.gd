@@ -4,11 +4,13 @@ extends "res://scenes/player.gd"
 @export var SECONDARY_PROJECTILE : PackedScene = preload("res://player/projectiles/swordcerer_secondary_attack.tscn")
 @export var START_END_PERCENT := 0.05 #keep same as projectile script value
 @export var DASH_DISTANCE := 15
-@export var DASH_SPEED_MULT := 7.5
+@export var DASH_SPEED_MULT := 10
 
 @onready var BASIC_PROJ_PATH := $Knight/PathsParent/BasicProjectilePath
 @onready var PATHS_PARENT := $Knight/PathsParent
 @onready var SPECIAL_ATTACK_ANIMATOR := $Knight/PathsParent/SpecialAttackParent/SpecialAttackAnimator
+@onready var MOVEMENT_PROJ_R : SwordcererMovementProj = $Knight/SwordcererMovementProjectileRight
+@onready var MOVEMENT_PROJ_L : SwordcererMovementProj = $Knight/SwordcererMovementProjectileLeft
 
 var projectiles = []
 var cur_projectile := -1
@@ -30,21 +32,32 @@ func _physics_process(delta):
 		if abs(position_difference.x) < 0.5 and abs(position_difference.z) < 0.5:
 			global_position.x = dash_target.x
 			global_position.z = dash_target.z
+			if dash_direction == DashDirection.right:
+				MOVEMENT_PROJ_L.toggle_collision(false)
+			else:
+				MOVEMENT_PROJ_R.toggle_collision(false)
 			is_dashing = false
+			lock_cam = false
 		else:
 			match dash_direction:
 				DashDirection.forward:
 					var direction = (dash_target - global_position).normalized()
-					velocity.x = direction.x * SPEED * DASH_SPEED_MULT
-					velocity.z = direction.z * SPEED * DASH_SPEED_MULT
+					velocity.x = direction.x * SPEED * DASH_SPEED_MULT * 1.5
+					velocity.z = direction.z * SPEED * DASH_SPEED_MULT * 1.5
+					twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
+					$Knight.rotation.y = twist_pivot.rotation.y + PI
 				DashDirection.right:
 					var accel = calc_dash_acceleration(false)
 					velocity.x += accel.x * delta
 					velocity.z += accel.z * delta
+					twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
+					$Knight.rotation.y = twist_pivot.rotation.y + PI
 				DashDirection.left:
 					var accel = calc_dash_acceleration(true)
 					velocity.x += accel.x * delta
 					velocity.z += accel.z * delta
+					twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
+					$Knight.rotation.y = twist_pivot.rotation.y + PI
 			move_and_slide()
 	else:
 		super._physics_process(delta)
@@ -109,6 +122,7 @@ func special_attack():
 
 func movement_skill():
 	is_dashing = true
+	lock_cam = true
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction = (twist_pivot.basis * Vector3(0, 0, -1)).normalized()
 	if abs(input_dir.x) > 0 and abs(input_dir.x) >= abs(input_dir.y):
@@ -119,6 +133,7 @@ func movement_skill():
 			velocity.z = direction.z * SPEED * DASH_SPEED_MULT
 			#calc target
 			dash_target = global_position + (twist_pivot.basis * Vector3(-1, 0, -1)).normalized() * dash_hypotenuse
+			MOVEMENT_PROJ_R.toggle_collision(true)
 		else:
 			dash_direction = DashDirection.right
 			#set initial velocity
@@ -126,9 +141,11 @@ func movement_skill():
 			velocity.z = direction.z * SPEED * DASH_SPEED_MULT
 			#calc target
 			dash_target = global_position + (twist_pivot.basis * Vector3(1, 0, -1)).normalized() * dash_hypotenuse
+			MOVEMENT_PROJ_L.toggle_collision(true)
 	else:
 		dash_direction = DashDirection.forward
-		dash_target = global_position + direction * DASH_DISTANCE * 1.5
+		dash_target = global_position + direction * DASH_DISTANCE * 1.75
+		MOVEMENT_PROJ_R.toggle_collision(true)
 	
 	movement_skill_timer.start()
 
