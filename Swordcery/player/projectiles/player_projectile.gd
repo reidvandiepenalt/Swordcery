@@ -13,4 +13,10 @@ func _physics_process(delta):
 func destroy():
 	queue_free()
 
+func _on_Projectile_area_entered(area):
+	pass
+
+func _on_Projectile_body_entered(body):
+	pass
+
 #add delete timeout

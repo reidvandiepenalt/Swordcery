@@ -3,7 +3,6 @@ extends "res://player/projectiles/player_projectile.gd"
 @export var AIR_TIME := 0.5
 @export var START_END_PERCENT := 0.1
 @export var MAX_WIDTH := 2.0
-@export var MAX_DISTANCE := 10.0
 
 @onready var path : PathFollow3D = get_parent()
 
@@ -12,9 +11,7 @@ var elapsed_time := 0.0
 var active = false
 
 
-func set_target(target):
-	TARGET = target
-	max_distance = min(global_position.distance_to(TARGET), MAX_DISTANCE)
+func set_active():
 	elapsed_time = 0
 	active = true
 	rotation = Vector3(0, -90, 0)

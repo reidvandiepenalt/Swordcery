@@ -95,11 +95,7 @@ func basic_attack(space_state):
 		if(cur_projectile >= 8):
 			cur_projectile = 0
 		
-		cam_raycast.force_raycast_update()
-		if cam_raycast.is_colliding():
-			projectiles[cur_projectile].set_target(cam_raycast.get_collision_point())
-		else:
-			projectiles[cur_projectile].set_target(cam_raycast.to_global(cam_raycast.target_position)) 
+		projectiles[cur_projectile].set_active()
 		
 		basic_attack_timer.start()
 

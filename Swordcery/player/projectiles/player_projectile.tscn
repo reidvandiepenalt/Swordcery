@@ -15,7 +15,6 @@ monitoring = true
 script = ExtResource("2_m0s7s")
 SPEED = 100
 TARGET = Vector3(0, 0, 0)
-BASIS = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.787258)
