@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://f50jjdtgn5ql"]
+[gd_scene load_steps=13 format=3 uid="uid://f50jjdtgn5ql"]
 
 [ext_resource type="PackedScene" uid="uid://brsmkoif6adga" path="res://scenes/player.tscn" id="1_fl8mb"]
 [ext_resource type="PackedScene" uid="uid://21tkl3ieqfyj" path="res://player/projectiles/swordcerer_basic_attack_projectile_pathed.tscn" id="2_muu32"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bn0cctdr4n0m8" path="res://player/projectiles/swordcerer_secondary_attack.tscn" id="4_dh252"]
 [ext_resource type="PackedScene" uid="uid://doqs3h17saoej" path="res://player/projectiles/swordcerer_special_projectile.tscn" id="6_215jy"]
 [ext_resource type="PackedScene" uid="uid://nimmcwkm2whl" path="res://player/projectiles/swordcerer_movement_projectile.tscn" id="7_njcma"]
+[ext_resource type="PackedScene" uid="uid://bl4qbfrdg0h5r" path="res://UI/in_game/swordcerer_ui.tscn" id="8_t62ni"]
 
 [sub_resource type="Curve3D" id="Curve3D_phned"]
 _data = {
@@ -215,6 +216,8 @@ target_position = Vector3(0, 0, -35)
 
 [node name="SecondaryAttackTimer" parent="." index="5"]
 wait_time = 6.0
+
+[node name="SwordcererUI" parent="." index="8" instance=ExtResource("8_t62ni")]
 
 [editable path="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathRight/RightSwordPathFollow/SwordcererSpecialProjectile"]
 [editable path="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathLeft/LeftSwordPathFollow/SwordcererSpecialProjectile2"]
