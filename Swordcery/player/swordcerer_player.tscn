@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://f50jjdtgn5ql"]
+[gd_scene load_steps=14 format=3 uid="uid://f50jjdtgn5ql"]
 
 [ext_resource type="PackedScene" uid="uid://brsmkoif6adga" path="res://scenes/player.tscn" id="1_fl8mb"]
 [ext_resource type="PackedScene" uid="uid://21tkl3ieqfyj" path="res://player/projectiles/swordcerer_basic_attack_projectile_pathed.tscn" id="2_muu32"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://doqs3h17saoej" path="res://player/projectiles/swordcerer_special_projectile.tscn" id="6_215jy"]
 [ext_resource type="PackedScene" uid="uid://nimmcwkm2whl" path="res://player/projectiles/swordcerer_movement_projectile.tscn" id="7_njcma"]
 [ext_resource type="PackedScene" uid="uid://bl4qbfrdg0h5r" path="res://UI/in_game/swordcerer_ui.tscn" id="8_t62ni"]
+[ext_resource type="Script" path="res://resources/SkillTimer.gd" id="8_tup44"]
 
 [sub_resource type="Curve3D" id="Curve3D_phned"]
 _data = {
@@ -155,12 +156,13 @@ SECONDARY_PROJECTILE = ExtResource("4_dh252")
 START_END_PERCENT = 0.1
 DASH_DISTANCE = 15
 DASH_SPEED_MULT = 10
+BASIC_ATACK_DISTANCE = 18.0
 
 [node name="Knight" parent="." index="0"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="PathsParent" type="Node3D" parent="Knight" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61778, 0)
 
 [node name="BasicProjectilePath" parent="Knight/PathsParent" index="0" instance=ExtResource("2_muu32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1)
@@ -214,10 +216,35 @@ transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0.6, 1
 [node name="CameraRaycast" parent="TwistPivot/PitchPivot/Camera3D" index="0"]
 target_position = Vector3(0, 0, -35)
 
+[node name="BasicAttackTimer" parent="." index="4"]
+script = ExtResource("8_tup44")
+
 [node name="SecondaryAttackTimer" parent="." index="5"]
 wait_time = 6.0
+script = ExtResource("8_tup44")
+
+[node name="MovementSkillTimer" parent="." index="6"]
+script = ExtResource("8_tup44")
+
+[node name="SpecialAttackTimer" parent="." index="7"]
+script = ExtResource("8_tup44")
 
 [node name="SwordcererUI" parent="." index="8" instance=ExtResource("8_t62ni")]
+
+[connection signal="health_updated" from="." to="SwordcererUI" method="set_new_health_value"]
+[connection signal="max_health_updated" from="." to="SwordcererUI" method="set_new_max_health_value"]
+[connection signal="current_time_updated" from="BasicAttackTimer" to="SwordcererUI" method="set_new_basic_attack_value"]
+[connection signal="max_time_updated" from="BasicAttackTimer" to="SwordcererUI" method="set_new_basic_attack_max_value"]
+[connection signal="current_time_updated" from="SecondaryAttackTimer" to="SwordcererUI" method="set_new_secondary_attack_value"]
+[connection signal="max_time_updated" from="SecondaryAttackTimer" to="SwordcererUI" method="set_new_secondary_attack_max_value"]
+[connection signal="current_time_updated" from="MovementSkillTimer" to="SwordcererUI" method="set_new_movement_attack_value"]
+[connection signal="max_time_updated" from="MovementSkillTimer" to="SwordcererUI" method="set_new_movement_attack_max_value"]
+[connection signal="current_time_updated" from="SpecialAttackTimer" to="SwordcererUI" method="set_new_special_attack_value"]
+[connection signal="max_time_updated" from="SpecialAttackTimer" to="SwordcererUI" method="set_new_special_attack_max_value"]
+[connection signal="ready" from="SwordcererUI" to="BasicAttackTimer" method="on_ui_ready"]
+[connection signal="ready" from="SwordcererUI" to="SecondaryAttackTimer" method="on_ui_ready"]
+[connection signal="ready" from="SwordcererUI" to="MovementSkillTimer" method="on_ui_ready"]
+[connection signal="ready" from="SwordcererUI" to="SpecialAttackTimer" method="on_ui_ready"]
 
 [editable path="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathRight/RightSwordPathFollow/SwordcererSpecialProjectile"]
 [editable path="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathLeft/LeftSwordPathFollow/SwordcererSpecialProjectile2"]

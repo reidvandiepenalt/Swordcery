@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl4qbfrdg0h5r"]
+[gd_scene load_steps=5 format=3 uid="uid://bl4qbfrdg0h5r"]
 
 [ext_resource type="Theme" uid="uid://b07lkarvejd1l" path="res://UI/in_game/default_theme.tres" id="1_ubt8s"]
 [ext_resource type="Texture2D" uid="uid://bg6tnc7bpvs8i" path="res://UI/in_game/Crosshair.png" id="2_ensup"]
 [ext_resource type="Script" path="res://UI/in_game/PlayerUIBase.gd" id="2_ftcvu"]
-[ext_resource type="Texture2D" uid="uid://1wn6atxi4vhh" path="res://icon.svg" id="2_khfyo"]
-[ext_resource type="Texture2D" uid="uid://cd6q2s3xstfvl" path="res://black square.png" id="3_qdoy8"]
+[ext_resource type="PackedScene" uid="uid://b75n5g5c5p0a7" path="res://UI/in_game/skills_grid_container.tscn" id="3_ueku0"]
 
 [node name="SwordcererUI" type="Control"]
 layout_mode = 3
@@ -46,64 +45,8 @@ value = 50.0
 [node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="SkillsGridContainer" type="GridContainer" parent="AspectRatioContainer/VBoxContainer/MarginContainer"]
+[node name="SkillsGridContainer" parent="AspectRatioContainer/VBoxContainer/MarginContainer" instance=ExtResource("3_ueku0")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-theme = ExtResource("1_ubt8s")
-columns = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="AspectRatioContainer/VBoxContainer/MarginContainer/SkillsGridContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-theme = ExtResource("1_ubt8s")
-
-[node name="BasicAttack" type="TextureProgressBar" parent="AspectRatioContainer/VBoxContainer/MarginContainer/SkillsGridContainer/MarginContainer"]
-layout_mode = 2
-theme = ExtResource("1_ubt8s")
-fill_mode = 2
-texture_under = ExtResource("2_khfyo")
-texture_progress = ExtResource("3_qdoy8")
-tint_progress = Color(0.00392157, 0.00392157, 0.00392157, 0.764706)
-
-[node name="MarginContainer2" type="MarginContainer" parent="AspectRatioContainer/VBoxContainer/MarginContainer/SkillsGridContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-theme = ExtResource("1_ubt8s")
-
-[node name="SecondaryAttack" type="TextureProgressBar" parent="AspectRatioContainer/VBoxContainer/MarginContainer/SkillsGridContainer/MarginContainer2"]
-layout_mode = 2
-theme = ExtResource("1_ubt8s")
-fill_mode = 2
-texture_under = ExtResource("2_khfyo")
-texture_progress = ExtResource("3_qdoy8")
-tint_progress = Color(0.00392157, 0.00392157, 0.00392157, 0.764706)
-
-[node name="MarginContainer3" type="MarginContainer" parent="AspectRatioContainer/VBoxContainer/MarginContainer/SkillsGridContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-theme = ExtResource("1_ubt8s")
-
-[node name="MovementAttack" type="TextureProgressBar" parent="AspectRatioContainer/VBoxContainer/MarginContainer/SkillsGridContainer/MarginContainer3"]
-layout_mode = 2
-theme = ExtResource("1_ubt8s")
-fill_mode = 2
-texture_under = ExtResource("2_khfyo")
-texture_progress = ExtResource("3_qdoy8")
-tint_progress = Color(0.00392157, 0.00392157, 0.00392157, 0.764706)
-
-[node name="MarginContainer4" type="MarginContainer" parent="AspectRatioContainer/VBoxContainer/MarginContainer/SkillsGridContainer"]
-custom_minimum_size = Vector2(20, 20)
-layout_mode = 2
-theme = ExtResource("1_ubt8s")
-
-[node name="SpecialAttack" type="TextureProgressBar" parent="AspectRatioContainer/VBoxContainer/MarginContainer/SkillsGridContainer/MarginContainer4"]
-layout_mode = 2
-theme = ExtResource("1_ubt8s")
-fill_mode = 2
-texture_under = ExtResource("2_khfyo")
-texture_progress = ExtResource("3_qdoy8")
-tint_progress = Color(0.00392157, 0.00392157, 0.00392157, 0.764706)
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="."]
 layout_mode = 1

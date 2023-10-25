@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://b75n5g5c5p0a7"]
+
+[ext_resource type="Theme" uid="uid://b07lkarvejd1l" path="res://UI/in_game/default_theme.tres" id="1_u5f72"]
+[ext_resource type="PackedScene" uid="uid://cs2s70llxfooy" path="res://UI/in_game/UiSkillIcon.tscn" id="2_sxlng"]
+[ext_resource type="Texture2D" uid="uid://1wn6atxi4vhh" path="res://icon.svg" id="3_pmdv7"]
+[ext_resource type="Texture2D" uid="uid://cd6q2s3xstfvl" path="res://black square.png" id="4_3n7qs"]
+
+[node name="SkillsGridContainer" type="GridContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("1_u5f72")
+columns = 4
+
+[node name="MarginContainer" parent="." instance=ExtResource("2_sxlng")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme = ExtResource("1_u5f72")
+
+[node name="SecondaryAttack" type="TextureProgressBar" parent="MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("1_u5f72")
+step = 0.0
+fill_mode = 2
+texture_under = ExtResource("3_pmdv7")
+texture_progress = ExtResource("4_3n7qs")
+tint_progress = Color(0.00392157, 0.00392157, 0.00392157, 0.764706)
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme = ExtResource("1_u5f72")
+
+[node name="MovementAttack" type="TextureProgressBar" parent="MarginContainer3"]
+layout_mode = 2
+theme = ExtResource("1_u5f72")
+step = 0.0
+fill_mode = 2
+texture_under = ExtResource("3_pmdv7")
+texture_progress = ExtResource("4_3n7qs")
+tint_progress = Color(0.00392157, 0.00392157, 0.00392157, 0.764706)
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme = ExtResource("1_u5f72")
+
+[node name="SpecialAttack" type="TextureProgressBar" parent="MarginContainer4"]
+layout_mode = 2
+theme = ExtResource("1_u5f72")
+step = 0.0
+fill_mode = 2
+texture_under = ExtResource("3_pmdv7")
+texture_progress = ExtResource("4_3n7qs")
+tint_progress = Color(0.00392157, 0.00392157, 0.00392157, 0.764706)

@@ -1,16 +1,18 @@
-extends "res://scenes/player.gd"
+extends SwordcereryPlayer
 
 @export var PROJECTILE : PackedScene = preload("res://player/projectiles/sub_path_swordcerer_basic_projectile.tscn")
 @export var SECONDARY_PROJECTILE : PackedScene = preload("res://player/projectiles/swordcerer_secondary_attack.tscn")
 @export var START_END_PERCENT := 0.05 #keep same as projectile script value
 @export var DASH_DISTANCE := 15
 @export var DASH_SPEED_MULT := 10
+@export var BASIC_ATACK_DISTANCE : float = 18
 
 @onready var BASIC_PROJ_PATH := $Knight/PathsParent/BasicProjectilePath
 @onready var PATHS_PARENT := $Knight/PathsParent
 @onready var SPECIAL_ATTACK_ANIMATOR := $Knight/PathsParent/SpecialAttackParent/SpecialAttackAnimator
 @onready var MOVEMENT_PROJ_R : SwordcererMovementProj = $Knight/SwordcererMovementProjectileRight
 @onready var MOVEMENT_PROJ_L : SwordcererMovementProj = $Knight/SwordcererMovementProjectileLeft
+@onready var PLAYER_MODEL := $Knight
 
 var projectiles = []
 var cur_projectile := -1
@@ -19,12 +21,17 @@ var dash_direction := DashDirection.forward
 var dash_target := Vector3.ZERO
 var dash_acceleration_magnitude = pow(SPEED * DASH_SPEED_MULT, 2) / DASH_DISTANCE
 var dash_hypotenuse = sqrt(pow(DASH_DISTANCE, 2) + pow(DASH_DISTANCE, 2))
+var cam_raycast_length : float
 
 enum DashDirection{
 	left,
 	right,
 	forward
 }
+
+func _ready():
+	super._ready()
+	cam_raycast_length = cam_raycast.target_position.length()
 
 func _physics_process(delta):
 	if is_dashing:
@@ -45,19 +52,19 @@ func _physics_process(delta):
 					velocity.x = direction.x * SPEED * DASH_SPEED_MULT * 1.5
 					velocity.z = direction.z * SPEED * DASH_SPEED_MULT * 1.5
 					twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
-					$Knight.rotation.y = twist_pivot.rotation.y + PI
+					PLAYER_MODEL.rotation.y = twist_pivot.rotation.y + PI
 				DashDirection.right:
 					var accel = calc_dash_acceleration(false)
 					velocity.x += accel.x * delta
 					velocity.z += accel.z * delta
 					twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
-					$Knight.rotation.y = twist_pivot.rotation.y + PI
+					PLAYER_MODEL.rotation.y = twist_pivot.rotation.y + PI
 				DashDirection.left:
 					var accel = calc_dash_acceleration(true)
 					velocity.x += accel.x * delta
 					velocity.z += accel.z * delta
 					twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
-					$Knight.rotation.y = twist_pivot.rotation.y + PI
+					PLAYER_MODEL.rotation.y = twist_pivot.rotation.y + PI
 			move_and_slide()
 	else:
 		super._physics_process(delta)
@@ -70,7 +77,8 @@ func _process(delta):
 		basic_attack(get_world_3d().direct_space_state)
 
 func update_basic_projectiles():
-	PATHS_PARENT.look_at(cam_raycast.to_global(cam_raycast.target_position), Vector3.UP, true)
+	print(BASIC_ATACK_DISTANCE)
+	PATHS_PARENT.look_at(cam_raycast.to_global(cam_raycast.target_position * (BASIC_ATACK_DISTANCE / cam_raycast_length)), Vector3.UP, true)
 	var inactive_projectiles = []
 	if(projectiles.size() > 0):
 		for n in range(cur_projectile - 1, -1, -1):
@@ -79,9 +87,12 @@ func update_basic_projectiles():
 		for n in range(projectiles.size() - 1, cur_projectile - 1, -1):
 			if !projectiles[n].active:
 				inactive_projectiles.append(projectiles[n])
-		var percent_step = 2 * START_END_PERCENT / inactive_projectiles.size()
-		for n in inactive_projectiles.size():
-			inactive_projectiles[n].set_percent(-START_END_PERCENT + percent_step * n)
+		var size = inactive_projectiles.size()
+		if size == 1:
+			inactive_projectiles[0].set_percent(0)
+		else:
+			for n in size:
+				inactive_projectiles[n].set_percent(lerpf(-START_END_PERCENT, START_END_PERCENT, float(n) / (size - 1)))
 
 func basic_attack(space_state):
 	if PROJECTILE:

@@ -1,6 +1,12 @@
-extends "res://resources/entity_base.gd"
+extends EntityBase
+
+class_name SwordcereryPlayer
 
 @export var TEST_SPHERE : PackedScene = preload("res://resources/test_sphere.tscn")
+
+signal health_updated(new_health: int)
+signal died
+signal max_health_updated(new_max_health: int)
 
 var mouse_sensitivity := 0.001
 var twist_input := 0.0
@@ -105,3 +111,10 @@ func movement_skill():
 func special_attack():
 	#override in child
 	pass
+
+func _on_hurtbox_area_entered(hitbox):
+	super._on_hurtbox_area_entered(hitbox)
+	if(hp < 0):
+		died.emit()
+	else:
+		health_updated.emit(hp)

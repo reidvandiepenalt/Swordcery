@@ -7,31 +7,31 @@ extends Control
 @onready var special_attack_icon := $AspectRatioContainer/VBoxContainer/MarginContainer/SkillsGridContainer/MarginContainer4/SpecialAttack
 
 func set_new_health_value(new_health: int):
-	pass
+	health_bar.value = new_health
 
 func set_new_max_health_value(new_max_health: int):
-	pass
+	health_bar.max_value = new_max_health
 
 func set_new_basic_attack_value(new_time: float):
-	pass
+	basic_attack_icon.value = new_time
 
 func set_new_basic_attack_max_value(new_max_time: float):
-	pass
+	basic_attack_icon.max_value = new_max_time
 
 func set_new_secondary_attack_value(new_time: float):
-	pass
+	secondary_attack_icon.value = new_time
 
 func set_new_secondary_attack_max_value(new_max_time: float):
-	pass
+	secondary_attack_icon.max_value = new_max_time
 
 func set_new_movement_attack_value(new_time: float):
-	pass
+	movement_attack_icon.value = new_time
 
 func set_new_movement_attack_max_value(new_max_time: float):
-	pass
+	movement_attack_icon.max_value = new_max_time
 
 func set_new_special_attack_value(new_time: float):
-	pass
+	special_attack_icon.value = new_time
 
 func set_new_special_attack_max_value(new_max_time: float):
-	pass
+	special_attack_icon.max_value = new_max_time
