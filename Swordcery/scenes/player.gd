@@ -1,6 +1,4 @@
-extends EntityBase
-
-class_name SwordceryPlayer
+class_name SwordceryPlayer extends EntityBase
 
 @export var TEST_SPHERE : PackedScene = preload("res://resources/test_sphere.tscn")
 

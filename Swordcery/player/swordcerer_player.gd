@@ -99,7 +99,9 @@ func basic_attack(space_state):
 		if (projectiles.size() < 8):
 			var proj = PROJECTILE.instantiate()
 			BASIC_PROJ_PATH.add_child(proj)
-			projectiles.append(proj.get_child(0))
+			var script_node = proj.get_child(0)
+			projectiles.append(script_node)
+			script_node.player = self
 		
 		if(cur_projectile >= 8):
 			cur_projectile = 0

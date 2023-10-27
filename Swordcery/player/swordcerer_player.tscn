@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://f50jjdtgn5ql"]
 
-[ext_resource type="PackedScene" uid="uid://brsmkoif6adga" path="res://scenes/player.tscn" id="1_fl8mb"]
+[ext_resource type="PackedScene" uid="uid://brsmkoif6adga" path="res://scenes/player_base.tscn" id="1_0wre7"]
 [ext_resource type="PackedScene" uid="uid://21tkl3ieqfyj" path="res://player/projectiles/swordcerer_basic_attack_projectile_pathed.tscn" id="2_muu32"]
 [ext_resource type="Script" path="res://player/swordcerer_player.gd" id="2_wjrc2"]
 [ext_resource type="PackedScene" uid="uid://cisw6ifyu8cub" path="res://player/projectiles/sub_path_swordcerer_basic_projectile.tscn" id="3_uokak"]
@@ -149,7 +149,7 @@ _data = {
 "swordcerer_special_attack": SubResource("Animation_1ac0v")
 }
 
-[node name="Swordcerer_Player" instance=ExtResource("1_fl8mb")]
+[node name="Swordcerer_Player" instance=ExtResource("1_0wre7")]
 script = ExtResource("2_wjrc2")
 PROJECTILE = ExtResource("3_uokak")
 SECONDARY_PROJECTILE = ExtResource("4_dh252")
@@ -162,7 +162,7 @@ BASIC_ATACK_DISTANCE = 18.0
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="PathsParent" type="Node3D" parent="Knight" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61778, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.77806e-08, 1.61778, -0.660933)
 
 [node name="BasicProjectilePath" parent="Knight/PathsParent" index="0" instance=ExtResource("2_muu32")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1)
