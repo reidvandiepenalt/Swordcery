@@ -1,6 +1,6 @@
 extends EntityBase
 
-class_name SwordcereryPlayer
+class_name SwordceryPlayer
 
 @export var TEST_SPHERE : PackedScene = preload("res://resources/test_sphere.tscn")
 
@@ -16,14 +16,15 @@ var lock_cam := false
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
 @onready var cam_raycast := $TwistPivot/PitchPivot/Camera3D/CameraRaycast
+@onready var PLAYER_MODEL := $Knight
 
 @onready var basic_attack_timer := $BasicAttackTimer
 @onready var secondary_attack_timer := $SecondaryAttackTimer
 @onready var movement_skill_timer := $MovementSkillTimer
 @onready var special_attack_timer := $SpecialAttackTimer
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 9.0
+const JUMP_VELOCITY = 7.5
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -63,7 +64,7 @@ func _process(delta: float) -> void:
 		twist_input = 0.0
 		pitch_input = 0.0
 		#rotate character model
-		$Knight.rotation.y = twist_pivot.rotation.y + PI
+		PLAYER_MODEL.rotation.y = twist_pivot.rotation.y + PI
 	
 	if Input.is_action_just_pressed("attack_basic") and basic_attack_timer.is_stopped():
 		basic_attack(get_world_3d().direct_space_state)
@@ -118,3 +119,7 @@ func _on_hurtbox_area_entered(hitbox):
 		died.emit()
 	else:
 		health_updated.emit(hp)
+
+func on_ui_ready():
+	health_updated.emit(hp)
+	max_health_updated.emit(hp_max)

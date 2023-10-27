@@ -5,6 +5,7 @@ extends "res://player/projectiles/player_projectile.gd"
 @export var MAX_WIDTH := 2.0
 
 @onready var path : PathFollow3D = get_parent()
+@onready var collision := $CollisionShape3D
 
 var max_distance := 0
 var elapsed_time := 0.0
@@ -15,6 +16,7 @@ func set_active():
 	elapsed_time = 0
 	active = true
 	rotation = Vector3(0, -90, 0)
+	collision.disabled = false
 
 #start and returns from right left shoulder respectively then rejoins arc
 func _physics_process(delta):
@@ -25,6 +27,7 @@ func _physics_process(delta):
 	elapsed_time += delta
 	if(elapsed_time > AIR_TIME):
 		active = false
+		collision.disabled = true
 		return
 	
 	var time_percent = elapsed_time / AIR_TIME

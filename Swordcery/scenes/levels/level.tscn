@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxw3msanga4sl"]
+[gd_scene load_steps=10 format=3 uid="uid://bxw3msanga4sl"]
 
 [ext_resource type="PackedScene" uid="uid://f50jjdtgn5ql" path="res://player/swordcerer_player.tscn" id="1_eqbtc"]
 [ext_resource type="PackedScene" uid="uid://c1axdi8l0ot5h" path="res://enemies/enemy_base.tscn" id="2_6udn8"]
@@ -25,6 +25,9 @@ data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0,
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7l3aq"]
 data = PackedVector3Array(100, 0, 100, -100, 0, 100, 100, 0, -100, -100, 0, 100, -100, 0, -100, 100, 0, -100)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_32n3q"]
+points = PackedVector3Array(0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1)
+
 [node name="Level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -48,7 +51,12 @@ shape = SubResource("ConcavePolygonShape3D_tgxq3")
 shape = SubResource("ConcavePolygonShape3D_7l3aq")
 
 [node name="Swordcerer_Player" parent="." instance=ExtResource("1_eqbtc")]
-BASIC_ATACK_DISTANCE = 18.0
 
 [node name="Enemy" parent="." instance=ExtResource("2_6udn8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.61639)
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -10.0158, 0, 5.958)
+shape = SubResource("ConvexPolygonShape3D_32n3q")

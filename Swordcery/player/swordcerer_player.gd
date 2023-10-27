@@ -1,4 +1,4 @@
-extends SwordcereryPlayer
+extends SwordceryPlayer
 
 @export var PROJECTILE : PackedScene = preload("res://player/projectiles/sub_path_swordcerer_basic_projectile.tscn")
 @export var SECONDARY_PROJECTILE : PackedScene = preload("res://player/projectiles/swordcerer_secondary_attack.tscn")
@@ -12,7 +12,6 @@ extends SwordcereryPlayer
 @onready var SPECIAL_ATTACK_ANIMATOR := $Knight/PathsParent/SpecialAttackParent/SpecialAttackAnimator
 @onready var MOVEMENT_PROJ_R : SwordcererMovementProj = $Knight/SwordcererMovementProjectileRight
 @onready var MOVEMENT_PROJ_L : SwordcererMovementProj = $Knight/SwordcererMovementProjectileLeft
-@onready var PLAYER_MODEL := $Knight
 
 var projectiles = []
 var cur_projectile := -1
@@ -36,7 +35,7 @@ func _ready():
 func _physics_process(delta):
 	if is_dashing:
 		var position_difference = dash_target - global_position
-		if abs(position_difference.x) < 0.5 and abs(position_difference.z) < 0.5:
+		if abs(position_difference.x) < 0.75 and abs(position_difference.z) < 0.75 || (movement_skill_timer.wait_time - movement_skill_timer.time_left) > 1.5:
 			global_position.x = dash_target.x
 			global_position.z = dash_target.z
 			if dash_direction == DashDirection.right:
@@ -77,7 +76,6 @@ func _process(delta):
 		basic_attack(get_world_3d().direct_space_state)
 
 func update_basic_projectiles():
-	print(BASIC_ATACK_DISTANCE)
 	PATHS_PARENT.look_at(cam_raycast.to_global(cam_raycast.target_position * (BASIC_ATACK_DISTANCE / cam_raycast_length)), Vector3.UP, true)
 	var inactive_projectiles = []
 	if(projectiles.size() > 0):

@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://doqs3h17saoej" path="res://player/projectiles/swordcerer_special_projectile.tscn" id="6_215jy"]
 [ext_resource type="PackedScene" uid="uid://nimmcwkm2whl" path="res://player/projectiles/swordcerer_movement_projectile.tscn" id="7_njcma"]
 [ext_resource type="PackedScene" uid="uid://bl4qbfrdg0h5r" path="res://UI/in_game/swordcerer_ui.tscn" id="8_t62ni"]
-[ext_resource type="Script" path="res://resources/SkillTimer.gd" id="8_tup44"]
+[ext_resource type="Script" path="res://resources/skill_timer.gd" id="8_tgjuh"]
 
 [sub_resource type="Curve3D" id="Curve3D_phned"]
 _data = {
@@ -217,17 +217,17 @@ transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0.6, 1
 target_position = Vector3(0, 0, -35)
 
 [node name="BasicAttackTimer" parent="." index="4"]
-script = ExtResource("8_tup44")
+script = ExtResource("8_tgjuh")
 
 [node name="SecondaryAttackTimer" parent="." index="5"]
 wait_time = 6.0
-script = ExtResource("8_tup44")
+script = ExtResource("8_tgjuh")
 
 [node name="MovementSkillTimer" parent="." index="6"]
-script = ExtResource("8_tup44")
+script = ExtResource("8_tgjuh")
 
 [node name="SpecialAttackTimer" parent="." index="7"]
-script = ExtResource("8_tup44")
+script = ExtResource("8_tgjuh")
 
 [node name="SwordcererUI" parent="." index="8" instance=ExtResource("8_t62ni")]
 
@@ -241,6 +241,7 @@ script = ExtResource("8_tup44")
 [connection signal="max_time_updated" from="MovementSkillTimer" to="SwordcererUI" method="set_new_movement_attack_max_value"]
 [connection signal="current_time_updated" from="SpecialAttackTimer" to="SwordcererUI" method="set_new_special_attack_value"]
 [connection signal="max_time_updated" from="SpecialAttackTimer" to="SwordcererUI" method="set_new_special_attack_max_value"]
+[connection signal="ready" from="SwordcererUI" to="." method="on_ui_ready"]
 [connection signal="ready" from="SwordcererUI" to="BasicAttackTimer" method="on_ui_ready"]
 [connection signal="ready" from="SwordcererUI" to="SecondaryAttackTimer" method="on_ui_ready"]
 [connection signal="ready" from="SwordcererUI" to="MovementSkillTimer" method="on_ui_ready"]
