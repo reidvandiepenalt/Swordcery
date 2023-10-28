@@ -1,14 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cisw6ifyu8cub"]
+[gd_scene load_steps=2 format=3 uid="uid://cisw6ifyu8cub"]
 
 [ext_resource type="PackedScene" uid="uid://iapb1qehvaha" path="res://player/projectiles/swordcerer_basic_attack_projectile.tscn" id="1_8kvhn"]
-[ext_resource type="Script" path="res://addons/trail_effect.gd" id="2_egd6x"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uqlr"]
-transparency = 1
-blend_mode = 1
-cull_mode = 2
-shading_mode = 0
-vertex_color_use_as_albedo = true
 
 [node name="PathFollow3D" type="PathFollow3D"]
 transform = Transform3D(-4.37108e-08, 0, 0.999987, 0, 1, 0, -0.999987, 0, -4.37108e-08, 0, 0, 0)
@@ -20,13 +12,5 @@ START_END_PERCENT = 0.1
 
 [node name="CollisionShape3D" parent="PlayerProjectile" index="0"]
 disabled = true
-
-[node name="Trail3D" type="MeshInstance3D" parent="PlayerProjectile/CollisionShape3D" index="0"]
-material_override = SubResource("StandardMaterial3D_0uqlr")
-script = ExtResource("2_egd6x")
-_fromWidth = 1.0
-_lifespan = 0.15
-_startColor = Color(0.694118, 0.878431, 0.878431, 0.729412)
-_endColor = Color(0.694118, 0.878431, 0.878431, 0)
 
 [editable path="PlayerProjectile"]

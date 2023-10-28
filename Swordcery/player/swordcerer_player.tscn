@@ -155,7 +155,7 @@ PROJECTILE = ExtResource("3_uokak")
 SECONDARY_PROJECTILE = ExtResource("4_dh252")
 START_END_PERCENT = 0.1
 DASH_DISTANCE = 15
-DASH_SPEED_MULT = 10
+DASH_SPEED_MULT = 8
 BASIC_ATACK_DISTANCE = 18.0
 
 [node name="Knight" parent="." index="0"]

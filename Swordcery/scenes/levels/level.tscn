@@ -51,6 +51,7 @@ shape = SubResource("ConcavePolygonShape3D_tgxq3")
 shape = SubResource("ConcavePolygonShape3D_7l3aq")
 
 [node name="Swordcerer_Player" parent="." instance=ExtResource("1_eqbtc")]
+DASH_SPEED_MULT = 8
 
 [node name="Enemy" parent="." instance=ExtResource("2_6udn8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.61639)

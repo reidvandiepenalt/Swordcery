@@ -8,3 +8,6 @@ visible = false
 
 [node name="CollisionShape3D" parent="." index="0"]
 disabled = true
+
+[node name="Trail3D" parent="CollisionShape3D" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)

@@ -4,7 +4,7 @@ extends SwordceryPlayer
 @export var SECONDARY_PROJECTILE : PackedScene = preload("res://player/projectiles/swordcerer_secondary_attack.tscn")
 @export var START_END_PERCENT := 0.05 #keep same as projectile script value
 @export var DASH_DISTANCE := 15
-@export var DASH_SPEED_MULT := 10
+@export var DASH_SPEED_MULT := 8
 @export var BASIC_ATACK_DISTANCE : float = 18
 
 @onready var BASIC_PROJ_PATH := $Knight/PathsParent/BasicProjectilePath
@@ -35,7 +35,7 @@ func _ready():
 func _physics_process(delta):
 	if is_dashing:
 		var position_difference = dash_target - global_position
-		if abs(position_difference.x) < 0.75 and abs(position_difference.z) < 0.75 || (movement_skill_timer.wait_time - movement_skill_timer.time_left) > 1.5:
+		if abs(position_difference.x) < 1 and abs(position_difference.z) < 1 || (movement_skill_timer.wait_time - movement_skill_timer.time_left) > 0.35:
 			global_position.x = dash_target.x
 			global_position.z = dash_target.z
 			if dash_direction == DashDirection.right:
@@ -151,7 +151,7 @@ func movement_skill():
 			MOVEMENT_PROJ_L.toggle_collision(true)
 	else:
 		dash_direction = DashDirection.forward
-		dash_target = global_position + direction * DASH_DISTANCE * 1.75
+		dash_target = global_position + direction * DASH_DISTANCE * 1.5
 		MOVEMENT_PROJ_R.toggle_collision(true)
 	
 	movement_skill_timer.start()

@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://doqs3h17saoej"]
+[gd_scene load_steps=5 format=3 uid="uid://doqs3h17saoej"]
 
 [ext_resource type="PackedScene" uid="uid://fg24sf5n32oh" path="res://player/projectiles/player_projectile.tscn" id="1_wvryw"]
 [ext_resource type="Script" path="res://player/projectiles/swordcerer_special_projectile.gd" id="2_goi7y"]
+[ext_resource type="Script" path="res://addons/trail_effect.gd" id="3_2ve2y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1kmk"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
 
 [node name="SwordcererSpecialProjectile" instance=ExtResource("1_wvryw")]
 transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0)
@@ -9,6 +17,14 @@ script = ExtResource("2_goi7y")
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -1.20165)
+
+[node name="Trail3D" type="MeshInstance3D" parent="CollisionShape3D" index="0"]
+material_override = SubResource("StandardMaterial3D_r1kmk")
+script = ExtResource("3_2ve2y")
+_fromWidth = 1.0
+_lifespan = 0.15
+_startColor = Color(0.694118, 0.878431, 0.878431, 0.729412)
+_endColor = Color(0.694118, 0.878431, 0.878431, 0)
 
 [node name="sword_2handed_color" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.414389)
