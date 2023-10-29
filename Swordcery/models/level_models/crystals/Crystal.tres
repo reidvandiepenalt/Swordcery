@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b81qpwhht46bw"]
+
+[resource]
+resource_name = "Crystal"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.98, 0.8, 1.85, 0.94)
+metallic = 1.0
+roughness = 0.0
+emission = Color(0.788235, 0.611765, 0.945098, 1)
+emission_energy_multiplier = 0.02
+clearcoat_enabled = true
+clearcoat = 0.55
+clearcoat_roughness = 0.25
+refraction_enabled = true
+refraction_scale = 0.01
+disable_receive_shadows = true
