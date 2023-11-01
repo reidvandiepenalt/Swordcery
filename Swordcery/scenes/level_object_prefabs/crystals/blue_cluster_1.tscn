@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://no6r222611jq"]
+
+[ext_resource type="PackedScene" uid="uid://ds1sosprf6hq5" path="res://scenes/level_object_prefabs/crystals/blue_crystal_1.tscn" id="1_47cgr"]
+[ext_resource type="PackedScene" uid="uid://cqd7mobbdxg34" path="res://scenes/level_object_prefabs/crystals/blue_crystal_2.tscn" id="2_6e8c6"]
+[ext_resource type="PackedScene" uid="uid://dwqpo8nxvnp2n" path="res://scenes/level_object_prefabs/crystals/blue_crystal_3.tscn" id="3_44y4n"]
+[ext_resource type="PackedScene" uid="uid://ck1j8qe11m6ea" path="res://scenes/level_object_prefabs/crystals/blue_crystal_5.tscn" id="4_vbgck"]
+
+[node name="blue_cluster_1" type="Node3D"]
+
+[node name="blueCrystal1" parent="." instance=ExtResource("1_47cgr")]
+
+[node name="blueCrystal2" parent="." instance=ExtResource("2_6e8c6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.847383, -0.19251, 0.713304)
+
+[node name="blue_crystal_3" parent="." instance=ExtResource("3_44y4n")]
+transform = Transform3D(0.500251, 0, 0.558793, 0, 0.75, 0, -0.558793, 0, 0.500251, 0.875029, 0, 0.774549)
+
+[node name="blue_crystal_4" parent="." instance=ExtResource("3_44y4n")]
+transform = Transform3D(-0.977412, 0, -0.211342, 0, 1, 0, 0.211342, 0, -0.977412, -1.108, 0, -1.039)
+
+[node name="blue_crystal_5" parent="." instance=ExtResource("4_vbgck")]
+transform = Transform3D(0.472295, 0.0700537, 0.363359, -0.0830781, 0.594184, -0.00657043, -0.360604, -0.0451401, 0.477417, 0.704522, 0, -0.688642)
