@@ -22,7 +22,7 @@ var lock_cam := false
 @onready var special_attack_timer := $SpecialAttackTimer
 
 const SPEED = 9.0
-const JUMP_VELOCITY = 7.5
+const JUMP_VELOCITY = 9.0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

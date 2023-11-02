@@ -1,10 +1,21 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxw3msanga4sl"]
+[gd_scene load_steps=23 format=3 uid="uid://bxw3msanga4sl"]
 
 [ext_resource type="PackedScene" uid="uid://f50jjdtgn5ql" path="res://player/swordcerer_player.tscn" id="1_eqbtc"]
 [ext_resource type="PackedScene" uid="uid://c1axdi8l0ot5h" path="res://enemies/enemy_base.tscn" id="2_6udn8"]
 [ext_resource type="PackedScene" uid="uid://dfkrmou7nwyg" path="res://models/level_models/islands/Island1.glb" id="4_2dqca"]
 [ext_resource type="PackedScene" uid="uid://tptvwegnd8p3" path="res://models/level_models/islands/Island2.glb" id="4_e5hcb"]
 [ext_resource type="PackedScene" uid="uid://b38b1yomwndh7" path="res://models/level_models/islands/Island3.glb" id="5_xjxew"]
+[ext_resource type="PackedScene" uid="uid://b4dmu3w7vnwps" path="res://scenes/level_object_prefabs/rocks/rock_1_gray.tscn" id="6_rtcpv"]
+[ext_resource type="PackedScene" uid="uid://k1orfulah56f" path="res://scenes/level_object_prefabs/rocks/rock_1_tan.tscn" id="7_yidmj"]
+[ext_resource type="PackedScene" uid="uid://ddor0ibpk7k54" path="res://scenes/level_object_prefabs/rocks/rock_1_blueish.tscn" id="8_ddbq3"]
+[ext_resource type="PackedScene" uid="uid://dy8ipyunpd627" path="res://scenes/level_object_prefabs/rocks/rock_2_light_tan.tscn" id="9_m61ml"]
+[ext_resource type="PackedScene" uid="uid://c8b8h82r7q3at" path="res://scenes/level_object_prefabs/rocks/rock_2_gray.tscn" id="10_m6hx0"]
+[ext_resource type="PackedScene" uid="uid://bseq4w4hrr3n0" path="res://scenes/level_object_prefabs/rocks/rock_3_tan.tscn" id="11_w4cdd"]
+[ext_resource type="PackedScene" uid="uid://dn7om34wjk60b" path="res://scenes/level_object_prefabs/rocks/rock_3_gray.tscn" id="12_0ie7i"]
+[ext_resource type="PackedScene" uid="uid://dnwjvfdtvpj5" path="res://scenes/level_object_prefabs/rocks/rock_3_light_tan.tscn" id="13_fs8nb"]
+[ext_resource type="PackedScene" uid="uid://dp53yynvba7x3" path="res://scenes/level_object_prefabs/rocks/rock_4_blueish.tscn" id="14_uuqoc"]
+[ext_resource type="PackedScene" uid="uid://ib3yii1wjgm0" path="res://scenes/level_object_prefabs/rocks/rock_4_light_tan.tscn" id="15_kaihv"]
+[ext_resource type="PackedScene" uid="uid://dbctpckefengx" path="res://scenes/level_object_prefabs/rocks/rock_4_gray.tscn" id="16_xb5yn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5qxt"]
 sky_top_color = Color(0.254902, 0.47451, 0.607843, 1)
@@ -46,6 +57,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Swordcerer_Player" parent="." instance=ExtResource("1_eqbtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5575, -7.62939e-06, -85.6894)
 
 [node name="Enemy" parent="." instance=ExtResource("2_6udn8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.61639)
@@ -85,6 +97,45 @@ shape = SubResource("ConcavePolygonShape3D_y0qke")
 
 [node name="Island4" parent="." instance=ExtResource("4_2dqca")]
 transform = Transform3D(12.6609, 0, -15.4823, 0, 20, 0, 15.4823, 0, 12.6609, -27.7043, 38.8007, 241.579)
+
+[node name="RockPath1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.863, 0, -105.509)
+
+[node name="rock_1_gray" parent="RockPath1" instance=ExtResource("6_rtcpv")]
+transform = Transform3D(4.52956, 0, -3.93485, 0, 6, 0, 3.93485, 0, 4.52956, -36.0978, -8.38037, 11.7255)
+
+[node name="rock_1_tan" parent="RockPath1" instance=ExtResource("7_yidmj")]
+transform = Transform3D(5.45238, 0, 4.38994, 0, 7, 0, -4.38994, 0, 5.45238, -9.67088, -1.04388, 2.41579)
+
+[node name="rock_1_blueish" parent="RockPath1" instance=ExtResource("8_ddbq3")]
+transform = Transform3D(-3.81862, 0, -5.8667, -0.00849863, 6.99999, 0.00553174, 5.86669, 0.0101404, -3.81861, 21.7004, -1.06768, -4.91821)
+
+[node name="rock_2_light_tan" parent="RockPath1" instance=ExtResource("9_m61ml")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -22.8043, -1.78713, 4.93102)
+
+[node name="rock_2_gray" parent="RockPath1" instance=ExtResource("10_m6hx0")]
+transform = Transform3D(4.06662, 0, -2.90905, 0, 5, 0, 2.90905, 0, 4.06662, -19.591, -5.6887, 26.6118)
+
+[node name="rock_2_gray2" parent="RockPath1" instance=ExtResource("10_m6hx0")]
+transform = Transform3D(1.88236, 0, -5.69708, 0, 6, 0, 5.69708, 0, 1.88236, 0.862984, 1.08068, -8.64769)
+
+[node name="rock_3_tan" parent="RockPath1" instance=ExtResource("11_w4cdd")]
+transform = Transform3D(0.854659, 0, -4.92641, 0, 5, 0, 4.92641, 0, 0.854659, -27.1459, -5.4587, 18.4597)
+
+[node name="rock_3_gray" parent="RockPath1" instance=ExtResource("12_0ie7i")]
+transform = Transform3D(3.52716, 0, 1.88657, 0, 4, 0, -1.88657, 0, 3.52716, -2.96736, -1.12267, 12.8861)
+
+[node name="rock_3_light_tan" parent="RockPath1" instance=ExtResource("13_fs8nb")]
+transform = Transform3D(1.26703, 0, 5.86469, 0, 6, 0, -5.86469, 0, 1.26703, 14.7714, -0.791913, -16.0508)
+
+[node name="rock_4_blueish" parent="RockPath1" instance=ExtResource("14_uuqoc")]
+transform = Transform3D(3.82993, 0, 2.36255, 0, 4.5, 0, -2.36255, 0, 3.82993, -14.342, -1.1398, 15.174)
+
+[node name="rock_4_light_tan" parent="RockPath1" instance=ExtResource("15_kaihv")]
+transform = Transform3D(-5.18111, 0, -3.0259, 0, 6, 0, 3.0259, 0, -5.18111, 8.46847, -1.97352, 3.6311)
+
+[node name="rock_4_gray" parent="RockPath1" instance=ExtResource("16_xb5yn")]
+transform = Transform3D(2.6604, 0, -5.37794, 0, 6, 0, 5.37794, 0, 2.6604, 29.7585, -2.75109, -17.5268)
 
 [editable path="Island2"]
 [editable path="Island1"]
