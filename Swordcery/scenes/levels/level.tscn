@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bxw3msanga4sl"]
+[gd_scene load_steps=27 format=3 uid="uid://bxw3msanga4sl"]
 
 [ext_resource type="PackedScene" uid="uid://f50jjdtgn5ql" path="res://player/swordcerer_player.tscn" id="1_eqbtc"]
 [ext_resource type="PackedScene" uid="uid://c1axdi8l0ot5h" path="res://enemies/enemy_base.tscn" id="2_6udn8"]
@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://dp53yynvba7x3" path="res://scenes/level_object_prefabs/rocks/rock_4_blueish.tscn" id="14_uuqoc"]
 [ext_resource type="PackedScene" uid="uid://ib3yii1wjgm0" path="res://scenes/level_object_prefabs/rocks/rock_4_light_tan.tscn" id="15_kaihv"]
 [ext_resource type="PackedScene" uid="uid://dbctpckefengx" path="res://scenes/level_object_prefabs/rocks/rock_4_gray.tscn" id="16_xb5yn"]
+[ext_resource type="PackedScene" uid="uid://beuxfse7vwx8k" path="res://scenes/level_object_prefabs/rocks/rock_1_light_tan.tscn" id="17_1w4l6"]
+[ext_resource type="PackedScene" uid="uid://ub2tad816w87" path="res://scenes/level_object_prefabs/rocks/rock_2_blueish.tscn" id="18_x8hd5"]
+[ext_resource type="PackedScene" uid="uid://bp77nrkmf57ve" path="res://scenes/level_object_prefabs/rocks/rock_3_blueish.tscn" id="19_jmdv7"]
+[ext_resource type="PackedScene" uid="uid://4reeyw2xrul7" path="res://scenes/level_object_prefabs/rocks/rock_tan_4.tscn" id="20_ldxkx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5qxt"]
 sky_top_color = Color(0.254902, 0.47451, 0.607843, 1)
@@ -98,6 +102,9 @@ shape = SubResource("ConcavePolygonShape3D_y0qke")
 [node name="Island4" parent="." instance=ExtResource("4_2dqca")]
 transform = Transform3D(12.6609, 0, -15.4823, 0, 20, 0, 15.4823, 0, 12.6609, -27.7043, 38.8007, 241.579)
 
+[node name="Vert_001" parent="Island4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.433197, 0)
+
 [node name="RockPath1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.863, 0, -105.509)
 
@@ -136,6 +143,165 @@ transform = Transform3D(-5.18111, 0, -3.0259, 0, 6, 0, 3.0259, 0, -5.18111, 8.46
 
 [node name="rock_4_gray" parent="RockPath1" instance=ExtResource("16_xb5yn")]
 transform = Transform3D(2.6604, 0, -5.37794, 0, 6, 0, 5.37794, 0, 2.6604, 29.7585, -2.75109, -17.5268)
+
+[node name="RockPath3" type="Node3D" parent="."]
+transform = Transform3D(0.287444, 0, 0.957797, 0, 1, 0, -0.957797, 0, 0.287444, 219.834, 0, -57.3145)
+
+[node name="rock_1_gray" parent="RockPath3" instance=ExtResource("6_rtcpv")]
+transform = Transform3D(5.30009, 0, 2.8123, 0, 6, 0, -2.8123, 0, 5.30009, -35.5787, 4.39703, 9.06868)
+
+[node name="rock_1_tan" parent="RockPath3" instance=ExtResource("7_yidmj")]
+transform = Transform3D(5.45238, 0, 4.38994, 0, 7, 0, -4.38994, 0, 5.45238, -11.413, -0.779814, 2.01723)
+
+[node name="rock_1_blueish" parent="RockPath3" instance=ExtResource("8_ddbq3")]
+transform = Transform3D(6.5189, 0.00589922, 2.55028, -0.00849863, 6.99999, 0.00553174, -2.55026, -0.00824784, 6.5189, 18.2272, -5.3795, -3.08597)
+
+[node name="rock_2_light_tan" parent="RockPath3" instance=ExtResource("9_m61ml")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -23.5074, 2.31642, 5.14203)
+
+[node name="rock_2_gray" parent="RockPath3" instance=ExtResource("10_m6hx0")]
+transform = Transform3D(4.06662, 0, -2.90905, 0, 5, 0, 2.90905, 0, 4.06662, -20.9797, 5.806, 27.6868)
+
+[node name="rock_2_gray2" parent="RockPath3" instance=ExtResource("10_m6hx0")]
+transform = Transform3D(1.88236, 0, -5.69708, 0, 6, 0, 5.69708, 0, 1.88236, -0.99794, -3.59324, -7.16772)
+
+[node name="rock_3_tan" parent="RockPath3" instance=ExtResource("11_w4cdd")]
+transform = Transform3D(-2.55466, 0, -4.2981, 0, 5, 0, 4.2981, 0, -2.55466, -27.1459, 6.30969, 18.4597)
+
+[node name="rock_3_gray" parent="RockPath3" instance=ExtResource("12_0ie7i")]
+transform = Transform3D(3.71931, 0, -1.47198, 0, 4, 0, 1.47198, 0, 3.71931, -4.74916, -1.12267, 11.8412)
+
+[node name="rock_3_light_tan" parent="RockPath3" instance=ExtResource("13_fs8nb")]
+transform = Transform3D(-4.85988, 0, 3.51874, 0, 6, 0, -3.51874, 0, -4.85988, 11.8549, -6.57985, -14.1224)
+
+[node name="rock_4_blueish" parent="RockPath3" instance=ExtResource("14_uuqoc")]
+transform = Transform3D(3.82993, 0, 2.36255, 0, 4.5, 0, -2.36255, 0, 3.82993, -14.342, 3.00837, 15.174)
+
+[node name="rock_4_light_tan" parent="RockPath3" instance=ExtResource("15_kaihv")]
+transform = Transform3D(-5.416, 0, -2.58203, 0, 6, 0, 2.58203, 0, -5.416, 5.66882, -2.72805, 3.41827)
+
+[node name="RockPath2" type="Node3D" parent="."]
+transform = Transform3D(-0.987881, 0, 0.15521, 0, 1, 0, -0.15521, 0, -0.987881, 76.7008, 28.6834, 229.44)
+
+[node name="rock_1_tan" parent="RockPath2" instance=ExtResource("7_yidmj")]
+transform = Transform3D(5.45238, 0, 4.38994, 0, 7, 0, -4.38994, 0, 5.45238, -9.6709, -15.0575, 2.41577)
+
+[node name="rock_1_blueish" parent="RockPath2" instance=ExtResource("8_ddbq3")]
+transform = Transform3D(-3.81862, 3.49246e-10, -5.8667, -0.00849863, 6.99999, 0.00553174, 5.86669, 0.0101404, -3.81861, 13.2657, -11.2817, -10.1029)
+
+[node name="rock_1_light_tan" parent="RockPath2" instance=ExtResource("17_1w4l6")]
+transform = Transform3D(-4.65919, 0, 1.81438, 0, 5, 0, -1.81438, 0, -4.65919, 13.5011, 1.99844, -54.7967)
+
+[node name="rock_1_gray" parent="RockPath2" instance=ExtResource("6_rtcpv")]
+transform = Transform3D(-2.76515, 0, 3.5502, 0, 4.5, 0, -3.5502, 0, -2.76515, 23.9834, 7.29857, -72.3355)
+
+[node name="rock_2_light_tan" parent="RockPath2" instance=ExtResource("9_m61ml")]
+transform = Transform3D(5, 0, 1.19209e-07, 0, 5, 0, -1.19209e-07, 0, 5, -22.8043, -18.3126, 4.931)
+
+[node name="rock_2_gray" parent="RockPath2" instance=ExtResource("10_m6hx0")]
+transform = Transform3D(4.06662, 0, -2.90905, 0, 5, 0, 2.90905, 0, 4.06662, -8.39694, -18.111, 25.4893)
+
+[node name="rock_2_gray2" parent="RockPath2" instance=ExtResource("10_m6hx0")]
+transform = Transform3D(4.90148, 0, -3.46056, 0, 6, 0, 3.46056, 0, 4.90148, 0.86293, -11.9866, -8.64778)
+
+[node name="rock_2_blueish" parent="RockPath2" instance=ExtResource("18_x8hd5")]
+transform = Transform3D(4.63618, 0, 1.87239, 0, 5, 0, -1.87239, 0, 4.63618, -2.30463, -5.15523, -36.1493)
+
+[node name="rock_3_gray" parent="RockPath2" instance=ExtResource("12_0ie7i")]
+transform = Transform3D(3.52716, 0, 1.88657, 0, 4, 0, -1.88657, 0, 3.52716, -2.96737, -15.7338, 12.886)
+
+[node name="rock_3_light_tan" parent="RockPath2" instance=ExtResource("13_fs8nb")]
+transform = Transform3D(1.26703, 0, 5.86469, 0, 6, 0, -5.86469, 0, 1.26703, -1.54836, -10.3137, -21.5758)
+
+[node name="rock_3_tan" parent="RockPath2" instance=ExtResource("11_w4cdd")]
+transform = Transform3D(-4.17936, 0, 5.61542, 0, 7, 0, -5.61542, 0, -4.17936, 8.48633, -3.46394, -41.5814)
+
+[node name="rock_3_blueish" parent="RockPath2" instance=ExtResource("19_jmdv7")]
+transform = Transform3D(5.9026, 0, -1.07673, 0, 6, 0, 1.07673, 0, 5.9026, 12.7755, 4.46391, -68.1944)
+
+[node name="rock_4_blueish" parent="RockPath2" instance=ExtResource("14_uuqoc")]
+transform = Transform3D(3.82993, 0, 2.36255, 0, 4.5, 0, -2.36255, 0, 3.82993, -14.342, -16.6447, 15.174)
+
+[node name="rock_4_light_tan" parent="RockPath2" instance=ExtResource("15_kaihv")]
+transform = Transform3D(-2.55496, 0, -5.42883, 0, 6, 0, 5.42883, 0, -2.55496, 8.46843, -13.6069, 3.63104)
+
+[node name="rock_4_gray" parent="RockPath2" instance=ExtResource("16_xb5yn")]
+transform = Transform3D(1.17075, 0, -5.88467, 0, 6, 0, 5.88467, 0, 1.17075, 11.9475, -6.33336, -25.1052)
+
+[node name="rock_tan_4" parent="RockPath2" instance=ExtResource("20_ldxkx")]
+transform = Transform3D(3.17543, 0, 5.09084, 0, 6, 0, -5.09084, 0, 3.17543, 3.64466, 1.58423, -58.3529)
+
+[node name="RockPath4" type="Node3D" parent="."]
+transform = Transform3D(-0.987881, 0, 0.15521, 0, 1, 0, -0.15521, 0, -0.987881, -25.4205, 28.6834, 92.7202)
+
+[node name="rock_1_tan" parent="RockPath4" instance=ExtResource("7_yidmj")]
+transform = Transform3D(2.78586, 0, 6.42175, 0, 7, 0, -6.42175, 0, 2.78586, 44.8145, -19.0348, 13.9549)
+
+[node name="rock_1_blueish" parent="RockPath4" instance=ExtResource("8_ddbq3")]
+transform = Transform3D(0.323639, 0.00591878, -6.99251, -0.00849863, 6.99999, 0.00553174, 6.99251, 0.00823382, 0.323652, 35.3845, -14.2215, 4.41721)
+
+[node name="rock_1_blueish2" parent="RockPath4" instance=ExtResource("8_ddbq3")]
+transform = Transform3D(5.56978, 0.00499915, 2.23103, -0.00728454, 5.99999, 0.00474151, -2.23102, -0.0071102, 5.56978, 85.6953, -31.2696, 43.9167)
+
+[node name="rock_1_light_tan" parent="RockPath4" instance=ExtResource("17_1w4l6")]
+transform = Transform3D(-4.65919, 0, 1.81438, 0, 5, 0, -1.81438, 0, -4.65919, 13.5011, 3.90535, -54.7967)
+
+[node name="rock_1_light_tan2" parent="RockPath4" instance=ExtResource("17_1w4l6")]
+transform = Transform3D(-4.65919, 0, 1.81438, 0, 5, 0, -1.81438, 0, -4.65919, 43.4187, -12.9052, -5.84208)
+
+[node name="rock_1_gray" parent="RockPath4" instance=ExtResource("6_rtcpv")]
+transform = Transform3D(-2.76515, 0, 3.5502, 0, 4.5, 0, -3.5502, 0, -2.76515, 23.9834, 6.66294, -72.3355)
+
+[node name="rock_2_light_tan" parent="RockPath4" instance=ExtResource("9_m61ml")]
+transform = Transform3D(5, 0, 5.96046e-07, 0, 5, 0, -5.96046e-07, 0, 5, 22.3017, -11.4795, 3.68851)
+
+[node name="rock_2_light_tan2" parent="RockPath4" instance=ExtResource("9_m61ml")]
+transform = Transform3D(2.46991, 0, 1.7028, 0, 3, 0, -1.7028, 0, 2.46991, 71.2876, -30.3776, 40.7533)
+
+[node name="rock_2_gray" parent="RockPath4" instance=ExtResource("10_m6hx0")]
+transform = Transform3D(4.58205, 0, 2.00118, 0, 5, 0, -2.00118, 0, 4.58205, 49.7916, -16.7286, 3.19068)
+
+[node name="rock_2_gray2" parent="RockPath4" instance=ExtResource("10_m6hx0")]
+transform = Transform3D(5.80509, 0, -1.51688, 0, 6, 0, 1.51688, 0, 5.80509, 17.7759, -10.3181, -10.6669)
+
+[node name="rock_2_blueish" parent="RockPath4" instance=ExtResource("18_x8hd5")]
+transform = Transform3D(4.63618, 0, 1.87239, 0, 5, 0, -1.87239, 0, 4.63618, 16.624, -4.44013, -25.339)
+
+[node name="rock_3_gray" parent="RockPath4" instance=ExtResource("12_0ie7i")]
+transform = Transform3D(3.52716, 0, 1.88657, 0, 4, 0, -1.88657, 0, 3.52716, 57.0607, -21.1442, 11.6145)
+
+[node name="rock_3_light_tan" parent="RockPath4" instance=ExtResource("13_fs8nb")]
+transform = Transform3D(1.26703, 0, 5.86469, 0, 6, 0, -5.86469, 0, 1.26703, 29.9626, -7.45333, -24.1016)
+
+[node name="rock_3_tan" parent="RockPath4" instance=ExtResource("11_w4cdd")]
+transform = Transform3D(-4.17936, 0, 5.61542, 0, 7, 0, -5.61542, 0, -4.17936, 14.981, -2.66939, -40.0491)
+
+[node name="rock_3_tan2" parent="RockPath4" instance=ExtResource("11_w4cdd")]
+transform = Transform3D(5.27755, 0, -3.7944, 0, 6.5, 0, 3.7944, 0, 5.27755, 76.8865, -29.3726, 32.3568)
+
+[node name="rock_3_blueish" parent="RockPath4" instance=ExtResource("19_jmdv7")]
+transform = Transform3D(5.9026, 0, -1.07673, 0, 6, 0, 1.07673, 0, 5.9026, 12.7755, 5.65573, -68.1944)
+
+[node name="rock_4_blueish" parent="RockPath4" instance=ExtResource("14_uuqoc")]
+transform = Transform3D(4.49619, 0.0472502, -0.179054, -0.0469173, 4.49974, 0.0092984, 0.179142, -0.00742369, 4.49643, 56.6382, -22.5512, 22.9141)
+
+[node name="rock_4_light_tan" parent="RockPath4" instance=ExtResource("15_kaihv")]
+transform = Transform3D(-2.55496, 0, -5.42883, 0, 6, 0, 5.42883, 0, -2.55496, 31.4014, -10.9849, -10.4378)
+
+[node name="rock_4_gray" parent="RockPath4" instance=ExtResource("16_xb5yn")]
+transform = Transform3D(1.17075, 0, -5.88467, 0, 6, 0, 5.88467, 0, 1.17075, 28.2149, -3.55244, -40.169)
+
+[node name="rock_4_gray2" parent="RockPath4" instance=ExtResource("16_xb5yn")]
+transform = Transform3D(2.71001, 0, -4.20189, 0, 5, 0, 4.20189, 0, 2.71001, 77.4225, -33.5879, 49.3836)
+
+[node name="rock_tan_4" parent="RockPath4" instance=ExtResource("20_ldxkx")]
+transform = Transform3D(3.17543, 0, 5.09084, 0, 6, 0, -5.09084, 0, 3.17543, 26.6041, 2.37878, -57.4606)
+
+[node name="rock_tan_5" parent="RockPath4" instance=ExtResource("20_ldxkx")]
+transform = Transform3D(-1.89967, 0, 3.52012, 0, 4, 0, -3.52012, 0, -1.89967, 69.0944, -22.9977, 18.7744)
+
+[node name="rock_3_gray2" parent="RockPath4" instance=ExtResource("12_0ie7i")]
+transform = Transform3D(5, 0, 5.96046e-07, 0, 5, 0, -5.96046e-07, 0, 5, 65.2813, -26.7351, 30.8963)
 
 [editable path="Island2"]
 [editable path="Island1"]
