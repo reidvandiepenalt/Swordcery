@@ -1,23 +1,39 @@
-[gd_scene load_steps=27 format=3 uid="uid://bxw3msanga4sl"]
+[gd_scene load_steps=43 format=3 uid="uid://bxw3msanga4sl"]
 
 [ext_resource type="PackedScene" uid="uid://f50jjdtgn5ql" path="res://player/swordcerer_player.tscn" id="1_eqbtc"]
 [ext_resource type="PackedScene" uid="uid://c1axdi8l0ot5h" path="res://enemies/enemy_base.tscn" id="2_6udn8"]
 [ext_resource type="PackedScene" uid="uid://dfkrmou7nwyg" path="res://models/level_models/islands/Island1.glb" id="4_2dqca"]
+[ext_resource type="PackedScene" uid="uid://no6r222611jq" path="res://scenes/level_object_prefabs/crystals/blue_cluster_1.tscn" id="4_bv10h"]
 [ext_resource type="PackedScene" uid="uid://tptvwegnd8p3" path="res://models/level_models/islands/Island2.glb" id="4_e5hcb"]
+[ext_resource type="PackedScene" uid="uid://b3mf56uxxm4ms" path="res://scenes/level_object_prefabs/crystals/mixed_cluster_1.tscn" id="5_ocwsh"]
 [ext_resource type="PackedScene" uid="uid://b38b1yomwndh7" path="res://models/level_models/islands/Island3.glb" id="5_xjxew"]
+[ext_resource type="PackedScene" uid="uid://bf8ltj73x3txf" path="res://scenes/level_object_prefabs/crystals/purple_cluster_1.tscn" id="6_bd2mn"]
 [ext_resource type="PackedScene" uid="uid://b4dmu3w7vnwps" path="res://scenes/level_object_prefabs/rocks/rock_1_gray.tscn" id="6_rtcpv"]
+[ext_resource type="PackedScene" uid="uid://dg016pgyxdwna" path="res://scenes/level_object_prefabs/crystals/purple_cluster_3.tscn" id="7_6beot"]
 [ext_resource type="PackedScene" uid="uid://k1orfulah56f" path="res://scenes/level_object_prefabs/rocks/rock_1_tan.tscn" id="7_yidmj"]
 [ext_resource type="PackedScene" uid="uid://ddor0ibpk7k54" path="res://scenes/level_object_prefabs/rocks/rock_1_blueish.tscn" id="8_ddbq3"]
+[ext_resource type="PackedScene" uid="uid://77ytm3vdeqbq" path="res://scenes/level_object_prefabs/crystals/blue_cluster_3.tscn" id="8_yh6xt"]
+[ext_resource type="PackedScene" uid="uid://cvwebg0086xon" path="res://scenes/level_object_prefabs/crystals/mixed_cluster_2.tscn" id="9_e120n"]
 [ext_resource type="PackedScene" uid="uid://dy8ipyunpd627" path="res://scenes/level_object_prefabs/rocks/rock_2_light_tan.tscn" id="9_m61ml"]
 [ext_resource type="PackedScene" uid="uid://c8b8h82r7q3at" path="res://scenes/level_object_prefabs/rocks/rock_2_gray.tscn" id="10_m6hx0"]
+[ext_resource type="PackedScene" uid="uid://56vc5opdva8h" path="res://scenes/level_object_prefabs/crystals/mixed_cluster_3.tscn" id="10_n6pi1"]
+[ext_resource type="PackedScene" uid="uid://cu3ncd5b4a5b" path="res://scenes/level_object_prefabs/crystals/purple_crystal_2.tscn" id="11_r3oph"]
 [ext_resource type="PackedScene" uid="uid://bseq4w4hrr3n0" path="res://scenes/level_object_prefabs/rocks/rock_3_tan.tscn" id="11_w4cdd"]
 [ext_resource type="PackedScene" uid="uid://dn7om34wjk60b" path="res://scenes/level_object_prefabs/rocks/rock_3_gray.tscn" id="12_0ie7i"]
+[ext_resource type="PackedScene" uid="uid://w32e4gxw8n8g" path="res://scenes/level_object_prefabs/crystals/purple_crystal_4.tscn" id="12_nbfv5"]
 [ext_resource type="PackedScene" uid="uid://dnwjvfdtvpj5" path="res://scenes/level_object_prefabs/rocks/rock_3_light_tan.tscn" id="13_fs8nb"]
+[ext_resource type="PackedScene" uid="uid://bvs4g5bwne2cn" path="res://scenes/level_object_prefabs/crystals/purple_crystal_5.tscn" id="13_li571"]
+[ext_resource type="PackedScene" uid="uid://meuevjo7fl7y" path="res://scenes/level_object_prefabs/crystals/purple_crystal_1.tscn" id="14_o0xbr"]
 [ext_resource type="PackedScene" uid="uid://dp53yynvba7x3" path="res://scenes/level_object_prefabs/rocks/rock_4_blueish.tscn" id="14_uuqoc"]
+[ext_resource type="PackedScene" uid="uid://dwqpo8nxvnp2n" path="res://scenes/level_object_prefabs/crystals/blue_crystal_3.tscn" id="15_g6i4s"]
 [ext_resource type="PackedScene" uid="uid://ib3yii1wjgm0" path="res://scenes/level_object_prefabs/rocks/rock_4_light_tan.tscn" id="15_kaihv"]
+[ext_resource type="PackedScene" uid="uid://c87dllocut45o" path="res://scenes/level_object_prefabs/crystals/blue_crystal_4.tscn" id="16_jhfs1"]
 [ext_resource type="PackedScene" uid="uid://dbctpckefengx" path="res://scenes/level_object_prefabs/rocks/rock_4_gray.tscn" id="16_xb5yn"]
 [ext_resource type="PackedScene" uid="uid://beuxfse7vwx8k" path="res://scenes/level_object_prefabs/rocks/rock_1_light_tan.tscn" id="17_1w4l6"]
+[ext_resource type="PackedScene" uid="uid://ck1j8qe11m6ea" path="res://scenes/level_object_prefabs/crystals/blue_crystal_5.tscn" id="17_50lih"]
+[ext_resource type="PackedScene" uid="uid://ds1sosprf6hq5" path="res://scenes/level_object_prefabs/crystals/blue_crystal_1.tscn" id="18_0tuyc"]
 [ext_resource type="PackedScene" uid="uid://ub2tad816w87" path="res://scenes/level_object_prefabs/rocks/rock_2_blueish.tscn" id="18_x8hd5"]
+[ext_resource type="PackedScene" uid="uid://b0jsush4ppccb" path="res://scenes/level_object_prefabs/crystals/purple_crystal_3.tscn" id="19_dwxqt"]
 [ext_resource type="PackedScene" uid="uid://bp77nrkmf57ve" path="res://scenes/level_object_prefabs/rocks/rock_3_blueish.tscn" id="19_jmdv7"]
 [ext_resource type="PackedScene" uid="uid://4reeyw2xrul7" path="res://scenes/level_object_prefabs/rocks/rock_tan_4.tscn" id="20_ldxkx"]
 
@@ -77,6 +93,66 @@ transform = Transform3D(-0.600113, 0, 0.799915, 0, 1, 0, -0.799915, 0, -0.600113
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Island2/Vert_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ptxxe")
 
+[node name="blue_cluster_1" parent="Island2" instance=ExtResource("4_bv10h")]
+transform = Transform3D(0.0671365, 0.0108899, -0.0316085, -0.0126759, 0.0739066, -0.00146109, 0.0309356, 0.00665012, 0.0679983, -1.76979, -0.594371, -2.26778)
+
+[node name="mixed_cluster_1" parent="Island2" instance=ExtResource("5_ocwsh")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -2.67543, -0.608056, -1.65209)
+
+[node name="purple_cluster_1" parent="Island2" instance=ExtResource("6_bd2mn")]
+transform = Transform3D(0.0486141, 0.00964494, -0.00660658, -0.0101258, 0.0488606, -0.00317878, 0.00584285, 0.00442861, 0.0494596, -2.01628, -0.693767, -3.70188)
+
+[node name="purple_cluster_3" parent="Island2" instance=ExtResource("7_6beot")]
+transform = Transform3D(0.0426819, -0.00191749, -0.0259726, 0.00644632, 0.0490905, 0.00696929, 0.0252329, -0.0092978, 0.0421527, 1.22089, -0.639095, -3.96323)
+
+[node name="blue_cluster_3" parent="Island2" instance=ExtResource("8_yh6xt")]
+transform = Transform3D(0.0339509, 0, -0.036706, 0, 0.05, 0, 0.036706, 0, 0.0339509, 2.51656, -0.616406, -0.792984)
+
+[node name="mixed_cluster_2" parent="Island2" instance=ExtResource("9_e120n")]
+transform = Transform3D(0.0485072, 0, -0.0121266, 0, 0.05, 0, 0.0121266, 0, 0.0485072, -3.57794, -0.67886, 1.15776)
+
+[node name="mixed_cluster_3" parent="Island2" instance=ExtResource("10_n6pi1")]
+transform = Transform3D(0.0369451, 0, 0.0336906, 0.00459797, 0.0495322, -0.00504214, -0.0333754, 0.00682382, 0.0365994, 0.809458, -0.685481, 0.615971)
+
+[node name="purpleCrystal2" parent="Island2" instance=ExtResource("11_r3oph")]
+transform = Transform3D(0.0468592, 0, -0.0174417, 0, 0.05, 0, 0.0174417, 0, 0.0468592, 1.49903, -0.42085, -2.40555)
+
+[node name="purple_crystal_4" parent="Island2" instance=ExtResource("12_nbfv5")]
+transform = Transform3D(0.0488296, -0.00395427, -0.010002, 0.00475159, 0.0496455, 0.00356992, 0.00964872, -0.00443686, 0.0488592, -0.606596, -0.64029, -3.45105)
+
+[node name="purple_crystal_5" parent="Island2" instance=ExtResource("13_li571")]
+transform = Transform3D(0.0241044, 0.00822312, -0.0430274, -0.00401899, 0.0493192, 0.00717407, 0.0436214, 0, 0.0244372, -2.96611, -0.692972, -2.8569)
+
+[node name="purpleCrystal1" parent="Island2" instance=ExtResource("14_o0xbr")]
+transform = Transform3D(0.03155, 0, 0.0387891, 0, 0.05, 0, -0.0387891, 0, 0.03155, -2.6563, -0.653419, 0.58311)
+
+[node name="blue_cluster_4" parent="Island2" instance=ExtResource("8_yh6xt")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.613626, -0.557694, -2.4824)
+
+[node name="blue_crystal_3" parent="Island2" instance=ExtResource("15_g6i4s")]
+transform = Transform3D(0.048999, 0, -0.00995471, 0, 0.05, 0, 0.00995471, 0, 0.048999, 1.8216, -0.63031, -0.548116)
+
+[node name="blue_crystal_4" parent="Island2" instance=ExtResource("16_jhfs1")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.12886, -0.514489, -1.20694)
+
+[node name="blue_crystal_5" parent="Island2" instance=ExtResource("17_50lih")]
+transform = Transform3D(0.0273278, 0, -0.0418712, 0.00442687, 0.0497198, 0.00288926, 0.0416365, -0.0052863, 0.0271746, -1.28263, -0.599136, 0.431063)
+
+[node name="blueCrystal1" parent="Island2" instance=ExtResource("18_0tuyc")]
+transform = Transform3D(0.0494928, 0.00710381, 0, -0.00708701, 0.0493758, -0.00343646, -0.000488239, 0.0034016, 0.0498818, 2.88868, -0.58361, -2.86428)
+
+[node name="blueCrystal2" parent="Island2" instance=ExtResource("18_0tuyc")]
+transform = Transform3D(1, 0, 0, 0, -0.99277, 0.120033, 0, -0.120033, -0.99277, 0.262633, -2.55595, -0.631986)
+
+[node name="purpleCrystal3" parent="Island2" instance=ExtResource("11_r3oph")]
+transform = Transform3D(-0.415512, -0.68247, -0.601319, 0.644746, -0.687304, 0.334539, -0.641602, -0.248693, 0.725603, -2.06101, -1.48372, -1.99221)
+
+[node name="blue_crystal_6" parent="Island2" instance=ExtResource("17_50lih")]
+transform = Transform3D(-0.432561, -0.232151, 0.631662, 0.378311, -0.704898, -7.7076e-10, 0.556571, 0.298706, 0.490921, -1.60465, 0.0170983, -0.138326)
+
+[node name="purple_crystal_3" parent="Island2" instance=ExtResource("19_dwxqt")]
+transform = Transform3D(-0.73198, 0.572111, 0.369993, -0.590782, -0.803467, 0.0736029, 0.339386, -0.164709, 0.926114, 2.27179, -2.56669, -1.98523)
+
 [node name="Island1" parent="." instance=ExtResource("4_2dqca")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 216.234, 10.2921, -180.233)
 
@@ -112,19 +188,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.863, 0, -105.509)
 transform = Transform3D(4.52956, 0, -3.93485, 0, 6, 0, 3.93485, 0, 4.52956, -36.0978, -8.38037, 11.7255)
 
 [node name="rock_1_tan" parent="RockPath1" instance=ExtResource("7_yidmj")]
-transform = Transform3D(5.45238, 0, 4.38994, 0, 7, 0, -4.38994, 0, 5.45238, -9.67088, -1.04388, 2.41579)
+transform = Transform3D(5.45238, 0, 4.38994, 0, 7, 0, -4.38994, 0, 5.45238, -9.67088, -3.69092, 2.41579)
 
 [node name="rock_1_blueish" parent="RockPath1" instance=ExtResource("8_ddbq3")]
 transform = Transform3D(-3.81862, 0, -5.8667, -0.00849863, 6.99999, 0.00553174, 5.86669, 0.0101404, -3.81861, 21.7004, -1.06768, -4.91821)
 
 [node name="rock_2_light_tan" parent="RockPath1" instance=ExtResource("9_m61ml")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -22.8043, -1.78713, 4.93102)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -22.8043, -3.52537, 4.93102)
 
 [node name="rock_2_gray" parent="RockPath1" instance=ExtResource("10_m6hx0")]
 transform = Transform3D(4.06662, 0, -2.90905, 0, 5, 0, 2.90905, 0, 4.06662, -19.591, -5.6887, 26.6118)
 
 [node name="rock_2_gray2" parent="RockPath1" instance=ExtResource("10_m6hx0")]
-transform = Transform3D(1.88236, 0, -5.69708, 0, 6, 0, 5.69708, 0, 1.88236, 0.862984, 1.08068, -8.64769)
+transform = Transform3D(1.88236, 0, -5.69708, 0, 6, 0, 5.69708, 0, 1.88236, 0.862984, -1.42709, -8.64769)
 
 [node name="rock_3_tan" parent="RockPath1" instance=ExtResource("11_w4cdd")]
 transform = Transform3D(0.854659, 0, -4.92641, 0, 5, 0, 4.92641, 0, 0.854659, -27.1459, -5.4587, 18.4597)
@@ -133,7 +209,7 @@ transform = Transform3D(0.854659, 0, -4.92641, 0, 5, 0, 4.92641, 0, 0.854659, -2
 transform = Transform3D(3.52716, 0, 1.88657, 0, 4, 0, -1.88657, 0, 3.52716, -2.96736, -1.12267, 12.8861)
 
 [node name="rock_3_light_tan" parent="RockPath1" instance=ExtResource("13_fs8nb")]
-transform = Transform3D(1.26703, 0, 5.86469, 0, 6, 0, -5.86469, 0, 1.26703, 14.7714, -0.791913, -16.0508)
+transform = Transform3D(1.26703, 0, 5.86469, 0, 6, 0, -5.86469, 0, 1.26703, 14.7714, -2.35661, -16.0508)
 
 [node name="rock_4_blueish" parent="RockPath1" instance=ExtResource("14_uuqoc")]
 transform = Transform3D(3.82993, 0, 2.36255, 0, 4.5, 0, -2.36255, 0, 3.82993, -14.342, -1.1398, 15.174)

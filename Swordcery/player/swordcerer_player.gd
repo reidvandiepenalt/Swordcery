@@ -38,6 +38,7 @@ func _physics_process(delta):
 		if abs(position_difference.x) < 1 and abs(position_difference.z) < 1 || (movement_skill_timer.wait_time - movement_skill_timer.time_left) > 0.35:
 			global_position.x = dash_target.x
 			global_position.z = dash_target.z
+			velocity.y = 0
 			if dash_direction == DashDirection.right:
 				MOVEMENT_PROJ_L.toggle_collision(false)
 			else:
@@ -50,18 +51,21 @@ func _physics_process(delta):
 					var direction = (dash_target - global_position).normalized()
 					velocity.x = direction.x * SPEED * DASH_SPEED_MULT * 1.5
 					velocity.z = direction.z * SPEED * DASH_SPEED_MULT * 1.5
-					twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
+					velocity.y = direction.y * SPEED * DASH_SPEED_MULT * 1.5
+					#twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
 					PLAYER_MODEL.rotation.y = twist_pivot.rotation.y + PI
 				DashDirection.right:
 					var accel = calc_dash_acceleration(false)
 					velocity.x += accel.x * delta
 					velocity.z += accel.z * delta
+					velocity.y += accel.y * delta
 					twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
 					PLAYER_MODEL.rotation.y = twist_pivot.rotation.y + PI
 				DashDirection.left:
 					var accel = calc_dash_acceleration(true)
 					velocity.x += accel.x * delta
 					velocity.z += accel.z * delta
+					velocity.y += accel.y * delta
 					twist_pivot.look_at(twist_pivot.global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
 					PLAYER_MODEL.rotation.y = twist_pivot.rotation.y + PI
 			move_and_slide()
@@ -132,32 +136,37 @@ func movement_skill():
 	lock_cam = true
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction = (twist_pivot.basis * Vector3(0, 0, -1)).normalized()
+	var cam_target = cam_raycast.to_global(cam_raycast.target_position)
 	if abs(input_dir.x) > 0 and abs(input_dir.x) >= abs(input_dir.y):
 		if input_dir.x < 0:
 			dash_direction = DashDirection.left
 			#set initial veloctiy
+			var y_component = cam_target.normalized().y
 			velocity.x = direction.x * SPEED * DASH_SPEED_MULT
 			velocity.z = direction.z * SPEED * DASH_SPEED_MULT
+			velocity.y = y_component * SPEED * DASH_SPEED_MULT
 			#calc target
-			dash_target = global_position + (twist_pivot.basis * Vector3(-1, 0, -1)).normalized() * dash_hypotenuse
+			dash_target = global_position + (twist_pivot.basis * Vector3(-1, y_component, -1)).normalized() * dash_hypotenuse
 			MOVEMENT_PROJ_R.toggle_collision(true)
 		else:
 			dash_direction = DashDirection.right
 			#set initial velocity
+			var y_component = cam_target.normalized().y
 			velocity.x = direction.x * SPEED * DASH_SPEED_MULT
 			velocity.z = direction.z * SPEED * DASH_SPEED_MULT
+			velocity.y = y_component * SPEED * DASH_SPEED_MULT
 			#calc target
-			dash_target = global_position + (twist_pivot.basis * Vector3(1, 0, -1)).normalized() * dash_hypotenuse
+			dash_target = global_position + (twist_pivot.basis * Vector3(1, y_component, -1)).normalized() * dash_hypotenuse
 			MOVEMENT_PROJ_L.toggle_collision(true)
 	else:
 		dash_direction = DashDirection.forward
-		dash_target = global_position + direction * DASH_DISTANCE * 1.5
+		dash_target = global_position + (cam_target - global_position).normalized() * DASH_DISTANCE * 1.5
 		MOVEMENT_PROJ_R.toggle_collision(true)
 	
 	movement_skill_timer.start()
 
 func calc_dash_acceleration(left: bool):
 	if left:
-		return Vector3(velocity.z, 0, -velocity.x).normalized() * dash_acceleration_magnitude
+		return Vector3(velocity.z, velocity.y, -velocity.x).normalized() * dash_acceleration_magnitude
 	else:
-		return Vector3(-velocity.z, 0, velocity.x).normalized() * dash_acceleration_magnitude
+		return Vector3(-velocity.z, velocity.y, velocity.x).normalized() * dash_acceleration_magnitude
