@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bxw3msanga4sl"]
+[gd_scene load_steps=48 format=3 uid="uid://bxw3msanga4sl"]
 
 [ext_resource type="PackedScene" uid="uid://f50jjdtgn5ql" path="res://player/swordcerer_player.tscn" id="1_eqbtc"]
 [ext_resource type="PackedScene" uid="uid://c1axdi8l0ot5h" path="res://enemies/enemy_base.tscn" id="2_6udn8"]
@@ -36,6 +36,11 @@
 [ext_resource type="PackedScene" uid="uid://b0jsush4ppccb" path="res://scenes/level_object_prefabs/crystals/purple_crystal_3.tscn" id="19_dwxqt"]
 [ext_resource type="PackedScene" uid="uid://bp77nrkmf57ve" path="res://scenes/level_object_prefabs/rocks/rock_3_blueish.tscn" id="19_jmdv7"]
 [ext_resource type="PackedScene" uid="uid://4reeyw2xrul7" path="res://scenes/level_object_prefabs/rocks/rock_tan_4.tscn" id="20_ldxkx"]
+[ext_resource type="PackedScene" uid="uid://cnttdofinprai" path="res://scenes/level_object_prefabs/crystals/purple_cluster_4.tscn" id="21_gvsy2"]
+[ext_resource type="PackedScene" uid="uid://f3x5hl1jc2gl" path="res://scenes/level_object_prefabs/crystals/blue_cluster_2.tscn" id="22_2o71r"]
+[ext_resource type="PackedScene" uid="uid://cqd7mobbdxg34" path="res://scenes/level_object_prefabs/crystals/blue_crystal_2.tscn" id="23_28254"]
+[ext_resource type="PackedScene" uid="uid://ct07vdpa1g2w4" path="res://scenes/level_object_prefabs/crystals/purple_cluster_2.tscn" id="25_nsurp"]
+[ext_resource type="PackedScene" uid="uid://b8adt7komebym" path="res://scenes/level_object_prefabs/crystals/blue_cluster_4.tscn" id="26_nqmv8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5qxt"]
 sky_top_color = Color(0.254902, 0.47451, 0.607843, 1)
@@ -148,7 +153,7 @@ transform = Transform3D(1, 0, 0, 0, -0.99277, 0.120033, 0, -0.120033, -0.99277, 
 transform = Transform3D(-0.415512, -0.68247, -0.601319, 0.644746, -0.687304, 0.334539, -0.641602, -0.248693, 0.725603, -2.06101, -1.48372, -1.99221)
 
 [node name="blue_crystal_6" parent="Island2" instance=ExtResource("17_50lih")]
-transform = Transform3D(-0.432561, -0.232151, 0.631662, 0.378311, -0.704898, -7.7076e-10, 0.556571, 0.298706, 0.490921, -1.60465, 0.0170983, -0.138326)
+transform = Transform3D(-0.432561, -0.232151, 0.631662, 0.378311, -0.704898, -7.7076e-10, 0.556571, 0.298706, 0.490921, -1.60465, -0.75706, -0.138326)
 
 [node name="purple_crystal_3" parent="Island2" instance=ExtResource("19_dwxqt")]
 transform = Transform3D(-0.73198, 0.572111, 0.369993, -0.590782, -0.803467, 0.0736029, 0.339386, -0.164709, 0.926114, 2.27179, -2.56669, -1.98523)
@@ -164,6 +169,57 @@ transform = Transform3D(0.897697, 0, 0.440613, 0, 1, 0, -0.440613, 0, 0.897697, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Island1/Vert_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pue4d")
 
+[node name="mixed_cluster_3" parent="Island1" instance=ExtResource("10_n6pi1")]
+transform = Transform3D(0.0359861, -0.0120445, -0.0325566, 0.00995027, 0.0485051, -0.00694631, 0.0332565, -0.00147952, 0.0373071, 1.57583, -0.698974, 3.28288)
+
+[node name="mixed_cluster_2" parent="Island1" instance=ExtResource("9_e120n")]
+transform = Transform3D(0.02651, 0, -0.0423936, -0.00102541, 0.0499854, -0.000641222, 0.0423812, 0.0012094, 0.0265023, 2.37141, -0.636568, -0.494741)
+
+[node name="mixed_cluster_1" parent="Island1" instance=ExtResource("5_ocwsh")]
+transform = Transform3D(0.0105364, 0, -0.0488772, 0, 0.05, 0, 0.0488772, 0, 0.0105364, -1.49425, -0.61649, -0.6089)
+
+[node name="purple_cluster_4" parent="Island1" instance=ExtResource("21_gvsy2")]
+transform = Transform3D(0.0466605, 0.00100437, -0.0179384, -0.000937477, 0.0499899, 0.000360408, 0.017942, 0, 0.0466699, 0.875189, -0.612616, -1.88021)
+
+[node name="purple_cluster_1" parent="Island1" instance=ExtResource("6_bd2mn")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.48547, -0.638556, 1.67377)
+
+[node name="blue_cluster_1" parent="Island1" instance=ExtResource("4_bv10h")]
+transform = Transform3D(-0.0471871, -0.00919156, 0.0137439, -0.00882485, 0.0491479, 0.00257037, -0.0139822, 0, -0.0480052, -1.1919, -0.744572, 3.4388)
+
+[node name="blue_cluster_2" parent="Island1" instance=ExtResource("22_2o71r")]
+transform = Transform3D(0.014465, 0, -0.0478619, 0.00500958, 0.0497254, 0.00151401, 0.047599, -0.00523337, 0.0143855, 0.654432, -0.628865, 1.1132)
+
+[node name="blueCrystal1" parent="Island1" instance=ExtResource("18_0tuyc")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.87444, -0.69675, 0.844616)
+
+[node name="blueCrystal2" parent="Island1" instance=ExtResource("23_28254")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -2.70284, -0.637782, 0.838597)
+
+[node name="purple_crystal_5" parent="Island1" instance=ExtResource("13_li571")]
+transform = Transform3D(0.0455273, 0, -0.0206703, -0.00576857, 0.0480135, -0.0127055, 0.0198491, 0.0139537, 0.0437185, 0.994274, -0.685583, 2.47627)
+
+[node name="purple_crystal_3" parent="Island1" instance=ExtResource("19_dwxqt")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 2.25132, -0.598498, -1.84177)
+
+[node name="purpleCrystal2" parent="Island1" instance=ExtResource("11_r3oph")]
+transform = Transform3D(0.0263003, 0, 0.042524, 0.00567778, 0.0495523, -0.0035116, -0.0421433, 0.00667596, 0.0260648, -1.14185, -0.754774, -1.74293)
+
+[node name="mixed_cluster_4" parent="Island1" instance=ExtResource("9_e120n")]
+transform = Transform3D(1, 0, 0, 0, -0.991162, -0.132654, 0, 0.132654, -0.991162, 0, -2.5077, 1.46177)
+
+[node name="blue_crystal_3" parent="Island1" instance=ExtResource("15_g6i4s")]
+transform = Transform3D(-0.447875, 0.412059, 0.345855, -0.473948, -0.515144, -1.41248e-08, 0.254521, -0.234168, 0.608592, 2.2874, -2.78536, -1.12371)
+
+[node name="purple_crystal_4" parent="Island1" instance=ExtResource("19_dwxqt")]
+transform = Transform3D(-0.269417, -0.410695, 0.425727, 0.543493, -0.356533, -1.61973e-08, 0.233517, 0.355969, 0.491178, -2.48048, -1.51483, 2.66476)
+
+[node name="purpleCrystal1" parent="Island1" instance=ExtResource("14_o0xbr")]
+transform = Transform3D(0.610115, -0.19947, -0.208799, -5.59868e-10, -0.488076, 0.466269, -0.288765, -0.421448, -0.441159, 0.5578, -2.02665, -0.430552)
+
+[node name="blue_cluster_3" parent="Island1" instance=ExtResource("22_2o71r")]
+transform = Transform3D(0.109582, -0.08806, -0.0523194, -6.69811e-09, -0.0766175, 0.128956, -0.10243, -0.0942083, -0.0559724, -3.22661, -1.60034, 0.113441)
+
 [node name="Island3" parent="." instance=ExtResource("5_xjxew")]
 transform = Transform3D(10.9908, 0, -10.2079, 0, 15, 0, 10.2079, 0, 10.9908, 305.375, 10.5111, 90.5334)
 
@@ -175,11 +231,173 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.765196, 0.00696887, 0.8608
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Island3/Vert_003/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_y0qke")
 
+[node name="blue_cluster_1" parent="Island3" instance=ExtResource("4_bv10h")]
+transform = Transform3D(0.0651937, -0.0138713, -0.00135414, 0.0138167, 0.0634742, 0.0149856, -0.00182873, -0.0149351, 0.0649466, -8.24655, -0.0713006, -0.0726309)
+
+[node name="blue_cluster_2" parent="Island3" instance=ExtResource("22_2o71r")]
+transform = Transform3D(0.0656701, 0, 0.0114848, 0, 0.0666667, 0, -0.0114848, 0, 0.0656701, -1.74369, 0.207759, -5.62087)
+
+[node name="blue_cluster_3" parent="Island3" instance=ExtResource("8_yh6xt")]
+transform = Transform3D(0.0140303, 0, -0.0651737, 0, 0.0666667, 0, 0.0651737, 0, 0.0140303, 5.14965, 0.0121149, 2.04825)
+
+[node name="blue_cluster_4" parent="Island3" instance=ExtResource("26_nqmv8")]
+transform = Transform3D(-0.00618671, 0.0137592, 0.0649375, -0.0117217, 0.0639674, -0.0146704, -0.065336, -0.0127791, -0.00351701, 2.68828, -0.301442, 14.5078)
+
+[node name="blue_cluster_5" parent="Island3" instance=ExtResource("22_2o71r")]
+transform = Transform3D(0.0663123, 0.00684372, -0.000552904, -0.00686285, 0.0659038, -0.00735075, -0.00020802, 0.0073686, 0.066258, -0.884684, 0.587028, -0.0810032)
+
+[node name="blue_cluster_6" parent="Island3" instance=ExtResource("8_yh6xt")]
+transform = Transform3D(0.015534, -0.00474625, 0.0646578, -0.00387606, 0.0663009, 0.00579808, -0.0647158, -0.00511027, 0.0151728, -6.16161, -0.0347237, 12.0592)
+
+[node name="blue_cluster_7" parent="Island3" instance=ExtResource("4_bv10h")]
+transform = Transform3D(0.0494498, -0.00568777, -0.044349, 0.00832002, 0.0661407, 0.000794386, 0.0439313, -0.006124, 0.0497695, -3.90735, -0.180095, 6.83065)
+
+[node name="mixed_cluster_1" parent="Island3" instance=ExtResource("5_ocwsh")]
+transform = Transform3D(0.0614048, -0.00857894, 0.0245014, 0.0108876, 0.0656305, -0.00430631, -0.0235664, 0.00796785, 0.0618515, 0.737156, 0.149253, 4.61984)
+
+[node name="mixed_cluster_2" parent="Island3" instance=ExtResource("9_e120n")]
+transform = Transform3D(0.058181, -0.00482784, -0.032189, 0.00203838, 0.0663403, -0.00626567, 0.0324851, 0.00448394, 0.0580438, -5.02113, 0.101805, -2.43005)
+
+[node name="mixed_cluster_3" parent="Island3" instance=ExtResource("10_n6pi1")]
+transform = Transform3D(0.0423437, 0.00200596, -0.0514534, 0.00833475, 0.0654706, 0.00941154, 0.0508135, -0.0124106, 0.0413332, 0.914217, 0.515993, -4.38652)
+
+[node name="mixed_cluster_4" parent="Island3" instance=ExtResource("10_n6pi1")]
+transform = Transform3D(-0.0342312, -0.00486515, 0.0570002, -0.00699968, 0.0662822, 0.00145377, -0.0567776, -0.00523828, -0.0345447, 0.670797, -0.16352, 10.4625)
+
+[node name="mixed_cluster_5" parent="Island3" instance=ExtResource("9_e120n")]
+transform = Transform3D(0.0380663, 0.00569484, 0.0544334, 0.00179353, 0.0661394, -0.00817379, -0.054701, 0.00613161, 0.037612, -4.98543, -0.037832, 9.73738)
+
+[node name="mixed_cluster_6" parent="Island3" instance=ExtResource("5_ocwsh")]
+transform = Transform3D(0.066656, 0, 0.00120066, 0, 0.0666667, 0, -0.00120066, 0, 0.066656, 0.58882, -0.265605, 15.7504)
+
+[node name="purple_cluster_1" parent="Island3" instance=ExtResource("6_bd2mn")]
+transform = Transform3D(-0.00813612, 0.00291018, 0.0661045, 0.0158698, 0.064744, -0.00089704, -0.0642372, 0.0156265, -0.00859423, -7.76731, 0.000733197, 0.621928)
+
+[node name="purple_cluster_2" parent="Island3" instance=ExtResource("25_nsurp")]
+transform = Transform3D(0.0658765, -0.00546878, -0.00865156, 0.00474273, 0.0662476, -0.00576302, 0.00906992, 0.00507923, 0.0658514, -4.70124, 0.209661, 3.60406)
+
+[node name="purple_cluster_3" parent="Island3" instance=ExtResource("7_6beot")]
+transform = Transform3D(-0.0599918, -0.00628558, 0.028389, -0.000976748, 0.0654893, 0.0124358, -0.0290601, 0.0107748, -0.0590244, -2.21056, 0.138586, -4.13275)
+
+[node name="purple_cluster_4" parent="Island3" instance=ExtResource("21_gvsy2")]
+transform = Transform3D(-0.036199, 0, 0.055983, 0, 0.0666667, 0, -0.055983, 0, -0.036199, 5.58502, -0.0263935, 0.481558)
+
+[node name="purple_cluster_5" parent="Island3" instance=ExtResource("21_gvsy2")]
+transform = Transform3D(0.02804, 0.00346564, -0.0603839, -0.00484624, 0.0664719, 0.00156464, 0.0602888, 0.00373144, 0.02821, 1.42297, -0.153508, 11.6189)
+
+[node name="purple_cluster_6" parent="Island3" instance=ExtResource("7_6beot")]
+transform = Transform3D(0.0658296, 0.0100899, 0.00302094, -0.00986492, 0.0657658, -0.00468996, -0.00368993, 0.00418405, 0.066433, -5.9569, -0.00440967, 11.6595)
+
+[node name="purple_cluster_7" parent="Island3" instance=ExtResource("25_nsurp")]
+transform = Transform3D(0.0650733, -0.0137616, -0.00453247, 0.0125546, 0.0639664, -0.0139687, 0.00723237, 0.0127813, 0.0650292, -0.434866, -0.146563, 14.8412)
+
+[node name="purple_cluster_8" parent="Island3" instance=ExtResource("6_bd2mn")]
+transform = Transform3D(0.0073238, -0.00691145, 0.0659019, 0, 0.066303, 0.00695352, -0.0662633, -0.000763893, 0.00728386, -4.59074, -0.1372, 7.63802)
+
+[node name="blue_crystal_5" parent="Island3" instance=ExtResource("17_50lih")]
+transform = Transform3D(0.0586174, -0.00855544, 0.0305822, 0.0112363, 0.0656362, -0.00317489, -0.0297021, 0.00794602, 0.0591533, -6.3731, 0.122816, 1.61362)
+
+[node name="blue_crystal_4" parent="Island3" instance=ExtResource("16_jhfs1")]
+transform = Transform3D(0.0628019, -0.00403909, -0.0220016, 0.00256326, 0.0664384, -0.00488022, 0.0222219, 0.00375137, 0.0627422, 1.51008, 0.532283, -3.7753)
+
+[node name="blue_crystal_3" parent="Island3" instance=ExtResource("15_g6i4s")]
+transform = Transform3D(-0.0267305, 0.00583723, 0.0665989, 0.0080178, 0.0714872, -0.00304761, -0.0663717, 0.00628489, -0.0271901, 4.89327, 0.0986201, -2.20382)
+
+[node name="blueCrystal2" parent="Island3" instance=ExtResource("23_28254")]
+transform = Transform3D(0.0223188, 0.00638696, -0.0624944, 0.00347272, 0.0660944, 0.00799511, 0.0627238, -0.005932, 0.0217945, 1.01926, 0.197989, 3.96429)
+
+[node name="blueCrystal1" parent="Island3" instance=ExtResource("18_0tuyc")]
+transform = Transform3D(0.0428635, -0.00281079, 0.0509832, -0.000511583, 0.0665386, 0.00409849, -0.0510581, -0.00302636, 0.0427595, -5.70377, -0.0154861, 10.0938)
+
+[node name="blueCrystal3" parent="Island3" instance=ExtResource("23_28254")]
+transform = Transform3D(0.0312248, 0.00772743, 0.0583932, -0.00999427, 0.0658272, -0.00336694, -0.0580482, -0.00717698, 0.03199, 0.806091, -0.0630996, 7.89977)
+
+[node name="purpleCrystal1" parent="Island3" instance=ExtResource("14_o0xbr")]
+transform = Transform3D(0.0488482, 0, 0.0453687, 0, 0.0666667, 0, -0.0453687, 0, 0.0488482, -1.22646, 0.495994, 0.641202)
+
+[node name="purpleCrystal2" parent="Island3" instance=ExtResource("11_r3oph")]
+transform = Transform3D(0.0638743, -0.00337678, -0.0187918, 0, 0.0656157, -0.0117908, 0.0190928, 0.0112969, 0.0628674, 1.08234, -0.173135, 7.17158)
+
+[node name="purple_crystal_3" parent="Island3" instance=ExtResource("19_dwxqt")]
+transform = Transform3D(0.0498123, 0, -0.044308, 0, 0.0666667, 0, 0.044308, 0, 0.0498123, -2.02554, 0.262673, 2.80871)
+
+[node name="purple_crystal_4" parent="Island3" instance=ExtResource("12_nbfv5")]
+transform = Transform3D(0.0666232, 0, -0.00241276, 0, 0.0666667, 0, 0.00241276, 0, 0.0666232, -3.5948, 0.0365747, 12.7809)
+
+[node name="purple_crystal_5" parent="Island3" instance=ExtResource("13_li571")]
+transform = Transform3D(0.0421637, -0.00156845, 0.0516162, 0.00212048, 0.0666323, 0.000292581, -0.0515965, 0.00145672, 0.0421918, -1.65101, -0.0556107, 10.744)
+
+[node name="mixed_cluster_7" parent="Island3" instance=ExtResource("10_n6pi1")]
+transform = Transform3D(0.051791, 0.00664285, 0.0414491, -0.00848136, 0.066125, 0, -0.0411123, -0.00527317, 0.0522153, -1.5146, -0.101128, 10.6307)
+
+[node name="mixed_cluster_8" parent="Island3" instance=ExtResource("5_ocwsh")]
+transform = Transform3D(-0.913691, -0.19994, -0.353828, 0.209967, -0.977655, 0.0102506, -0.347971, -0.0649263, 0.935255, -3.78234, -3.09823, 4.35066)
+
+[node name="blue_crystal_6" parent="Island3" instance=ExtResource("17_50lih")]
+transform = Transform3D(0.484686, -0.145064, -0.619707, 0.413513, -0.520365, 0.445227, -0.483825, -0.590065, -0.240284, -1.54008, -3.22283, -1.65819)
+
+[node name="purple_cluster_9" parent="Island3" instance=ExtResource("25_nsurp")]
+transform = Transform3D(-0.665908, 0.0973216, -0.1926, -0.205823, -0.474148, 0.472039, -0.0648302, 0.50568, 0.479672, -1.72493, -1.81512, 14.1098)
+
+[node name="blue_crystal_7" parent="Island3" instance=ExtResource("15_g6i4s")]
+transform = Transform3D(-0.181051, 0.751556, -0.634338, -0.535979, -0.616198, -0.577085, -0.824589, 0.23551, 0.514381, 1.8314, -4.75298, 10.2176)
+
+[node name="purpleCrystal3" parent="Island3" instance=ExtResource("11_r3oph")]
+transform = Transform3D(-0.317494, 0.50405, -0.260061, -0.344285, -0.408114, -0.37069, -0.450739, -0.0433181, 0.466324, 3.14435, -4.55525, 2.48278)
+
 [node name="Island4" parent="." instance=ExtResource("4_2dqca")]
 transform = Transform3D(12.6609, 0, -15.4823, 0, 20, 0, 15.4823, 0, 12.6609, -27.7043, 38.8007, 241.579)
 
 [node name="Vert_001" parent="Island4" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.433197, 0)
+
+[node name="purple_cluster_1" parent="Island4" instance=ExtResource("6_bd2mn")]
+transform = Transform3D(0.049129, -0.00528644, 0.0076418, 0.00453565, 0.0495315, 0.00510521, -0.00810996, -0.00432307, 0.0491481, -1.14589, -0.0828291, 2.66767)
+
+[node name="purple_cluster_2" parent="Island4" instance=ExtResource("25_nsurp")]
+transform = Transform3D(-0.0126111, -0.00318092, -0.0482788, 0.00171908, 0.0498309, -0.00373222, 0.0483529, -0.00260125, -0.012459, 1.78553, 0.0332193, 1.56521)
+
+[node name="purple_cluster_3" parent="Island4" instance=ExtResource("7_6beot")]
+transform = Transform3D(0.0310645, 0.0113248, -0.0375066, -0.00889624, 0.0486543, 0.00732247, 0.0381557, 0.00212398, 0.0322434, -2.01751, -0.0719022, -1.92974)
+
+[node name="mixed_cluster_1" parent="Island4" instance=ExtResource("5_ocwsh")]
+transform = Transform3D(-0.0371262, 0, 0.033491, 0, 0.05, 0, -0.033491, 0, -0.0371262, -1.96344, -0.0417159, 0.914236)
+
+[node name="mixed_cluster_2" parent="Island4" instance=ExtResource("9_e120n")]
+transform = Transform3D(0.0467711, 0.00517928, -0.0169009, -0.0055032, 0.0496962, 0, 0.0167982, 0.00186018, 0.047057, 2.7813, 0.0255028, -0.408548)
+
+[node name="blue_cluster_4" parent="Island4" instance=ExtResource("26_nqmv8")]
+transform = Transform3D(0.0316523, 0, 0.0387058, 0, 0.05, 0, -0.0387058, 0, 0.0316523, 1.16188, 0.0140127, -2.22281)
+
+[node name="blue_cluster_2" parent="Island4" instance=ExtResource("22_2o71r")]
+transform = Transform3D(0.0460525, -0.00435456, -0.0189792, 0.00707451, 0.0491452, 0.00589029, 0.0181417, -0.00811061, 0.0458813, 0.238544, 0.00374925, -0.166468)
+
+[node name="blue_cluster_1" parent="Island4" instance=ExtResource("4_bv10h")]
+transform = Transform3D(0.0478022, 0, -0.0146613, 0, 0.05, 0, 0.0146613, 0, 0.0478022, -3.48675, -0.0486122, -0.261484)
+
+[node name="blueCrystal1" parent="Island4" instance=ExtResource("18_0tuyc")]
+transform = Transform3D(-0.0050553, 0, 0.0497438, 0, 0.05, 0, -0.0497438, 0, -0.0050553, -1.19986, 0.0756643, -2.28766)
+
+[node name="blue_crystal_3" parent="Island4" instance=ExtResource("15_g6i4s")]
+transform = Transform3D(0.0488539, -0.00513381, -0.00932426, 0.00581604, 0.0495582, 0.0031867, 0.00891468, -0.00419826, 0.0490194, 0.131275, -0.0826838, -2.66343)
+
+[node name="purpleCrystal1" parent="Island4" instance=ExtResource("14_o0xbr")]
+transform = Transform3D(0.0316523, 0, 0.0387058, 0, 0.05, 0, -0.0387058, 0, 0.0316523, -0.824084, 0.0721118, 1.33267)
+
+[node name="purpleCrystal2" parent="Island4" instance=ExtResource("11_r3oph")]
+transform = Transform3D(0.0316523, 0, 0.0387058, 0, 0.05, 0, -0.0387058, 0, 0.0316523, 1.1641, 0.0257336, -0.984442)
+
+[node name="purple_crystal_3" parent="Island4" instance=ExtResource("19_dwxqt")]
+transform = Transform3D(0.0487797, 0.00640428, -0.00891787, -0.00721431, 0.0493108, -0.00404931, 0.00827629, 0.0052372, 0.0490314, 0.0268822, 0.0405143, 2.07523)
+
+[node name="purpleCrystal3" parent="Island4" instance=ExtResource("11_r3oph")]
+transform = Transform3D(-0.0506283, -0.391863, -0.695615, 0.391863, -0.619479, 0.320452, -0.695616, -0.320452, 0.231149, -0.722189, -2.03347, -0.590584)
+
+[node name="purple_crystal_4" parent="Island4" instance=ExtResource("12_nbfv5")]
+transform = Transform3D(0.214758, 0.302961, 0.593375, -0.302961, -0.510846, 0.370474, 0.593375, -0.370474, -0.0256044, 1.61013, -1.6361, -0.716909)
+
+[node name="blue_cluster_3" parent="Island4" instance=ExtResource("8_yh6xt")]
+transform = Transform3D(0.560706, 0.0464533, 0.495935, 0.295363, -0.632292, -0.274713, 0.401086, 0.400686, -0.491, 0.710141, -1.44503, 0.580723)
 
 [node name="RockPath1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.863, 0, -105.509)
