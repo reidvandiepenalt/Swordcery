@@ -232,6 +232,8 @@ script = ExtResource("8_tgjuh")
 
 [node name="SwordcererUI" parent="." index="8" instance=ExtResource("8_t62ni")]
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="9"]
+
 [connection signal="health_updated" from="." to="SwordcererUI" method="set_new_health_value"]
 [connection signal="max_health_updated" from="." to="SwordcererUI" method="set_new_max_health_value"]
 [connection signal="current_time_updated" from="BasicAttackTimer" to="SwordcererUI" method="set_new_basic_attack_value"]

@@ -12,6 +12,7 @@ extends SwordceryPlayer
 @onready var SPECIAL_ATTACK_ANIMATOR := $Knight/PathsParent/SpecialAttackParent/SpecialAttackAnimator
 @onready var MOVEMENT_PROJ_R : SwordcererMovementProj = $Knight/SwordcererMovementProjectileRight
 @onready var MOVEMENT_PROJ_L : SwordcererMovementProj = $Knight/SwordcererMovementProjectileLeft
+@onready var NAV_AGENT : NavigationAgent3D = $NavigationAgent3D
 
 var projectiles = []
 var cur_projectile := -1
@@ -21,6 +22,8 @@ var dash_target := Vector3.ZERO
 var dash_acceleration_magnitude = pow(SPEED * DASH_SPEED_MULT, 2) / DASH_DISTANCE
 var dash_hypotenuse = sqrt(pow(DASH_DISTANCE, 2) + pow(DASH_DISTANCE, 2))
 var cam_raycast_length : float
+var do_reset_position := false
+var position_to_set := Vector3(0, 0, 0)
 
 enum DashDirection{
 	left,
@@ -33,6 +36,9 @@ func _ready():
 	cam_raycast_length = cam_raycast.target_position.length()
 
 func _physics_process(delta):
+	if do_reset_position:
+		reset()
+	
 	if is_dashing:
 		var position_difference = dash_target - global_position
 		if abs(position_difference.x) < 1 and abs(position_difference.z) < 1 || (movement_skill_timer.wait_time - movement_skill_timer.time_left) > 0.35:
@@ -170,3 +176,12 @@ func calc_dash_acceleration(left: bool):
 		return Vector3(velocity.z, velocity.y, -velocity.x).normalized() * dash_acceleration_magnitude
 	else:
 		return Vector3(-velocity.z, velocity.y, velocity.x).normalized() * dash_acceleration_magnitude
+
+func reset_location(location: Vector3):
+	do_reset_position = true
+	position_to_set = location
+
+func reset():
+	do_reset_position = false
+	global_position = position_to_set
+	velocity = Vector3(0, 0, 0)

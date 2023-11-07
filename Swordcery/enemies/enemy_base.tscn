@@ -10,8 +10,9 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tm3ab"]
 height = 2.20886
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
 collision_layer = 4
+wall_min_slide_angle = 1.0472
 script = ExtResource("1_uau1x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -28,6 +29,12 @@ shape = SubResource("CapsuleShape3D_tm3ab")
 
 [node name="Rogue" parent="." instance=ExtResource("2_81iqj")]
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 2.0
+path_height_offset = 0.1
+path_max_distance = 15.01
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 
 [editable path="Hurtbox"]
