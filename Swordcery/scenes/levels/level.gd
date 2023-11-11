@@ -1,18 +1,19 @@
 extends Node3D
+class_name Level
 
-@onready var player = $Swordcerer_Player
 @onready var nav_region = $NavigationRegion3D
 
 @export var RESET_Y_LEVEL = -70
 
+var player : SwordceryPlayer
 var nav_mesh
 var thread = Thread.new()
 
 func _ready():
+	player = get_tree().get_first_node_in_group("Player")
 	nav_mesh = nav_region.navigation_mesh
 
 func _physics_process(delta):
-	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin)
 	if player.global_transform.origin.y < RESET_Y_LEVEL && !thread.is_started():
 		thread.start(set_player_to_closest_nav_vert, Thread.PRIORITY_NORMAL)
 

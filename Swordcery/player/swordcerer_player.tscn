@@ -149,7 +149,7 @@ _data = {
 "swordcerer_special_attack": SubResource("Animation_1ac0v")
 }
 
-[node name="Swordcerer_Player" instance=ExtResource("1_0wre7")]
+[node name="Swordcerer_Player" groups=["Player"] instance=ExtResource("1_0wre7")]
 wall_min_slide_angle = 1.0472
 script = ExtResource("2_wjrc2")
 PROJECTILE = ExtResource("3_uokak")
