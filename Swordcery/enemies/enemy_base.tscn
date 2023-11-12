@@ -34,7 +34,7 @@ shape = SubResource("CapsuleShape3D_tm3ab")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 2.0
-path_height_offset = 0.1
+path_height_offset = 1.0
 path_max_distance = 15.01
 debug_path_custom_color = Color(1, 0, 0, 1)
 

@@ -23,4 +23,5 @@ func Physics_Update_State(_delta: float):
 		var next_location = enemy.nav_agent.get_next_path_position()
 		var new_velocity = (next_location - current_location).normalized() * enemy.SPEED
 	
-		enemy.velocity = enemy.velocity.move_toward(new_velocity, 0.25)
+		enemy.velocity.x = move_toward(enemy.velocity.x, new_velocity.x, enemy.SPEED)
+		enemy.velocity.z = move_toward(enemy.velocity.z, new_velocity.z, enemy.SPEED)

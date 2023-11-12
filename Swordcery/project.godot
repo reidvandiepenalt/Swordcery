@@ -81,6 +81,11 @@ move_jump={
 3d_physics/layer_3="Enemy"
 3d_physics/layer_4="Projectile"
 
+[navigation]
+
+3d/default_cell_size=1.0
+3d/default_cell_height=1.0
+
 [rendering]
 
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3

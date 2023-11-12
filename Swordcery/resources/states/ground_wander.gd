@@ -25,9 +25,10 @@ func Physics_Update_State(_delta: float):
 
 		var current_location = enemy.global_transform.origin
 		var next_location = enemy.nav_agent.get_next_path_position()
-		var new_velocity = (next_location - current_location).normalized() * enemy.SPEED * 0.5
+		var new_velocity = (next_location - current_location).normalized() * enemy.SPEED * 0.75
 	
-		enemy.velocity = enemy.velocity.move_toward(new_velocity, 0.25)
+		enemy.velocity.x = move_toward(enemy.velocity.x, new_velocity.x, enemy.SPEED)
+		enemy.velocity.z = move_toward(enemy.velocity.z, new_velocity.z, enemy.SPEED)
 
 func Get_New_Wander_Node():
 	var random_index = randi()%level.nav_mesh.get_vertices().size()

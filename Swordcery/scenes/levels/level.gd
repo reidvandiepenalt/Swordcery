@@ -6,16 +6,16 @@ class_name Level
 @export var RESET_Y_LEVEL = -70
 
 var player : SwordceryPlayer
-var nav_mesh
-var thread = Thread.new()
+var nav_mesh : NavigationMesh
+var thread: Thread
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	nav_mesh = nav_region.navigation_mesh
 
 func _physics_process(delta):
-	if player.global_transform.origin.y < RESET_Y_LEVEL && !thread.is_started():
-		thread.start(set_player_to_closest_nav_vert, Thread.PRIORITY_NORMAL)
+	if player.global_transform.origin.y < RESET_Y_LEVEL:
+		set_player_to_closest_nav_vert()
 
 func set_player_to_closest_nav_vert():
 	var initial_player_pos: Vector3 = player.global_transform.origin
@@ -26,4 +26,4 @@ func set_player_to_closest_nav_vert():
 		if(distance < smallest_distance):
 			smallest_distance = distance
 			closest_vert = vert
-	player.reset_location(closest_vert)
+	player.reset_location(closest_vert - Vector3(0, nav_mesh.cell_height, 0))
