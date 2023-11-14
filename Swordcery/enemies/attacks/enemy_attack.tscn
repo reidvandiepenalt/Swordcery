@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://blbklk2turbuw"]
+
+[ext_resource type="PackedScene" uid="uid://cryp50hr6e5u4" path="res://resources/Hitbox.tscn" id="1_ltyww"]
+[ext_resource type="Script" path="res://enemies/attacks/enemy_attack.gd" id="1_st6kt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xe12l"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ecbub"]
+
+[node name="EnemyAttack" type="Node3D"]
+script = ExtResource("1_st6kt")
+
+[node name="Hitbox" parent="." instance=ExtResource("1_ltyww")]
+collision_layer = 16
+collision_mask = 3
+monitorable = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_xe12l")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_ecbub")
+
+[node name="EndAttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackDelayTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true

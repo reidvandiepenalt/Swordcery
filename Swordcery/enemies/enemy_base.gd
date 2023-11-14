@@ -17,6 +17,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
+	if velocity.x > 0 or velocity.z > 0:
+		look_at(global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP, true)
+	
 	move_and_slide()
 
 
