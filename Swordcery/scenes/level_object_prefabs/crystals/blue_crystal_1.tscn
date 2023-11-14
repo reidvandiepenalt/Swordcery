@@ -42,15 +42,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.022, 0)
 mesh = SubResource("ArrayMesh_jl1aq")
 skeleton = NodePath("")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Crystal1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62613, 0)
-light_color = Color(0.286275, 0.752941, 0.854902, 1)
-light_energy = 1.1
-light_specular = 5.0
-omni_range = 5.615
-omni_attenuation = 1.86606e-05
-
 [node name="StaticBody3D" type="StaticBody3D" parent="Crystal1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Crystal1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pklom")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Crystal1"]
+transform = Transform3D(1, -1.28342e-15, -5.06639e-08, 0, 1, -2.53319e-08, 5.06639e-08, 2.53319e-08, 1, 0, 2.083, 0)
+light_color = Color(0.286275, 0.752941, 0.854902, 1)
+light_energy = 3.0
+light_volumetric_fog_energy = 5.0
+distance_fade_enabled = true
+omni_range = 15.0
+omni_attenuation = 0.5

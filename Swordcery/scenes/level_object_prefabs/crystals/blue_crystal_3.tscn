@@ -48,9 +48,10 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_1r8hd")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Crystal3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76965, 0)
+transform = Transform3D(1, -1.28342e-15, -5.06639e-08, 0, 1, -2.53319e-08, 5.06639e-08, 2.53319e-08, 1, 0, 1.12024, 0)
 light_color = Color(0.286275, 0.752941, 0.854902, 1)
-light_energy = 0.9
-light_specular = 5.0
-omni_range = 3.654
-omni_attenuation = 0.00118703
+light_energy = 3.0
+light_volumetric_fog_energy = 5.0
+distance_fade_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.5
