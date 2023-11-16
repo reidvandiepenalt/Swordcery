@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bxw3msanga4sl"]
+[gd_scene load_steps=83 format=3 uid="uid://bxw3msanga4sl"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_57wtw"]
 [ext_resource type="PackedScene" uid="uid://f50jjdtgn5ql" path="res://player/swordcerer_player.tscn" id="1_eqbtc"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://b8adt7komebym" path="res://scenes/level_object_prefabs/crystals/blue_cluster_4.tscn" id="26_nqmv8"]
 [ext_resource type="Material" uid="uid://h4meafsee6b" path="res://models/level_models/crystals/blue_crystal.tres" id="35_ncyrt"]
 [ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/level_models/crystals/purple_crystal.tres" id="36_d1w0i"]
+[ext_resource type="PackedScene" uid="uid://dge3vd0trmyrh" path="res://models/CrystalGolem.glb" id="45_5fw30"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5qxt"]
 sky_top_color = Color(0.254902, 0.47451, 0.607843, 1)
@@ -2118,6 +2119,60 @@ distance_fade_begin = 150.0
 distance_fade_length = 50.0
 omni_range = 100.0
 
+[node name="CrystalGolem" parent="." instance=ExtResource("45_5fw30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.11172, 0)
+
+[node name="Skeleton3D" parent="CrystalGolem/Armature" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.412251)
+
+[node name="RightLowerLeg" parent="CrystalGolem/Armature/Skeleton3D" index="0"]
+transform = Transform3D(-0.583998, 1.52126e-07, 0, -9.35106e-08, -0.728511, -9.83709e-09, -4.47035e-08, 1.97906e-09, 0.603044, 1.93, -10.8751, -1.47801e-08)
+bone_idx = 4
+
+[node name="RightUpperLeg" parent="CrystalGolem/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.548779, 0.249166, 4.47035e-08, -0.199739, -0.684577, 2.23517e-08, 5.96046e-08, 3.91155e-08, 0.603044, 1.41443, -7.4146, 6.70552e-08)
+bone_idx = 5
+
+[node name="LeftLowerLeg" parent="CrystalGolem/Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.583998, 2.70206e-08, -8.84756e-09, -8.4237e-08, -0.728512, 1.07975e-08, -7.45058e-09, -1.23764e-08, 0.603044, -1.93, -10.8751, -1.49063e-07)
+bone_idx = 9
+
+[node name="LeftUpperLeg" parent="CrystalGolem/Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.548779, -0.249166, -1.49012e-08, 0.199739, -0.684577, 7.45058e-09, 1.49012e-08, -1.86265e-09, 0.603044, -1.41443, -7.4146, -3.72529e-08)
+bone_idx = 10
+
+[node name="RightForearm" parent="CrystalGolem/Armature/Skeleton3D" index="4"]
+transform = Transform3D(2.5185e-07, -0.728512, 2.25171e-08, 0.438096, 4.18705e-07, 1.39698e-09, -1.39698e-09, 1.45499e-08, 0.452384, 7.25, 0.704884, -4.175e-07)
+bone_idx = 15
+
+[node name="RightUpperArm" parent="CrystalGolem/Armature/Skeleton3D" index="5"]
+transform = Transform3D(2.57676e-07, -0.728512, 2.094e-08, 0.438096, 4.28393e-07, 1.02486e-07, -9.91904e-08, 1.20101e-08, 0.452383, 3.41274, 0.704884, -1.89791e-07)
+bone_idx = 16
+
+[node name="LeftForearm" parent="CrystalGolem/Armature/Skeleton3D" index="6"]
+transform = Transform3D(1.70544e-08, 0.728512, 2.66004e-08, -0.431581, 6.88346e-08, 0.0777299, 0.075275, -4.06397e-08, 0.445656, -7.02782, 0.70511, 0.00259742)
+bone_idx = 21
+
+[node name="LeftUpperArm" parent="CrystalGolem/Armature/Skeleton3D" index="7"]
+transform = Transform3D(2.18352e-08, 0.728512, 3.35967e-08, -0.438096, 8.45666e-08, -1.79059e-08, 6.32414e-09, -4.76706e-08, 0.452383, -3.41274, 0.704883, 1.08506e-07)
+bone_idx = 22
+
+[node name="Head" parent="CrystalGolem/Armature/Skeleton3D" index="8"]
+transform = Transform3D(1, -1.03789e-14, 1.88593e-08, 1.90594e-14, 1, -2.4869e-14, -1.86265e-08, 1.06581e-14, 1, 4.9738e-14, 3.25404, 7.81597e-14)
+bone_idx = 26
+
+[node name="Body" parent="CrystalGolem/Armature/Skeleton3D" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -1.16415e-10, 0, 1, 2.38419e-08, -2.2969, 3.46945e-18)
+bone_idx = 27
+
+[node name="RightFootIK" type="SkeletonIK3D" parent="CrystalGolem/Armature/Skeleton3D" index="10"]
+root_bone = &"Bone.001"
+tip_bone = &"Bone.002"
+target_node = NodePath("../RightFootIKTarget")
+
+[node name="RightFootIKTarget" type="Node3D" parent="CrystalGolem/Armature/Skeleton3D" index="11"]
+transform = Transform3D(-0.583998, 1.52126e-07, -2.28966e-23, -9.35106e-08, -0.728511, -9.83709e-09, -4.47035e-08, 1.97906e-09, 0.603044, 2.79071, -10.8751, -4.89825)
+
 [editable path="NavigationRegion3D/Island2"]
 [editable path="NavigationRegion3D/Island1"]
 [editable path="NavigationRegion3D/Island3"]
@@ -2139,3 +2194,4 @@ omni_range = 100.0
 [editable path="Island4BigCrystals/purple_crystal_4"]
 [editable path="Island4BigCrystals/blue_cluster_3"]
 [editable path="Island4BigCrystals/purpleCrystal3"]
+[editable path="CrystalGolem"]
