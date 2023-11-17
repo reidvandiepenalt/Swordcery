@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://g66sxo63t515"]
+
+[resource]
+resource_name = "GreenCrystal"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.118083, 0.660223, 0.424813, 1)
+metallic_specular = 0.25
+roughness = 0.104545
+emission_enabled = true
+emission = Color(0, 0.34919, 0.255831, 1)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dge3vd0trmyrh"
-path="res://.godot/imported/CrystalGolem.glb-67332d40b0ba2ae7f3bffdf2b4600229.scn"
+uid="uid://3aagwrur6pj5"
+path="res://.godot/imported/BlueCrystalGolem.glb-18ed471fa705bc2ac3ae20f83a75da13.scn"
 
 [deps]
 
-source_file="res://models/CrystalGolem.glb"
-dest_files=["res://.godot/imported/CrystalGolem.glb-67332d40b0ba2ae7f3bffdf2b4600229.scn"]
+source_file="res://models/BlueCrystalGolem.glb"
+dest_files=["res://.godot/imported/BlueCrystalGolem.glb-18ed471fa705bc2ac3ae20f83a75da13.scn"]
 
 [params]
 
