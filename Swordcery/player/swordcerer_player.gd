@@ -41,9 +41,17 @@ func _physics_process(delta):
 	
 	if is_dashing:
 		var position_difference = dash_target - global_position
-		if abs(position_difference.x) < 1 and abs(position_difference.z) < 1 || (movement_skill_timer.wait_time - movement_skill_timer.time_left) > 0.35:
+		if abs(position_difference.x) < 1 and abs(position_difference.z) < 1:
 			global_position.x = dash_target.x
 			global_position.z = dash_target.z
+			velocity.y = 0
+			if dash_direction == DashDirection.right:
+				MOVEMENT_PROJ_L.toggle_collision(false)
+			else:
+				MOVEMENT_PROJ_R.toggle_collision(false)
+			is_dashing = false
+			lock_cam = false
+		elif (movement_skill_timer.wait_time - movement_skill_timer.time_left) > 0.35:
 			velocity.y = 0
 			if dash_direction == DashDirection.right:
 				MOVEMENT_PROJ_L.toggle_collision(false)

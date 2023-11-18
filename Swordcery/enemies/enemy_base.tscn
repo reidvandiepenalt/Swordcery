@@ -45,13 +45,15 @@ debug_path_custom_color = Color(1, 0, 0, 1)
 script = ExtResource("4_0p86v")
 initial_state = NodePath("GroundWander")
 
-[node name="GroundChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+[node name="GroundChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
 script = ExtResource("5_r30k8")
 enemy = NodePath("../..")
+transitionState = NodePath("../GroundWander")
 
-[node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+[node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
 script = ExtResource("6_0ca2e")
 enemy = NodePath("../..")
+transitionState = NodePath("../GroundChase")
 
 [node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
 script = ExtResource("7_mkh71")

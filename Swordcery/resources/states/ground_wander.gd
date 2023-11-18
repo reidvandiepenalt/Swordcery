@@ -20,7 +20,7 @@ func Update_State(_delta: float):
 func Physics_Update_State(_delta: float):
 	if enemy:
 		if (enemy.player.global_position - enemy.global_position).length()  < enemy.chase_range:
-			Transitioned.emit(self, "GroundChase")
+			Transitioned.emit(self, transitionState.name)
 			return
 
 		var current_location = enemy.global_transform.origin

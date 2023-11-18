@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_nkt0p"]
 [ext_resource type="PackedScene" uid="uid://bkd37qnou2a6" path="res://resources/Hurtbox.tscn" id="2_fsdnp"]
 [ext_resource type="Script" path="res://resources/states/state_machine.gd" id="4_d4k2l"]
-[ext_resource type="Script" path="res://resources/states/ground_chase.gd" id="5_bv1wp"]
+[ext_resource type="Script" path="res://resources/states/ground_circle.gd" id="5_0kkmq"]
 [ext_resource type="Script" path="res://resources/states/ground_wander.gd" id="6_2rjls"]
 [ext_resource type="Script" path="res://enemies/attacks/EnemyAttackManager.gd" id="7_7b5xp"]
 [ext_resource type="PackedScene" uid="uid://blbklk2turbuw" path="res://enemies/attacks/enemy_attack.tscn" id="7_cns7f"]
@@ -21,7 +21,7 @@ height = 6.48322
 collision_layer = 4
 wall_min_slide_angle = 1.0472
 script = ExtResource("1_nkt0p")
-chase_range = 35.0
+chase_range = 40.0
 
 [node name="RedCrystalGolem" parent="." instance=ExtResource("7_rv6ku")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 2.79655, 0)
@@ -48,13 +48,15 @@ debug_path_custom_color = Color(1, 0, 0, 1)
 script = ExtResource("4_d4k2l")
 initial_state = NodePath("GroundWander")
 
-[node name="GroundChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_bv1wp")
+[node name="GroundCircle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
+script = ExtResource("5_0kkmq")
 enemy = NodePath("../..")
+transitionState = NodePath("../GroundWander")
 
-[node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+[node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
 script = ExtResource("6_2rjls")
 enemy = NodePath("../..")
+transitionState = NodePath("../GroundCircle")
 
 [node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
 script = ExtResource("7_7b5xp")

@@ -10,6 +10,7 @@ var nav_mesh : NavigationMesh
 var thread: Thread
 
 func _ready():
+	randomize()
 	player = get_tree().get_first_node_in_group("Player")
 	nav_mesh = nav_region.navigation_mesh
 

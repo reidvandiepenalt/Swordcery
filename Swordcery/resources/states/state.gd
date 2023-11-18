@@ -3,6 +3,8 @@ class_name State
 
 signal Transitioned
 
+@export var transitionState : State
+
 func Enter_State():
 	pass
 

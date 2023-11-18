@@ -3,12 +3,12 @@ class_name EnemyBase
 
 @export var chase_range := 20.0
 
-@onready var nav_agent = $NavigationAgent3D
+@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 var player : SwordceryPlayer
 #pass in from spawning director instead
 var dist_to_player = 20.0
 
-const SPEED := 7.0
+const SPEED := 5.0
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
