@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1axdi8l0ot5h"]
+[gd_scene load_steps=11 format=3 uid="uid://c1axdi8l0ot5h"]
 
 [ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_uau1x"]
 [ext_resource type="PackedScene" uid="uid://fd4w0e1842uy" path="res://addons/kaykit_character_pack_adventures/Characters/gltf/Rogue_Hooded.glb" id="2_81iqj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://resources/states/state_machine.gd" id="4_0p86v"]
 [ext_resource type="Script" path="res://resources/states/ground_chase.gd" id="5_r30k8"]
 [ext_resource type="Script" path="res://resources/states/ground_wander.gd" id="6_0ca2e"]
+[ext_resource type="Script" path="res://enemies/attacks/EnemyAttackManager.gd" id="7_mkh71"]
 [ext_resource type="PackedScene" uid="uid://blbklk2turbuw" path="res://enemies/attacks/enemy_attack.tscn" id="7_ox7ih"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p2gk4"]
@@ -20,7 +21,7 @@ wall_min_slide_angle = 1.0472
 script = ExtResource("1_uau1x")
 chase_range = 35.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="PhysicsBody" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1.22, 0)
 shape = SubResource("ConvexPolygonShape3D_p2gk4")
 
@@ -44,16 +45,20 @@ debug_path_custom_color = Color(1, 0, 0, 1)
 script = ExtResource("4_0p86v")
 initial_state = NodePath("GroundWander")
 
-[node name="GroundChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "melee_attack")]
+[node name="GroundChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_r30k8")
 enemy = NodePath("../..")
-melee_attack = NodePath("../../EnemyAttack")
 
 [node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_0ca2e")
 enemy = NodePath("../..")
 
-[node name="EnemyAttack" parent="." instance=ExtResource("7_ox7ih")]
+[node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
+script = ExtResource("7_mkh71")
+attacks = [NodePath("EnemyAttack")]
+enemy = NodePath("..")
+
+[node name="EnemyAttack" parent="AttackManager" instance=ExtResource("7_ox7ih")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5907, 1.21733)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://iymb70wg64hj"]
+
+[ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_nkt0p"]
+[ext_resource type="PackedScene" uid="uid://bkd37qnou2a6" path="res://resources/Hurtbox.tscn" id="2_fsdnp"]
+[ext_resource type="Script" path="res://resources/states/state_machine.gd" id="4_d4k2l"]
+[ext_resource type="Script" path="res://resources/states/ground_chase.gd" id="5_bv1wp"]
+[ext_resource type="Script" path="res://resources/states/ground_wander.gd" id="6_2rjls"]
+[ext_resource type="Script" path="res://enemies/attacks/EnemyAttackManager.gd" id="7_7b5xp"]
+[ext_resource type="PackedScene" uid="uid://blbklk2turbuw" path="res://enemies/attacks/enemy_attack.tscn" id="7_cns7f"]
+[ext_resource type="PackedScene" uid="uid://dge3vd0trmyrh" path="res://models/RedCrystalGolem.glb" id="7_rv6ku"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7f4bd"]
+radius = 0.984
+height = 6.483
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tm3ab"]
+radius = 0.984248
+height = 6.48322
+
+[node name="CrystalGolemEnemy" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 4
+wall_min_slide_angle = 1.0472
+script = ExtResource("1_nkt0p")
+chase_range = 35.0
+
+[node name="RedCrystalGolem" parent="." instance=ExtResource("7_rv6ku")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 2.79655, 0)
+
+[node name="PhysicsBody" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11098, 0)
+shape = SubResource("CapsuleShape3D_7f4bd")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_fsdnp")]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" parent="Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2694, 0)
+shape = SubResource("CapsuleShape3D_tm3ab")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 2.0
+path_height_offset = 1.0
+path_max_distance = 25.01
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_d4k2l")
+initial_state = NodePath("GroundWander")
+
+[node name="GroundChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_bv1wp")
+enemy = NodePath("../..")
+
+[node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_2rjls")
+enemy = NodePath("../..")
+
+[node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
+script = ExtResource("7_7b5xp")
+attacks = [NodePath("EnemyAttack")]
+enemy = NodePath("..")
+
+[node name="EnemyAttack" parent="AttackManager" instance=ExtResource("7_cns7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5907, 1.21733)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="navigation_finished" from="NavigationAgent3D" to="State Machine/GroundWander" method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
+
+[editable path="Hurtbox"]

@@ -2,8 +2,6 @@ extends State
 class_name GroundChase
 
 @export var enemy: EnemyBase
-@export var melee_attack: EnemyAttack
-@export var melee_range := 1.0
 
 func Enter_State():
 	super.Enter_State()
@@ -16,12 +14,9 @@ func Update_State(_delta: float):
 
 func Physics_Update_State(_delta: float):
 	if enemy:
-		var dist_to_player = (enemy.player.global_position - enemy.global_position).length()
-		if dist_to_player > enemy.chase_range:
+		if enemy.dist_to_player > enemy.chase_range:
 			Transitioned.emit(self, "GroundWander")
 			return
-		elif dist_to_player <= melee_range:
-			melee_attack.BeginAttack()
 		
 		enemy.update_target_location(enemy.player.global_transform.origin)
 		var current_location = enemy.global_transform.origin
