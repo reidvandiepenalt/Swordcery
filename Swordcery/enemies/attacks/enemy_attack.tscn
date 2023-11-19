@@ -19,7 +19,6 @@ monitorable = false
 shape = SubResource("SphereShape3D_xe12l")
 
 [node name="Model" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("SphereMesh_ecbub")
 
 [node name="EndAttackTimer" type="Timer" parent="."]

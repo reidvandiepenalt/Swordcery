@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://resources/states/ground_circle.gd" id="5_0kkmq"]
 [ext_resource type="Script" path="res://resources/states/ground_wander.gd" id="6_2rjls"]
 [ext_resource type="Script" path="res://enemies/attacks/EnemyAttackManager.gd" id="7_7b5xp"]
-[ext_resource type="PackedScene" uid="uid://blbklk2turbuw" path="res://enemies/attacks/enemy_attack.tscn" id="7_cns7f"]
 [ext_resource type="PackedScene" uid="uid://dge3vd0trmyrh" path="res://models/RedCrystalGolem.glb" id="7_rv6ku"]
+[ext_resource type="PackedScene" uid="uid://bm2iftclkgtxg" path="res://enemies/attacks/crystal_golem_melee.tscn" id="8_nc42u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7f4bd"]
 radius = 0.984
@@ -42,6 +42,7 @@ shape = SubResource("CapsuleShape3D_tm3ab")
 target_desired_distance = 2.0
 path_height_offset = 1.0
 path_max_distance = 25.01
+radius = 125.0
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -60,11 +61,10 @@ transitionState = NodePath("../GroundCircle")
 
 [node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
 script = ExtResource("7_7b5xp")
-attacks = [NodePath("EnemyAttack")]
+attacks = [NodePath("CrystalGolemMelee")]
 enemy = NodePath("..")
 
-[node name="EnemyAttack" parent="AttackManager" instance=ExtResource("7_cns7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5907, 1.21733)
+[node name="CrystalGolemMelee" parent="AttackManager" instance=ExtResource("8_nc42u")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="navigation_finished" from="NavigationAgent3D" to="State Machine/GroundWander" method="_on_navigation_agent_3d_navigation_finished"]

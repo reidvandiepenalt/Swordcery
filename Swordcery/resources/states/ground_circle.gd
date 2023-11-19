@@ -3,7 +3,7 @@ class_name GroundCircle
 
 @export var enemy: EnemyBase
 @export var circle_radius := 15.0
-@export var circle_degree_range := 15
+@export var circle_degree_range : float = 15.0
 
 var circling := false
 
@@ -42,6 +42,6 @@ func Physics_Update_State(_delta: float):
 
 func GetNewCirclePoint():
 	var angle_from_player = Vector2(enemy.player.global_position.x, enemy.player.global_position.z).angle_to(Vector2(enemy.global_position.x, enemy.global_position.z))
-	var rand_deg = randf_range(-circle_degree_range, circle_degree_range)
-	var circle_offset = Vector3(cos(deg_to_rad(angle_from_player + rand_deg)), 0, sin(deg_to_rad(angle_from_player + rand_deg))) * circle_radius
+	var rand_angle = deg_to_rad(randf_range(-circle_degree_range, circle_degree_range))
+	var circle_offset = Vector3(cos(angle_from_player + rand_angle), 0, sin(angle_from_player + rand_angle)) * circle_radius
 	enemy.update_target_location(enemy.player.global_position + circle_offset)
