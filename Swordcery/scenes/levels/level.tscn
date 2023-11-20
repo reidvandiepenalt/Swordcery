@@ -1,8 +1,7 @@
-[gd_scene load_steps=83 format=3 uid="uid://bxw3msanga4sl"]
+[gd_scene load_steps=82 format=3 uid="uid://bxw3msanga4sl"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_57wtw"]
 [ext_resource type="PackedScene" uid="uid://f50jjdtgn5ql" path="res://player/swordcerer_player.tscn" id="1_eqbtc"]
-[ext_resource type="PackedScene" uid="uid://c1axdi8l0ot5h" path="res://enemies/enemy_base.tscn" id="2_6udn8"]
 [ext_resource type="PackedScene" uid="uid://dfkrmou7nwyg" path="res://models/level_models/islands/Island1.glb" id="4_2dqca"]
 [ext_resource type="PackedScene" uid="uid://no6r222611jq" path="res://scenes/level_object_prefabs/crystals/blue_cluster_1.tscn" id="4_bv10h"]
 [ext_resource type="PackedScene" uid="uid://tptvwegnd8p3" path="res://models/level_models/islands/Island2.glb" id="4_e5hcb"]
@@ -432,10 +431,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Swordcerer_Player" parent="." instance=ExtResource("1_eqbtc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.167, -7.62939e-06, -65.1226)
-
-[node name="Enemy" parent="." instance=ExtResource("2_6udn8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.61639)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0, -65.123)
 
 [node name="RockPath1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.863, 0, -105.509)

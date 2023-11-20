@@ -21,7 +21,7 @@ func Physics_Update_State(_delta: float):
 		enemy.update_target_location(enemy.player.global_transform.origin)
 		var current_location = enemy.global_transform.origin
 		var next_location = enemy.nav_agent.get_next_path_position()
-		var new_velocity = (next_location - current_location).normalized() * enemy.SPEED
+		var new_velocity = (next_location - current_location).normalized() * enemy.SPEED * enemy.speed_modifier
 	
-		enemy.velocity.x = move_toward(enemy.velocity.x, new_velocity.x, enemy.SPEED)
-		enemy.velocity.z = move_toward(enemy.velocity.z, new_velocity.z, enemy.SPEED)
+		enemy.velocity.x = move_toward(enemy.velocity.x, new_velocity.x, enemy.SPEED * enemy.speed_modifier)
+		enemy.velocity.z = move_toward(enemy.velocity.z, new_velocity.z, enemy.SPEED * enemy.speed_modifier)

@@ -35,10 +35,10 @@ func Physics_Update_State(_delta: float):
 		
 		var current_location = enemy.global_position
 		var next_location = enemy.nav_agent.get_next_path_position()
-		var new_velocity = (next_location - current_location).normalized() * enemy.SPEED
+		var new_velocity = (next_location - current_location).normalized() * enemy.SPEED * enemy.speed_modifier
 	
-		enemy.velocity.x = move_toward(enemy.velocity.x, new_velocity.x, enemy.SPEED)
-		enemy.velocity.z = move_toward(enemy.velocity.z, new_velocity.z, enemy.SPEED)
+		enemy.velocity.x = move_toward(enemy.velocity.x, new_velocity.x, enemy.SPEED * enemy.speed_modifier)
+		enemy.velocity.z = move_toward(enemy.velocity.z, new_velocity.z, enemy.SPEED * enemy.speed_modifier)
 
 func GetNewCirclePoint():
 	var angle_from_player = Vector2(enemy.player.global_position.x, enemy.player.global_position.z).angle_to(Vector2(enemy.global_position.x, enemy.global_position.z))

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://7wrui2n13e1l"]
+
+[ext_resource type="Script" path="res://player/projectiles/player_projectile.gd" id="2_4spcd"]
+[ext_resource type="PackedScene" uid="uid://cryp50hr6e5u4" path="res://resources/Hitbox.tscn" id="2_6hbm5"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25rbs"]
+radius = 0.278308
+height = 2.34404
+
+[node name="EnemyProjectile" groups=["Projectile"] instance=ExtResource("2_6hbm5")]
+collision_layer = 16
+collision_mask = 3
+monitoring = true
+script = ExtResource("2_4spcd")
+SPEED = 100
+TARGET = Vector3(0, 0, 0)
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.787258)
+shape = SubResource("CapsuleShape3D_25rbs")
+
+[connection signal="area_entered" from="." to="." method="_on_Projectile_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]

@@ -9,6 +9,9 @@ signal AttackEnded
 @export var delay := 1.0
 @export var attack_range := 2.0
 @export var animation_name := "crystal_golem_melee_crystal_wave"
+@export var speed_mod := 0.15
+
+var player
 
 func _ready():
 	if animation:
