@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2n5uv6vg4dst"]
+[gd_scene load_steps=2 format=3 uid="uid://d2n5uv6vg4dst"]
 
 [ext_resource type="Script" path="res://enemies/attacks/enemy_attack_ranged.gd" id="1_iar8t"]
-[ext_resource type="PackedScene" uid="uid://7wrui2n13e1l" path="res://enemies/attacks/crystal_golem_projectile.tscn" id="2_o6tw6"]
 
 [node name="CrystalGolemRanged" type="Node3D"]
 script = ExtResource("1_iar8t")
-PROJECTILE_SCENE = ExtResource("2_o6tw6")
 delay = 1.25
 attack_range = 20.0
 animation_name = ""
