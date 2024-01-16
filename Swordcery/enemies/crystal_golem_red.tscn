@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://iymb70wg64hj"]
+[gd_scene load_steps=13 format=3 uid="uid://iymb70wg64hj"]
 
 [ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_nkt0p"]
 [ext_resource type="PackedScene" uid="uid://bkd37qnou2a6" path="res://resources/Hurtbox.tscn" id="2_fsdnp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dge3vd0trmyrh" path="res://models/RedCrystalGolem.glb" id="7_rv6ku"]
 [ext_resource type="PackedScene" uid="uid://bm2iftclkgtxg" path="res://enemies/attacks/crystal_golem_melee.tscn" id="8_nc42u"]
 [ext_resource type="PackedScene" uid="uid://d2n5uv6vg4dst" path="res://enemies/attacks/crystal_golem_ranged.tscn" id="9_25gkj"]
+[ext_resource type="PackedScene" uid="uid://cf5lgolfnoick" path="res://enemies/attacks/crystal_golem_projectiles/crystal_spear_red.tscn" id="10_81bwm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7f4bd"]
 radius = 0.984
@@ -62,7 +63,7 @@ transitionState = NodePath("../GroundCircle")
 
 [node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
 script = ExtResource("7_7b5xp")
-attacks = [NodePath("CrystalGolemMelee")]
+attacks = [NodePath("CrystalGolemMelee"), NodePath("CrystalGolemRanged")]
 enemy = NodePath("..")
 
 [node name="CrystalGolemMelee" parent="AttackManager" instance=ExtResource("8_nc42u")]
@@ -70,6 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 attack_range = 5.0
 
 [node name="CrystalGolemRanged" parent="AttackManager" node_paths=PackedStringArray("enemy") instance=ExtResource("9_25gkj")]
+PROJECTILE_SCENE = ExtResource("10_81bwm")
 enemy = NodePath("../..")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
