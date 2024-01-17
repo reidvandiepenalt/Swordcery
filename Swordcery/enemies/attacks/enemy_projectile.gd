@@ -8,14 +8,19 @@ class_name EnemyProjectile
 var attackBase: EnemyAttack
 
 var despawn_timer := 0
+var has_target := false
 
 func set_target(target: Vector3, _base: EnemyAttack = null):
+	has_target = true
 	TARGET = target
 	look_at(TARGET, Vector3.UP)
 	if _base:
 		attackBase = _base
 
 func _physics_process(delta):
+	if !has_target:
+		return
+	
 	global_position -= SPEED * self.basis.z * delta
 	
 	despawn_timer += delta
