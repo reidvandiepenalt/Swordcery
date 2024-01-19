@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7wrui2n13e1l"]
+[gd_scene load_steps=12 format=3 uid="uid://7wrui2n13e1l"]
 
 [ext_resource type="PackedScene" uid="uid://cryp50hr6e5u4" path="res://resources/Hitbox.tscn" id="2_6hbm5"]
 [ext_resource type="Script" path="res://enemies/attacks/enemy_projectile.gd" id="2_c65fl"]
@@ -38,6 +38,63 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tnpqx")
 
+[sub_resource type="Animation" id="Animation_myc4y"]
+resource_name = "Startup"
+length = 0.5
+step = 0.05
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 1, 1, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0.087, 0.996, 0.1, 1, 0, 0, -1, 0.009, 0.167308, 1, 0, 0, -0.924, 0.383, 0.3, 1, 0, 0, -0.301, 0.954, 0.5, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_lnd06"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_63qvu"]
+resource_name = "Attack"
+length = 0.35
+loop_mode = 1
+step = 0.05
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0, 0, 1, 0, 0.15, 1, 0, 0, 0.707, -0.707, 0.2, 1, 0, 0, 0, 1, 0.25, 1, 0, 0, 0.707, 0.707, 0.3, 1, 0, 0, -1, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f1arc"]
+_data = {
+"Attack": SubResource("Animation_63qvu"),
+"RESET": SubResource("Animation_lnd06"),
+"Startup": SubResource("Animation_myc4y")
+}
+
 [node name="CrystalSpearPurple" groups=["Projectile"] instance=ExtResource("2_6hbm5")]
 collision_layer = 16
 collision_mask = 3
@@ -58,6 +115,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 mesh = SubResource("ArrayMesh_mo4uw")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_wl143")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_f1arc")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_Projectile_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]
