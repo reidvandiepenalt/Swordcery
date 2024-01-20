@@ -5,12 +5,23 @@ class_name EnemyProjectile
 @export var TARGET := Vector3.ZERO
 @export var timeout := 10.0
 
+@export var startupAnim := "Startup"
+@export var attackAnim := "Attack"
+
+@onready var animPlayer : AnimationPlayer = $AnimationPlayer
+
 var attackBase: EnemyAttack
 
 var despawn_timer := 0
 var has_target := false
 
+func _ready():
+	if animPlayer:
+		animPlayer.play(startupAnim)
+
 func set_target(target: Vector3, _base: EnemyAttack = null):
+	if animPlayer:
+		animPlayer.play(attackAnim)
 	has_target = true
 	TARGET = target
 	look_at(TARGET, Vector3.UP)

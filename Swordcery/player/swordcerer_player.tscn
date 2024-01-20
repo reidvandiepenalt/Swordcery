@@ -183,6 +183,7 @@ loop = false
 [node name="SwordcererSpecialProjectile" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathRight/RightSwordPathFollow" index="0" instance=ExtResource("6_215jy")]
 transform = Transform3D(-2.62268e-07, -6, 2.62268e-07, 0, -2.62268e-07, -6, 6, -2.62268e-07, 1.14641e-14, 0, 0, 0)
 visible = false
+timeout = 20.0
 
 [node name="CollisionShape3D" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathRight/RightSwordPathFollow/SwordcererSpecialProjectile" index="0"]
 disabled = true
@@ -199,6 +200,7 @@ loop = false
 [node name="SwordcererSpecialProjectile2" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathLeft/LeftSwordPathFollow" index="0" instance=ExtResource("6_215jy")]
 transform = Transform3D(-2.62268e-07, -6, 2.62268e-07, 0, -2.62268e-07, -6, 6, -2.62268e-07, 1.14641e-14, 0, 0, 0)
 visible = false
+timeout = 20.0
 
 [node name="CollisionShape3D" parent="Knight/PathsParent/SpecialAttackParent/SpecialAttackPathLeft/LeftSwordPathFollow/SwordcererSpecialProjectile2" index="0"]
 disabled = true
@@ -210,9 +212,11 @@ libraries = {
 
 [node name="SwordcererMovementProjectileRight" parent="Knight" index="3" instance=ExtResource("7_njcma")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -0.6, 1, 0)
+timeout = 20.0
 
 [node name="SwordcererMovementProjectileLeft" parent="Knight" index="4" instance=ExtResource("7_njcma")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0.6, 1, 0)
+timeout = 20.0
 
 [node name="CameraRaycast" parent="TwistPivot/PitchPivot/Camera3D" index="0"]
 target_position = Vector3(0, 0, -35)
