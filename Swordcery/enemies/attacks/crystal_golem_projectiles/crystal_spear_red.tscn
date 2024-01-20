@@ -46,6 +46,8 @@ script = ExtResource("2_5f3ib")
 SPEED = 100
 TARGET = Vector3(0, 0, 0)
 timeout = 10.0
+startupAnim = "Startup"
+attackAnim = "Attack"
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.787258)

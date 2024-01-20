@@ -1,12 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://7wrui2n13e1l"]
+[gd_scene load_steps=11 format=3 uid="uid://7wrui2n13e1l"]
 
-[ext_resource type="PackedScene" uid="uid://cryp50hr6e5u4" path="res://resources/Hitbox.tscn" id="2_6hbm5"]
-[ext_resource type="Script" path="res://enemies/attacks/enemy_projectile.gd" id="2_c65fl"]
+[ext_resource type="Script" path="res://enemies/attacks/crystal_golem_projectiles/crystal_golem_projectile.gd" id="2_bfv65"]
 [ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/level_models/crystals/purple_crystal.tres" id="3_wl143"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_25rbs"]
-radius = 0.278308
-height = 2.34404
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g083x"]
 
@@ -45,7 +40,7 @@ loop_mode = 1
 step = 0.05
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -82,7 +77,7 @@ tracks/0/loop_wrap = false
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 1, 1, 1)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath(".")
 tracks/1/interp = 2
 tracks/1/loop_wrap = false
@@ -95,33 +90,31 @@ _data = {
 "Startup": SubResource("Animation_myc4y")
 }
 
-[node name="CrystalSpearPurple" groups=["Projectile"] instance=ExtResource("2_6hbm5")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_shgb3"]
+radius = 0.766276
+
+[node name="CrystalSpearPurple" type="Area3D" groups=["Projectile"]]
 collision_layer = 16
 collision_mask = 3
-monitoring = true
-script = ExtResource("2_c65fl")
-SPEED = 100
-TARGET = Vector3(0, 0, 0)
-timeout = 10.0
-startupAnim = "Startup"
-attackAnim = "Attack"
+script = ExtResource("2_bfv65")
 
-[node name="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.787258)
-shape = SubResource("CapsuleShape3D_25rbs")
+[node name="crystalSpear" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="crystalSpear" type="Node3D" parent="." index="1"]
+[node name="Cylinder" type="MeshInstance3D" parent="crystalSpear"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-
-[node name="Cylinder" type="MeshInstance3D" parent="crystalSpear" index="0"]
 mesh = SubResource("ArrayMesh_mo4uw")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_wl143")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_f1arc")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0234245, -0.0407361)
+shape = SubResource("SphereShape3D_shgb3")
 
 [connection signal="area_entered" from="." to="." method="_on_Projectile_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]

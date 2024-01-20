@@ -6,7 +6,7 @@ class_name EnemyRangedAttack
 
 @onready var tempTimer : Timer = $TempAttackTimer
 
-var proj : EnemyProjectile
+var proj : CrystalGolemProjectile
 
 func _ready():
 	super._ready()
@@ -16,6 +16,7 @@ func BeginAttack():
 	proj = PROJECTILE_SCENE.instantiate()
 	get_tree().root.get_child(0).add_child(proj)
 	proj.position = enemy.position
+	proj.set_aiming_at(enemy.player)
 	
 	#temp for testing; call from animation
 	tempTimer.connect("timeout", EndAttack)
