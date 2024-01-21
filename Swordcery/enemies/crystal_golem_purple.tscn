@@ -1,14 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://iymb70wg64hj"]
+[gd_scene load_steps=12 format=3 uid="uid://w6quabs2b7o8"]
 
-[ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_nkt0p"]
-[ext_resource type="PackedScene" uid="uid://bkd37qnou2a6" path="res://resources/Hurtbox.tscn" id="2_fsdnp"]
-[ext_resource type="Script" path="res://resources/states/state_machine.gd" id="4_d4k2l"]
-[ext_resource type="Script" path="res://resources/states/ground_circle.gd" id="5_0kkmq"]
-[ext_resource type="Script" path="res://resources/states/ground_wander.gd" id="6_2rjls"]
-[ext_resource type="Script" path="res://enemies/attacks/EnemyAttackManager.gd" id="7_7b5xp"]
-[ext_resource type="PackedScene" uid="uid://dge3vd0trmyrh" path="res://models/RedCrystalGolem.glb" id="7_rv6ku"]
-[ext_resource type="PackedScene" uid="uid://bm2iftclkgtxg" path="res://enemies/attacks/crystal_golem_melee.tscn" id="8_nc42u"]
-[ext_resource type="PackedScene" uid="uid://d2n5uv6vg4dst" path="res://enemies/attacks/crystal_golem_ranged.tscn" id="9_25gkj"]
+[ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_ksskb"]
+[ext_resource type="PackedScene" uid="uid://dcc0wmcswlgd7" path="res://models/PurpleCrystalGolem.glb" id="2_2yjx7"]
+[ext_resource type="PackedScene" uid="uid://bkd37qnou2a6" path="res://resources/Hurtbox.tscn" id="3_36uhd"]
+[ext_resource type="Script" path="res://resources/states/state_machine.gd" id="4_tra3b"]
+[ext_resource type="Script" path="res://resources/states/ground_circle.gd" id="5_yswn8"]
+[ext_resource type="Script" path="res://resources/states/ground_wander.gd" id="6_brtsm"]
+[ext_resource type="Script" path="res://enemies/attacks/EnemyAttackManager.gd" id="7_bu0ip"]
+[ext_resource type="PackedScene" uid="uid://bm2iftclkgtxg" path="res://enemies/attacks/crystal_golem_melee.tscn" id="8_t1jqf"]
+[ext_resource type="PackedScene" uid="uid://d2n5uv6vg4dst" path="res://enemies/attacks/crystal_golem_ranged.tscn" id="9_psvo5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7f4bd"]
 radius = 0.984
@@ -21,62 +21,61 @@ height = 6.48322
 [node name="CrystalGolemEnemy" type="CharacterBody3D" groups=["enemies"]]
 collision_layer = 4
 wall_min_slide_angle = 1.0472
-script = ExtResource("1_nkt0p")
+script = ExtResource("1_ksskb")
 chase_range = 40.0
 
-[node name="RedCrystalGolem" parent="." instance=ExtResource("7_rv6ku")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 2.79655, 0)
+[node name="PurpleCrystalGolem" parent="." instance=ExtResource("2_2yjx7")]
 
-[node name="RightLowerLeg" parent="RedCrystalGolem/Armature/Skeleton3D" index="0"]
+[node name="RightLowerLeg" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="0"]
 transform = Transform3D(-0.583998, 1.52126e-07, 0, -9.35106e-08, -0.728511, -9.83709e-09, -4.47035e-08, 1.97906e-09, 0.603044, 1.93, -10.8751, -1.47801e-08)
 bone_idx = 4
 
-[node name="RightUpperLeg" parent="RedCrystalGolem/Armature/Skeleton3D" index="1"]
+[node name="RightUpperLeg" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="1"]
 transform = Transform3D(-0.548779, 0.249166, 4.47035e-08, -0.199739, -0.684577, 2.23517e-08, 5.96046e-08, 3.91155e-08, 0.603044, 1.41443, -7.4146, 6.70552e-08)
 bone_idx = 5
 
-[node name="LeftLowerLeg" parent="RedCrystalGolem/Armature/Skeleton3D" index="2"]
+[node name="LeftLowerLeg" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="2"]
 transform = Transform3D(-0.583998, 2.70206e-08, -8.84756e-09, -8.4237e-08, -0.728512, 1.07975e-08, -7.45058e-09, -1.23764e-08, 0.603044, -1.93, -10.8751, -1.49063e-07)
 bone_idx = 9
 
-[node name="LeftUpperLeg" parent="RedCrystalGolem/Armature/Skeleton3D" index="3"]
+[node name="LeftUpperLeg" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="3"]
 transform = Transform3D(-0.548779, -0.249166, -1.49012e-08, 0.199739, -0.684577, 7.45058e-09, 1.49012e-08, -1.86265e-09, 0.603044, -1.41443, -7.4146, -3.72529e-08)
 bone_idx = 10
 
-[node name="RightForearm" parent="RedCrystalGolem/Armature/Skeleton3D" index="4"]
+[node name="RightForearm" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="4"]
 transform = Transform3D(2.5185e-07, -0.728512, 2.25171e-08, 0.438096, 4.18705e-07, 1.39698e-09, -1.39698e-09, 1.45499e-08, 0.452384, 7.25, 0.704884, -4.175e-07)
 bone_idx = 15
 
-[node name="RightUpperArm" parent="RedCrystalGolem/Armature/Skeleton3D" index="5"]
+[node name="RightUpperArm" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="5"]
 transform = Transform3D(2.57676e-07, -0.728512, 2.094e-08, 0.438096, 4.28393e-07, 1.02486e-07, -9.91904e-08, 1.20101e-08, 0.452383, 3.41274, 0.704884, -1.89791e-07)
 bone_idx = 16
 
-[node name="LeftForearm" parent="RedCrystalGolem/Armature/Skeleton3D" index="6"]
+[node name="LeftForearm" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1.68993e-08, 0.728512, 2.68761e-08, -0.431581, 6.85042e-08, 0.0777299, 0.075275, -4.10327e-08, 0.445656, -7.02782, 0.70511, 0.00259742)
 bone_idx = 21
 
-[node name="LeftUpperArm" parent="RedCrystalGolem/Armature/Skeleton3D" index="7"]
+[node name="LeftUpperArm" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="7"]
 transform = Transform3D(1.51398e-08, 0.728512, 1.74297e-08, -0.438096, 7.34328e-08, -1.79059e-08, 6.32414e-09, -2.16356e-08, 0.452383, -3.41274, 0.704885, 1.08506e-07)
 bone_idx = 22
 
-[node name="Head" parent="RedCrystalGolem/Armature/Skeleton3D" index="8"]
+[node name="Head" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="8"]
 transform = Transform3D(1, -1.03789e-14, 1.88593e-08, 1.90594e-14, 1, -2.4869e-14, -1.86265e-08, 1.06581e-14, 1, 4.9738e-14, 3.25404, 7.81597e-14)
 bone_idx = 26
 
-[node name="Body" parent="RedCrystalGolem/Armature/Skeleton3D" index="9"]
+[node name="Body" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -1.16415e-10, 0, 1, 2.38419e-08, -2.2969, 3.46945e-18)
 bone_idx = 27
 
-[node name="RightArmIk" type="SkeletonIK3D" parent="RedCrystalGolem/Armature/Skeleton3D" index="10"]
-root_bone = &"Body"
-tip_bone = &"RightForearm"
+[node name="RightArmIk" type="SkeletonIK3D" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="10"]
+root_bone = &"BodyBone"
+tip_bone = &"RightHandBone"
 target_node = NodePath("../../../../RightArmIkTarget")
 
 [node name="PhysicsBody" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11098, 0)
 shape = SubResource("CapsuleShape3D_7f4bd")
 
-[node name="Hurtbox" parent="." instance=ExtResource("2_fsdnp")]
+[node name="Hurtbox" parent="." instance=ExtResource("3_36uhd")]
 collision_layer = 4
 collision_mask = 8
 
@@ -92,36 +91,36 @@ radius = 2.0
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_d4k2l")
-initial_state = NodePath("GroundWander")
+script = ExtResource("4_tra3b")
+initial_state = NodePath("")
 
 [node name="GroundCircle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
-script = ExtResource("5_0kkmq")
-enemy = NodePath("../..")
-transitionState = NodePath("../GroundWander")
+script = ExtResource("5_yswn8")
+enemy = NodePath("")
+transitionState = NodePath("")
 
 [node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
-script = ExtResource("6_2rjls")
-enemy = NodePath("../..")
-transitionState = NodePath("../GroundCircle")
+script = ExtResource("6_brtsm")
+enemy = NodePath("")
+transitionState = NodePath("")
 
 [node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
-script = ExtResource("7_7b5xp")
-attacks = [NodePath("CrystalGolemMelee"), NodePath("CrystalGolemRanged")]
-enemy = NodePath("..")
+script = ExtResource("7_bu0ip")
+attacks = [NodePath(""), NodePath("")]
+enemy = NodePath("")
 
-[node name="CrystalGolemMelee" parent="AttackManager" instance=ExtResource("8_nc42u")]
+[node name="CrystalGolemMelee" parent="AttackManager" instance=ExtResource("8_t1jqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 attack_range = 5.0
 
-[node name="CrystalGolemRanged" parent="AttackManager" node_paths=PackedStringArray("enemy") instance=ExtResource("9_25gkj")]
-enemy = NodePath("../..")
+[node name="CrystalGolemRanged" parent="AttackManager" node_paths=PackedStringArray("enemy") instance=ExtResource("9_psvo5")]
+enemy = NodePath("")
 
 [node name="RightArmIkTarget" type="Node3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.51921, 4.9146, -2.77979)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3.48079, 6.9146, 4.22021)
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="navigation_finished" from="NavigationAgent3D" to="State Machine/GroundWander" method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered" flags=18]
+[connection signal="navigation_finished" from="NavigationAgent3D" to="State Machine/GroundWander" method="_on_navigation_agent_3d_navigation_finished" flags=18]
 
-[editable path="RedCrystalGolem"]
+[editable path="PurpleCrystalGolem"]
 [editable path="Hurtbox"]
