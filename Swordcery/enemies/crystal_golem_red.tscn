@@ -68,6 +68,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, -1.16415e-10, 0, 1, 2.38419e-08, -2.29
 bone_idx = 27
 
 [node name="RightArmIk" type="SkeletonIK3D" parent="RedCrystalGolem/Armature/Skeleton3D" index="10"]
+process_priority = 1
 root_bone = &"Body"
 tip_bone = &"RightForearm"
 target_node = NodePath("../../../../RightArmIkTarget")

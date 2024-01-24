@@ -4,6 +4,7 @@ class_name EnemyBase
 @export var chase_range := 20.0
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+
 var player : SwordceryPlayer
 #pass in from spawning director instead
 var dist_to_player = 20.0
