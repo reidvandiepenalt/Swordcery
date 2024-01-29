@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bxw3msanga4sl"]
+[gd_scene load_steps=83 format=3 uid="uid://bxw3msanga4sl"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_57wtw"]
 [ext_resource type="PackedScene" uid="uid://f50jjdtgn5ql" path="res://player/swordcerer_player.tscn" id="1_eqbtc"]
@@ -44,6 +44,7 @@
 [ext_resource type="Material" uid="uid://h4meafsee6b" path="res://models/level_models/crystals/blue_crystal.tres" id="35_ncyrt"]
 [ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/level_models/crystals/purple_crystal.tres" id="36_d1w0i"]
 [ext_resource type="PackedScene" uid="uid://iymb70wg64hj" path="res://enemies/crystal_golem_red.tscn" id="45_rmn6e"]
+[ext_resource type="PackedScene" uid="uid://w6quabs2b7o8" path="res://enemies/crystal_golem_purple.tscn" id="45_v0wbv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e5qxt"]
 sky_top_color = Color(0.254902, 0.47451, 0.607843, 1)
@@ -2136,6 +2137,9 @@ distance_fade_length = 50.0
 omni_range = 100.0
 
 [node name="Enemy2" parent="." instance=ExtResource("45_rmn6e")]
+
+[node name="CrystalGolemEnemy" parent="." instance=ExtResource("45_v0wbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8477, 1.48488, -24.4097)
 
 [editable path="NavigationRegion3D/Island2"]
 [editable path="NavigationRegion3D/Island1"]
