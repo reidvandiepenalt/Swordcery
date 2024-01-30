@@ -20,14 +20,13 @@ radius = 0.984248
 height = 6.48322
 
 [node name="CrystalGolemEnemy" type="CharacterBody3D" groups=["enemies"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.81398, 0)
 collision_layer = 4
 wall_min_slide_angle = 1.0472
 script = ExtResource("1_ksskb")
 chase_range = 40.0
 
 [node name="PurpleCrystalGolem" parent="." instance=ExtResource("2_2yjx7")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 2.86742, 0)
 
 [node name="RightArmIk" type="SkeletonIK3D" parent="PurpleCrystalGolem/Armature/Skeleton3D" index="1"]
 process_priority = 1
@@ -66,11 +65,11 @@ bone_idx = 10
 script = ExtResource("3_rgalf")
 
 [node name="PhysicsBody" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.460657, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30713, 0)
 shape = SubResource("CapsuleShape3D_7f4bd")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_36uhd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.79383, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0685365, 0)
 collision_layer = 4
 collision_mask = 8
 
@@ -85,14 +84,19 @@ path_max_distance = 25.01
 radius = 2.0
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[node name="State Machine" type="Node" parent="."]
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_tra3b")
+initial_state = NodePath("GroundWander")
 
-[node name="GroundCircle" type="Node" parent="State Machine"]
+[node name="GroundCircle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
 script = ExtResource("5_yswn8")
+enemy = NodePath("../..")
+transitionState = NodePath("../GroundWander")
 
-[node name="GroundWander" type="Node" parent="State Machine"]
+[node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
 script = ExtResource("6_brtsm")
+enemy = NodePath("../..")
+transitionState = NodePath("../GroundCircle")
 
 [node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0655403, 0.0476837, -0.17944)

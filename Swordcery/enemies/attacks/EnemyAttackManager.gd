@@ -17,7 +17,7 @@ func _ready():
 func _process(delta):
 	for attack in attacks:
 		if !isAttacking && enemy.dist_to_player <= attack.attack_range:
-			enemy.look_at(enemy.player.global_position, Vector3.UP, true)
+			enemy.look_at(Vector3(enemy.player.global_position.x, enemy.global_position.y, enemy.player.global_position.z), Vector3.UP, true)
 			attack.BeginAttack()
 			isAttacking = true
 			RotationLock.emit(true)

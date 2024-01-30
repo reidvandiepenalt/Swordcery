@@ -21,7 +21,7 @@ func set_target(target: Vector3, _base: EnemyAttack = null):
 		attackBase = _base
 
 func _physics_process(delta):
-	model.rotate(model.basis.z, delta * spinDegreesPerSecond * (1 if has_target else startupSpinMod))
+	model.rotate(model.basis.z.normalized(), delta * spinDegreesPerSecond * (1 if has_target else startupSpinMod))
 	
 	if !has_target:
 		if(aiming_at):
