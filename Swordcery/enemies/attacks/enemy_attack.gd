@@ -2,6 +2,7 @@ extends Node3D
 class_name EnemyAttack
 
 signal AttackEnded
+signal DelayEnded
 
 @onready var animation : AnimationTree = $AnimationTree
 @onready var attack_delay_timer := $AttackDelayTimer
@@ -27,6 +28,7 @@ func EndAttack():
 	if animation:
 		animation.set("parameters/Transition/transition_request", "Idle")
 	attack_delay_timer.start()
+	AttackEnded.emit()
 
 func EndDelay():
-	AttackEnded.emit()
+	DelayEnded.emit()

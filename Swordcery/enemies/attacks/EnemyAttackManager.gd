@@ -24,7 +24,9 @@ func _process(delta):
 			enemy.set_speed_modifier(attack.speed_mod)
 			return
 
-func AttackDidEnd():
+func DelayDidEnd():
 	isAttacking = false
 	RotationLock.emit(false)
+
+func AttackDidEnd():
 	enemy.set_speed_modifier(1)

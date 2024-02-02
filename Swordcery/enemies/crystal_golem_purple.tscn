@@ -78,6 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2694, 0)
 shape = SubResource("CapsuleShape3D_tm3ab")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 1.5
 target_desired_distance = 2.0
 path_height_offset = 1.0
 path_max_distance = 25.01
@@ -107,9 +108,11 @@ enemy = NodePath("..")
 [node name="CrystalGolemMelee" parent="AttackManager" instance=ExtResource("8_t1jqf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.83276, 2)
 attack_range = 5.0
+speed_mod = 0.4
 
 [node name="CrystalGolemRanged" parent="AttackManager" node_paths=PackedStringArray("enemy") instance=ExtResource("9_psvo5")]
 enemy = NodePath("../..")
+speed_mod = 0.5
 
 [node name="RightArmIkTarget" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 5.46852, 3.88356, -10.7986)
@@ -127,6 +130,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8483, -2.79123, -5.27638)
 [connection signal="NodeReady" from="PurpleCrystalGolem/Armature/Skeleton3D/LeftHandSpawn" to="AttackManager/CrystalGolemRanged" method="_on_left_hand_spawn_node_ready"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="navigation_finished" from="NavigationAgent3D" to="State Machine/GroundWander" method="_on_navigation_agent_3d_navigation_finished"]
+[connection signal="AttackEnded" from="AttackManager/CrystalGolemMelee" to="AttackManager" method="AttackDidEnd"]
+[connection signal="DelayEnded" from="AttackManager/CrystalGolemMelee" to="AttackManager" method="DelayDidEnd"]
+[connection signal="AttackEnded" from="AttackManager/CrystalGolemRanged" to="AttackManager" method="AttackDidEnd"]
+[connection signal="DelayEnded" from="AttackManager/CrystalGolemRanged" to="AttackManager" method="DelayDidEnd"]
 
 [editable path="PurpleCrystalGolem"]
 [editable path="Hurtbox"]

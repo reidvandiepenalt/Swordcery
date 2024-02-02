@@ -19,7 +19,7 @@ func Update_State(_delta: float):
 func Physics_Update_State(_delta: float):
 	if enemy:
 		if enemy.dist_to_player > enemy.chase_range:
-			Transitioned.emit(self, transitionState)
+			Transitioned.emit(self, transitionState.name)
 			return
 		
 		if enemy.dist_to_player <= circle_radius:
