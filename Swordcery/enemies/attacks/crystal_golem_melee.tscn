@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://enemies/attacks/enemy_attack.gd" id="1_mlmjx"]
 [ext_resource type="PackedScene" uid="uid://cryp50hr6e5u4" path="res://resources/Hitbox.tscn" id="2_hl4ie"]
-[ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/level_models/crystals/purple_crystal.tres" id="2_pcpa4"]
+[ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/materials/purple_crystal.tres" id="2_pcpa4"]
 
 [sub_resource type="Animation" id="Animation_1nidj"]
 length = 0.001

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccys257siel4b"]
+
+[ext_resource type="PackedScene" uid="uid://dufqo421l60ve" path="res://models/blindBat.glb" id="1_m7fec"]
+
+[node name="blindBat" instance=ExtResource("1_m7fec")]

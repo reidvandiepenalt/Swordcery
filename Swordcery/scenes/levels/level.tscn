@@ -41,8 +41,8 @@
 [ext_resource type="PackedScene" uid="uid://cqd7mobbdxg34" path="res://scenes/level_object_prefabs/crystals/blue_crystal_2.tscn" id="23_28254"]
 [ext_resource type="PackedScene" uid="uid://ct07vdpa1g2w4" path="res://scenes/level_object_prefabs/crystals/purple_cluster_2.tscn" id="25_nsurp"]
 [ext_resource type="PackedScene" uid="uid://b8adt7komebym" path="res://scenes/level_object_prefabs/crystals/blue_cluster_4.tscn" id="26_nqmv8"]
-[ext_resource type="Material" uid="uid://h4meafsee6b" path="res://models/level_models/crystals/blue_crystal.tres" id="35_ncyrt"]
-[ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/level_models/crystals/purple_crystal.tres" id="36_d1w0i"]
+[ext_resource type="Material" uid="uid://h4meafsee6b" path="res://models/materials/blue_crystal.tres" id="35_ncyrt"]
+[ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/materials/purple_crystal.tres" id="36_d1w0i"]
 [ext_resource type="PackedScene" uid="uid://iymb70wg64hj" path="res://enemies/crystal_golem_red.tscn" id="45_rmn6e"]
 [ext_resource type="PackedScene" uid="uid://w6quabs2b7o8" path="res://enemies/crystal_golem_purple.tscn" id="45_v0wbv"]
 

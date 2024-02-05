@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://cvwebg0086xon"]
 
-[ext_resource type="Material" uid="uid://h4meafsee6b" path="res://models/level_models/crystals/blue_crystal.tres" id="1_67yaw"]
-[ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/level_models/crystals/purple_crystal.tres" id="2_appj8"]
+[ext_resource type="Material" uid="uid://h4meafsee6b" path="res://models/materials/blue_crystal.tres" id="1_67yaw"]
+[ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/materials/purple_crystal.tres" id="2_appj8"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cvtjo"]
 _surfaces = [{

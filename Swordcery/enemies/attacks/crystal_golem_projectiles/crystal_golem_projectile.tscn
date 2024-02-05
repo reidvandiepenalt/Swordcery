@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://7wrui2n13e1l"]
 
 [ext_resource type="Script" path="res://enemies/attacks/crystal_golem_projectiles/crystal_golem_projectile.gd" id="2_bfv65"]
-[ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/level_models/crystals/purple_crystal.tres" id="3_wl143"]
+[ext_resource type="Material" uid="uid://b81qpwhht46bw" path="res://models/materials/purple_crystal.tres" id="3_wl143"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g083x"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b8adt7komebym"]
 
-[ext_resource type="Material" uid="uid://h4meafsee6b" path="res://models/level_models/crystals/blue_crystal.tres" id="1_wr2d2"]
+[ext_resource type="Material" uid="uid://h4meafsee6b" path="res://models/materials/blue_crystal.tres" id="1_wr2d2"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_smwwn"]
 _surfaces = [{
