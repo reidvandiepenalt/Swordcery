@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://uaeo1xitm07f"]
+
+[ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_57s7c"]
+[ext_resource type="PackedScene" uid="uid://bkd37qnou2a6" path="res://resources/Hurtbox.tscn" id="2_206v3"]
+[ext_resource type="Script" path="res://resources/states/state_machine.gd" id="3_qgjd8"]
+[ext_resource type="Script" path="res://resources/states/ground_chase.gd" id="4_hg04j"]
+[ext_resource type="Script" path="res://resources/states/ground_wander.gd" id="5_nww3n"]
+[ext_resource type="Script" path="res://enemies/attacks/EnemyAttackManager.gd" id="6_n07x2"]
+[ext_resource type="PackedScene" uid="uid://blbklk2turbuw" path="res://enemies/attacks/enemy_attack.tscn" id="7_qv2gj"]
+[ext_resource type="PackedScene" uid="uid://ccys257siel4b" path="res://enemies/blind_bat.tscn" id="8_d6jrq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_61bsy"]
+radius = 1.45336
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1053k"]
+radius = 2.2138
+
+[node name="BlindBat" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 4
+wall_min_slide_angle = 1.0472
+script = ExtResource("1_57s7c")
+chase_range = 35.0
+
+[node name="PhysicsBody" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.128149, 0)
+shape = SubResource("SphereShape3D_61bsy")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_206v3")]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" parent="Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.234686, 0)
+shape = SubResource("SphereShape3D_1053k")
+
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_qgjd8")
+initial_state = NodePath("GroundWander")
+
+[node name="GroundChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
+script = ExtResource("4_hg04j")
+enemy = NodePath("../..")
+transitionState = NodePath("../GroundWander")
+
+[node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
+script = ExtResource("5_nww3n")
+enemy = NodePath("../..")
+transitionState = NodePath("../GroundChase")
+
+[node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
+script = ExtResource("6_n07x2")
+attacks = [NodePath("EnemyAttack")]
+enemy = NodePath("..")
+
+[node name="EnemyAttack" parent="AttackManager" instance=ExtResource("7_qv2gj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5907, 1.21733)
+
+[node name="blindBat" parent="." instance=ExtResource("8_d6jrq")]
+transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 0, 0, 0)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+
+[editable path="Hurtbox"]
