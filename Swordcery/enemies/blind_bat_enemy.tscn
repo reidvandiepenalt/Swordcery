@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://enemies/enemy_base.gd" id="1_57s7c"]
 [ext_resource type="PackedScene" uid="uid://bkd37qnou2a6" path="res://resources/Hurtbox.tscn" id="2_206v3"]
 [ext_resource type="Script" path="res://resources/states/state_machine.gd" id="3_qgjd8"]
+[ext_resource type="Script" path="res://resources/states/aerial_wander.gd" id="4_4l43i"]
 [ext_resource type="Script" path="res://resources/states/ground_chase.gd" id="4_hg04j"]
-[ext_resource type="Script" path="res://resources/states/ground_wander.gd" id="5_nww3n"]
 [ext_resource type="Script" path="res://enemies/attacks/EnemyAttackManager.gd" id="6_n07x2"]
 [ext_resource type="PackedScene" uid="uid://blbklk2turbuw" path="res://enemies/attacks/enemy_attack.tscn" id="7_qv2gj"]
 [ext_resource type="PackedScene" uid="uid://ccys257siel4b" path="res://enemies/blind_bat.tscn" id="8_d6jrq"]
@@ -35,17 +35,15 @@ shape = SubResource("SphereShape3D_1053k")
 
 [node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_qgjd8")
-initial_state = NodePath("GroundWander")
+initial_state = NodePath("")
+
+[node name="AerialWander" type="Node" parent="State Machine"]
+script = ExtResource("4_4l43i")
 
 [node name="GroundChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
 script = ExtResource("4_hg04j")
 enemy = NodePath("../..")
-transitionState = NodePath("../GroundWander")
-
-[node name="GroundWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
-script = ExtResource("5_nww3n")
-enemy = NodePath("../..")
-transitionState = NodePath("../GroundChase")
+transitionState = NodePath("")
 
 [node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
 script = ExtResource("6_n07x2")
