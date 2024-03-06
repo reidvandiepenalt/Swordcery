@@ -1,6 +1,7 @@
 extends State
 class_name AerialWander
 
+static var AERIAL_HEIGHT := 10.0
 @export var enemy: EnemyBase
 @export var squared_distance_to_reach_target := 1.0
 @export var wander_range := 10.0

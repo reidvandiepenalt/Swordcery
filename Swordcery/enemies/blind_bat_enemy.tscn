@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bkd37qnou2a6" path="res://resources/Hurtbox.tscn" id="2_206v3"]
 [ext_resource type="Script" path="res://resources/states/state_machine.gd" id="3_qgjd8"]
 [ext_resource type="Script" path="res://resources/states/aerial_wander.gd" id="4_4l43i"]
-[ext_resource type="Script" path="res://resources/states/ground_chase.gd" id="4_hg04j"]
+[ext_resource type="Script" path="res://enemies/AerialCircle.gd" id="5_4rinm"]
 [ext_resource type="Script" path="res://enemies/attacks/EnemyAttackManager.gd" id="6_n07x2"]
 [ext_resource type="PackedScene" uid="uid://blbklk2turbuw" path="res://enemies/attacks/enemy_attack.tscn" id="7_qv2gj"]
 [ext_resource type="PackedScene" uid="uid://ccys257siel4b" path="res://enemies/blind_bat.tscn" id="8_d6jrq"]
@@ -19,7 +19,7 @@ radius = 2.2138
 collision_layer = 4
 wall_min_slide_angle = 1.0472
 script = ExtResource("1_57s7c")
-chase_range = 35.0
+chase_range = 17.5
 
 [node name="PhysicsBody" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, -0.128149, 0)
@@ -33,17 +33,18 @@ collision_mask = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.234686, 0)
 shape = SubResource("SphereShape3D_1053k")
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="State Machine" type="Node" parent="."]
 script = ExtResource("3_qgjd8")
-initial_state = NodePath("")
 
-[node name="AerialWander" type="Node" parent="State Machine"]
+[node name="AerialWander" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
 script = ExtResource("4_4l43i")
-
-[node name="GroundChase" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
-script = ExtResource("4_hg04j")
 enemy = NodePath("../..")
-transitionState = NodePath("")
+transitionState = NodePath("../AerialCircle")
+
+[node name="AerialCircle" type="Node" parent="State Machine" node_paths=PackedStringArray("enemy", "transitionState")]
+script = ExtResource("5_4rinm")
+enemy = NodePath("../..")
+transitionState = NodePath("../AerialWander")
 
 [node name="AttackManager" type="Node3D" parent="." node_paths=PackedStringArray("attacks", "enemy")]
 script = ExtResource("6_n07x2")
