@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cmx3mw38f1sok"]
+
+[resource]
+resource_name = "TailSkin"
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.763362, 0.668296, 1)
+roughness = 0.195455

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://riqto4ldxw33"]
+
+[ext_resource type="Script" path="res://models/materials/RandomizeSkinColor.gd" id="1_iqdtg"]
+
+[resource]
+resource_name = "BaseSkin"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+roughness = 0.359091
+script = ExtResource("1_iqdtg")
